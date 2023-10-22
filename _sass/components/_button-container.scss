@@ -1,0 +1,12 @@
+.button-container {
+    padding-top: 15px;
+
+    @include media-breakpoint-up(md) {
+        padding-left: 10px;
+        text-align: left;
+    }
+
+    @include media-breakpoint-down(sm) {
+        text-align: center;
+    }
+}

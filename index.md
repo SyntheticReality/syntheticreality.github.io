@@ -10,4 +10,4 @@ show_call_box: true
 
 # Welcome to the era of *<span style="color:#9065b0;">synthetic realities</span>*
 
-We innovate across gaming, simulation, and education with <span style="color:#9065b0;">3D and virtual reality</span>.
+We innovate across gaming, simulation, and education with 3D and virtual reality.
