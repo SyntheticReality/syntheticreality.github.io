@@ -1,13 +1,11 @@
 ---
-title: "Tax Preperation"
-date: 2019-04-18T12:33:46+10:00
-weight: 6
+title: "📑 Design"
+date: 2023-10-28T15:15:34+10:00
+weight: 2
 ---
 
-Lorem markdownum **Achaica revolutaque amore**, penitus puppes nec furit,
-clipeus fatetur, mira inter accedere. Dedit dum raptoresque Oete dolorem
-Cretaeas enim [ipse pectora excusat](#in-poscat) candentibus fertur? Furtiva
-Orontes Erysicthona dona, est per Achille viridi draconis cultis mota milia.
+Crafting the blueprint for your vision – from game design to every detail.
+<!--more-->
 
 ![Accounting Services](/images/austin-distel-nGc5RT2HmF0-unsplash.jpg)
 
