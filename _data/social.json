@@ -1,12 +1,12 @@
 [
   {
-    "name": "Github",
-    "link": "https://github.com/zerostaticthemes/jekyll-serif-theme",
-    "image": "images/social/github.svg"
+    "name": "LinkedIn",
+    "link": "https://www.linkedin.com/company/syntheticreality/",
+    "image": "images/social/linkedin.png"
   },
   {
-    "name": "Twitter",
-    "link": "https://twitter.com/zerostaticio",
-    "image": "images/social/twitter.svg"
+    "name": "X",
+    "link": "https://twitter.com/Syry_io",
+    "image": "images/social/x.png"
   }
 ]
