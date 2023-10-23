@@ -2,8 +2,10 @@
   width: 75%;
   height: auto;
   margin-top: -50px;
-  margin-left: 5%;
-  animation: float 5s ease-in-out infinite;
+  margin-left: auto;
+  margin-right: auto;
+  animation: float 4.5s ease-in-out infinite;
+  display: block;
 }
 .intro-image-absolute {
   max-width: none;
