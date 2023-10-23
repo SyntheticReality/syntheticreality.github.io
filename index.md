@@ -1,8 +1,8 @@
 ---
-title: Syry
+title: Syry | Virtual Reality Simulations, Gaming, and Education
 layout: home
-description: We innovate across gaming, education and simulations in 3D and virtual reality.
-intro_image: "images/illustrations/synthetic-rock.png"
+description: Syry pioneers innovation in virtual reality and 3D across gaming, education, and simulations. Explore a new era of synthetic realities with us.
+intro_image: "images/illustrations/virtual-reality-rock.png"
 intro_image_absolute: false
 intro_image_hide_on_mobile: false
 show_call_box: true
