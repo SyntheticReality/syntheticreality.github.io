@@ -7,6 +7,11 @@
   animation: float 4.5s ease-in-out infinite;
   display: block;
 }
+
+.intro-image.delayed {
+  animation-delay: 2s;
+}
+
 .intro-image-absolute {
   max-width: none;
 
@@ -31,6 +36,7 @@
     width: 850px;
   }
 }
+
 .intro-image-hide-mobile {
   display: none;
   @include media-breakpoint-up(md) {
