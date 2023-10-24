@@ -17,7 +17,10 @@
         text-decoration: none;
         color: $primary;
         &:hover {
-          text-decoration: underline;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1.05rem;
+          transition: all 0.3s ease-in-out;
         }
       }
       &.active {

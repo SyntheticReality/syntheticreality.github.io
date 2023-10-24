@@ -1,9 +1,9 @@
-.page-teams {
-  .team-summary {
+.page-games {
+  .games-summary {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    .team-image {
+    .games-image {
       height: 60px;
       width: 60px;
       margin-right: 10px;
@@ -13,7 +13,7 @@
         width: 60px;
       }
     }
-    .team-meta {
+    .games-meta {
       flex: 1;
       h2 {
         margin: 0;
@@ -28,17 +28,17 @@
         font-weight: 500;
       }
     }
-    .team-content {
+    .games-content {
       margin-top: 20px;
       flex: 1 0 100%;
     }
   }
 
-  .team-summary-large {
+  .games-summary-large {
     background-color: $white-offset;
     padding: 30px;
     border-radius: 3px;
-    .team-image {
+    .games-image {
       height: 90px;
       width: 90px;
       margin-right: 20px;

@@ -24,7 +24,7 @@ $font-family-heading: "Roboto", sans-serif, -apple-system;
 // Footer
 $footer-background-color: $primary;
 $footer-text-color: $white;
-$sub-footer-background-color: $steel;
+$sub-footer-background-color: linear-gradient(to right, $secondary, $tertiary);
 $sub-footer-text-color: $white;
 
 // Bootstrap
@@ -61,7 +61,7 @@ $sub-footer-text-color: $white;
 
 // Pages
 @import "pages/page-home";
-@import "pages/page-teams";
+@import "pages/page-games";
 @import "pages/page-service";
 
 body {
