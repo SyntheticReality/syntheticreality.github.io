@@ -42,4 +42,18 @@
   @include media-breakpoint-up(md) {
     display: block;
   }
+
+}
+
+@include media-breakpoint-up(md) {
+  .intro-image-smaller {
+    width: 35%;
+    margin-top: 40px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .intro-image-smaller {
+    margin-top: 0;  // or another value that prevents overlap
+  }
 }
