@@ -13,3 +13,23 @@ bodyClass: "page-service"
     </div>
   </div>
 </div>
+
+<div class="strip">
+  <div class="container pt-6 pb-6 pb-md-10">
+    <div class="row justify-content-start">
+      <div class="col-12">
+      </div>
+      {% assign sorted_services = site.services | sort: 'weight' %}
+      {% for service in sorted_services %}
+        <div class="col-12 col-md-4 mb-1">
+          <div class="service service-summary padding-lr">
+            <div class="service-content">
+              <h2 class="service-title">{{ service.title }}</h2>
+              <p>{{ service.content | markdownify | strip_html }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

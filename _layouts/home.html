@@ -4,7 +4,7 @@ bodyClass: "page-home"
 ---
 
 <div class="intro">
-  <div class="container mb-8">
+  <div class="container mb-4">
     <div class="row justify-content-start">
       <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1">
         {{ content }}
@@ -27,28 +27,44 @@ bodyClass: "page-home"
       <img src="/images/illustrations/games-rock.png" alt="Games Rock" class="img-fluid intro-image delayed">
     </div>
     <div class="col-md-6">
-      <h2 style="margin-top: 40px;">We're a hardcore team experienced in delivering value to <span style="color:#9065b0; font-style: italic;">global clients</span>.</h2>
+      <h1 style="margin-top: 40px;">Experience delivering value to <span style="color:#9065b0; font-style: italic;">global clients</span>.</h1>
+      <p>We're a hardcore team that has delivered over 50 projects for global companies and been supported by industry partners.</p>
     </div>
   </div>
 </div>
 
-<div class="strip">
-  <div class="container pt-6 pb-6 pb-md-10">
-    <div class="row justify-content-start">
-      <div class="col-12">
-        <h1 style="margin-bottom: 40px; text-align: center;">Explore our divisions</h1>
-      </div>
-      {% assign sorted_services = site.services | sort: 'weight' %}
-      {% for service in sorted_services %}
-        <div class="col-12 col-md-4 mb-1">
-          <div class="service service-summary padding-lr">
-            <div class="service-content">
-              <h2 class="service-title">{{ service.title }}</h2>
-              <p>{{ service.content | markdownify | strip_html }}</p>
-            </div>
-          </div>
+<div class="container my-5" style="padding-left: 30px; padding-right: 30px;">
+  <h1 style="margin-bottom: 40px; text-align: center;">Explore our <span style="color:#9065b0; font-style: italic;">divisions</span></h1>
+  <div class="row">
+    <!-- First Column -->
+    <div class="col-md-4">
+      <div class="rounded-box">
+        <h2 class="text-center">🎮 Games</h2>
+        <p class="text-center text-white">Developing virtual reality games and world-building services for next-gen experiences. </p>
+        <div class="button-container button-container-center">
+                <a href="mailto:alexis@syry.io" class="button">Explore</a>
         </div>
-      {% endfor %}
+      </div>
+    </div>
+    <!-- Second Column -->
+    <div class="col-md-4">
+      <div class="rounded-box">
+        <h2 class="text-center">👾 Simulations</h2>
+        <p class="text-center text-white">Enhance safety and proficiency with virtual scenarios to prepare for real-world challenges.</p>
+        <div class="button-container button-container-center">
+                <a href="mailto:alexis@syry.io" class="button">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <!-- Third Column -->
+    <div class="col-md-4">
+      <div class="rounded-box">
+        <h2 class="text-center">🥽 Education</h2>
+        <p class="text-center text-white">Instant VR content production and distribution platform for higher education and enterprise.</p>
+        <div class="button-container button-container-center">
+                <a href="mailto:alexis@syry.io" class="button">Get Started</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -56,7 +72,7 @@ bodyClass: "page-home"
 <div class="container mb-8">
   <div class="row">
     <div class="col-12">
-      <h2 style="text-align: center;">Site still under construction.</h2>
+      <h2 style="text-align: center;">Site under construction.</h2>
       <p style="text-align: center;">Hold on while we build this awesome website (ETA November 2023).</p>
     </div>
   </div>
