@@ -42,7 +42,7 @@ bodyClass: "page-home"
         <h2 class="text-center">🎮 Games</h2>
         <p class="text-center text-white">Developing virtual reality games and world-building services for next-gen experiences. </p>
         <div class="button-container button-container-center">
-                <a href="mailto:alexis@syry.io" class="button">Explore</a>
+                <a href="mailto:alexis@syry.io?subject=Syry%20Games&body=Hello%20Syry%2C%0AI%20am%20interested%20in%20more%20information%20about%20Syry%20Games.%0AThanks%21" class="button">Explore</a>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@ bodyClass: "page-home"
         <h2 class="text-center">👾 Simulations</h2>
         <p class="text-center text-white">Enhance safety and proficiency with virtual scenarios to prepare for real-world challenges.</p>
         <div class="button-container button-container-center">
-            <a href="mailto:alexis@syry.io?subject=Syry%20Games&body=Hello%20Syry%2C%0AI%20am%20interested%20in%20more%20information%20about%20Syry%20Games.%0AThanks%21" class="button">Learn More</a>
+          <a href="mailto:alexis@syry.io?subject=Syry%20Simulations&body=Hello%20Syry%2C%0AI%20am%20interested%20in%20more%20information%20about%20Syry%20Simulations.%0AThanks%21" class="button">Learn More</a>
         </div>
       </div>
     </div>
@@ -62,18 +62,38 @@ bodyClass: "page-home"
         <h2 class="text-center">🥽 Education</h2>
         <p class="text-center text-white">Instant VR content production and distribution platform for higher education and enterprise.</p>
         <div class="button-container button-container-center">
-                <a href="mailto:alexis@syry.io" class="button">Get Started</a>
+          <a href="mailto:alexis@syry.io?subject=Syry%20Education&body=Hello%20Syry%2C%0AI%20am%20interested%20in%20more%20information%20about%20Syry%20Education.%0AThanks%21" class="button">Get Started</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container my-8">
+<div class="container mb-4">
   <div class="row">
     <div class="col-12">
-      <h1 style="text-align: center;">Need a custom project? <span style="color:#9065b0; font-style: italic;">We can help</span></h1>
       <img src="/images/illustrations/immersive-rocks.png" alt="Immersive Rocks" class="img-fluid intro-image intro-image-smaller">
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <h1 style="text-align: center;">Need a custom project? <span style="color:#9065b0; font-style: italic;">We can help</span></h1>
+  <div class="container pt-6 pb-6 pb-md-10">
+    <div class="row justify-content-start">
+      <div class="col-12">
+      </div>
+      {% assign sorted_services = site.services | sort: 'weight' %}
+      {% for service in sorted_services %}
+        <div class="col-12 col-md-4 mb-1">
+          <div class="service service-summary padding-lr">
+            <div class="service-content">
+              <h2 class="service-title">{{ service.title }}</h2>
+              <p>{{ service.content | markdownify | strip_html }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -83,6 +103,9 @@ bodyClass: "page-home"
     <div class="col-12">
       <h2 style="text-align: center;">Site under construction.</h2>
       <p style="text-align: center;">Hold on while we build this awesome website (ETA November 2023).</p>
+      <div style="display: flex; justify-content: center; align-items: center;">
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7mLWNwcvwRdEviz6SfYp8A?utm_source=generator&theme=0" width="500" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
     </div>
   </div>
 </div>
