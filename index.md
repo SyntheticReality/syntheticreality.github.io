@@ -6,6 +6,7 @@ intro_image: "images/illustrations/virtual-reality-rocks.png"
 intro_image_absolute: false
 intro_image_hide_on_mobile: false
 show_call_box: true
+image: "images/illustrations/virtual-reality-rocks.png"
 ---
 
 # Welcome to the era of *<span style="color:#9065b0">synthetic realities</span>*
