@@ -4,18 +4,63 @@ bodyClass: "page-simulations"
 ---
 
 <div class="intro">
-  <div class="container">
+  <div class="container mb-4">
     <div class="row justify-content-start">
       <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1">
         {{ content }}
+        {% if page.show_call_box %}
+          {% include call.html show_button=true %}
+        {% endif %}
       </div>
+      {% if page.intro_image %}
+      <div class="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
+        <img alt="Immersive Learning Rocks" class="intro-image{% if page.intro_image_absolute %} intro-image-absolute{% endif %}{% if page.intro_image_hide_on_mobile %} intro-image-hide-mobile{% endif %}" src="{{ page.intro_image | relURL }}" />
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>
 
-<div class="strip my-10">
-  <h1 style="text-align: center;">Under construction, <span style="color:#9065b0; font-style: italic;">stay tuned!</span></h1>
-  <div style="text-align: center;">
-    <a href="mailto:alexis@syry.io?subject=Syry%20Simulations&body=Hello%20Syry%2C%0AI%20am%20interested%20in%20more%20information%20about%20Syry%20Games.%0AThanks%21" class="button">Learn More</a>
+<div id="mc_embed_shell" style="text-align: center; margin-bottom: 120px; padding-left: 20px; padding-right: 20px;">
+  <h1>Under construction, <span style="color:#9065b0; font-style: italic;">stay tuned</span></h1>
+  <div id="mc_embed_signup" style="display: inline-block;">
+    <form action="https://syry.us21.list-manage.com/subscribe/post?u=fbf0a63ae1b88e28646525eb8&amp;id=6b99444b37&amp;f_id=00f0efe6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="" style="text-align: left;">
+      <div class="mc-field-group" style="margin-bottom: 20px;">
+          <label for="mce-NAME" style="width: 150px; display: inline-block;">Name</label>
+          <input type="text" name="NAME" class="text" id="mce-NAME" style="width: 250px; border-radius: 10px; border: 1px solid #737373;">
+      </div>
+      <div class="mc-field-group" style="margin-bottom: 20px;">
+          <label for="mce-EMAIL" style="width: 150px; display: inline-block;">Email Address</label>
+          <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" style="width: 250px; border-radius: 10px; border: 1px solid #737373;">
+      </div>
+      <div class="mc-field-group" style="margin-bottom: 20px;">
+          <label for="mce-DIVISION" style="width: 150px; display: inline-block;">Select Division</label>
+          <select name="DIVISION" id="mce-DIVISION" style="width: 250px; border-radius: 10px;">
+              <option value=""></option>
+              <option value="Games">Games</option>
+              <option value="Simulations">Simulations</option>
+              <option value="Education">Education</option>
+              <option value="Custom Project">Custom Project</option>
+              <option value="Other">Other</option>
+          </select>
+      </div>
+      <div class="mc-field-group" style="margin-bottom: 20px;">
+          <label for="mce-MESSAGE" style="width: 150px; display: inline-block; vertical-align: top;">Message</label>
+          <textarea name="MESSAGE" class="text" id="mce-MESSAGE" style="width: 250px; height: 100px; border-radius: 10px;"></textarea>
+      </div>
+      <div style="text-align: center;">
+        <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Submit" style="width: 250px; margin: 10px auto; border: none">
+      </div>
+      <div hidden="">
+          <input type="hidden" name="tags" value="2968973">
+      </div>
+      <div id="mce-responses" class="clear foot">
+          <div class="response" id="mce-error-response" style="display: none;"></div>
+          <div class="response" id="mce-success-response" style="display: none;"></div>
+      </div>
+      <div aria-hidden="true" style="position: absolute; left: -5000px;">
+          <input type="text" name="b_fbf0a63ae1b88e28646525eb8_6b99444b37" tabindex="-1">
+      </div>
+    </form>
   </div>
 </div>
