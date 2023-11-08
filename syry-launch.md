@@ -1,5 +1,5 @@
 ---
-title: Syry - Launching an era of synthetic realities
+title: Syry - Welcome to the Era of Synthetic Realities
 layout: blog
 description: Blog
 intro_image: "/images/illustrations/virtual-reality-games-rock.png"
@@ -9,6 +9,6 @@ intro_image_hide_on_mobile: false
 show_call_box: false
 ---
 
-# World-builders crafting the future of *<span style="color:#9065b0">virtual realms</span>*
+# Welcome to the era of *<span style="color:#9065b0">synthetic realities</span>*
 
 We specialize in crafting immersive <strong style="font-weight: 900;">gaming experiences for virtual reality</strong>.
