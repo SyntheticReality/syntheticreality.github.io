@@ -46,14 +46,18 @@ h3 {
 }
 ul,
 ol {
-  font-family: $font-family-base;
-  line-height: 26px;
-  color: $black;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  padding-left: 40px;
-  padding-right: 20px;
+  margin: 0;
+  padding: 0;
+  // font-family: $font-family-base;
+  // line-height: 26px;
+  // color: $black;
+  // font-size: 1.2rem;
+  // margin-bottom: 20px;
+  // padding-left: 40px;
+  // padding-right: 20px;
   li {
-    margin-bottom: 10px;
+    padding: 0;
+    margin: 0;
+    //margin-bottom: 10px;
   }
 }
