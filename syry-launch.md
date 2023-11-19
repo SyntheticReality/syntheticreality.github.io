@@ -3,7 +3,7 @@ title: Syry - Launch
 layout: blog
 description: Welcome to the Era of Synthetic Realities. Follow our journey into virtual insanity while we build a future where education and gaming are fully immersive.
 image: "/images/illustrations/virtual-reality-rocks.png"
-intro_image: "/images/illustrations/virtual-reality-games-rock.png"
+intro_image: "/images/illustrations/virtual-reality-rocks-and-rolls.png"
 permalink: "/syry-launch/"
 intro_image_absolute: false
 intro_image_hide_on_mobile: false
