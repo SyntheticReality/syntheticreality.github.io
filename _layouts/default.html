@@ -22,6 +22,8 @@
   <meta name="twitter:card" content="summary"/>
   {% if site.data.seo.meta_twitter_site %}<meta name="twitter:site" content="{{ site.seo.meta_twitter_site }}"/>{% endif %}
   {% if site.data.seo.meta_twitter_creator %}<meta name="twitter:creator" content="{{ site.seo.meta_twitter_creator }}"/>{% endif %}
+  {% if page.author %}<meta property="og:author" content="{{ page.author }}" />{% endif %}
+  {% if page.published_time %}<meta property="article:published_time" content="{{ page.published_time }}" />{% endif %}
 
 </head>
 
