@@ -2,7 +2,7 @@
 title: Syry - Welcome to the Era of Synthetic Realities
 layout: blog
 description: Welcome to the Era of Synthetic Realities
-image: "/images/logo/virtual-reality-rocks.png"
+image: "/images/illustrations/virtual-reality-rocks.png"
 intro_image: "/images/illustrations/virtual-reality-games-rock.png"
 permalink: "/syry-launch/"
 intro_image_absolute: false
