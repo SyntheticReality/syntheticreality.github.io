@@ -4,7 +4,7 @@ title: "How to Create an AR Coloring Book"
 description: In this article, we'll explore how to give 3D life to a coloring book.
 author: "Alexis Salinas Mark"
 categories: augmented-reality
-date: 2023-12-04T12:00:00+00:00
+date: 2023-12-03T12:00:00+00:00
 ---
 
 <style>
