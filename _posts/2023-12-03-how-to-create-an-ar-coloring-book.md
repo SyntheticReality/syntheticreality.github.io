@@ -31,7 +31,7 @@ date: 2023-12-03T12:00:00+00:00
 <br>
 <h3>Augmented Reality (AR) shines when it forms meaningful links with the real world, and in this article, we'll explore how to do so by giving 3D life to a coloring book.</h3>
 <br>
-<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5nUS6_gyi8Pnd2Wu.gif" alt="Augmented Reality Coloring Books" style="display: block; margin-left: auto; margin-right: auto; width: 620px;">
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5nUS6_gyi8Pnd2Wu.gif" alt="Augmented Reality Coloring Books" style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; width: 620px; height: auto;">
 <p style="text-align: center;">🖼️ Augmented reality coloring books.</p>
 <br>
 <p><strong>Spawning 3D objects in augmented reality often feels very basic</strong> there’s usually not much to do besides looking at them, and that’s because their only relation to the real world is their position. <strong>Establishing multiple relations between virtual and real is where AR apps need to focus</strong>.</p>
@@ -44,7 +44,7 @@ date: 2023-12-03T12:00:00+00:00
 <br>
 <p>With a very tight schedule, we opted for simple designs for the user interface (UI) and a user experience (UX) stripped down to the bare minimum. A key consideration was having an area on the coloring pages that wouldn’t change to allow the image recognition to work out. Aided by DALL-E, <strong>we created richly detailed frames that wouldn’t be colored</strong>, serving as a strong and distinct element for image recognition.</p>
 <br>
-<img src="https://miro.medium.com/v2/resize:fit:700/1*NlkIumYouOjySMlfzh22tQ.png" alt="User Interface and Coloring Pages" style="display: block; margin-left: auto; margin-right: auto; width: 620px;">
+<img src="https://miro.medium.com/v2/resize:fit:700/1*NlkIumYouOjySMlfzh22tQ.png" alt="User Interface and Coloring Pages" style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; width: 620px; height: auto;">
 <p style="text-align: center;">🖥️ User interface and coloring pages.</p>
 <br>
 
@@ -62,7 +62,7 @@ date: 2023-12-03T12:00:00+00:00
 <strong>△ Easy Integration</strong>: Finally, it easily integrates with Unity through a package manager and has extensive documentation and an active developer community.
 <p>Additionally, <strong>the application was based on an <a href="https://github.com/airar-dev/Unity-AR-ColorMapping">augmented reality coloring library</a></strong> developed by the Korean company AirAR. This library allows the detection of colors from images captured by the camera and applies them to a Unity material, which can then be applied to virtual 3D objects.</p>
 <br>
-<img src="https://miro.medium.com/v2/resize:fit:700/1*XATp938lBYxmiGJaZQxYMQ.png" alt="AR Coloring in Action" style="display: block; margin-left: auto; margin-right: auto; width: 620px;">
+<img src="https://miro.medium.com/v2/resize:fit:700/1*XATp938lBYxmiGJaZQxYMQ.png" alt="AR Coloring in Action" style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; width: 620px; height: auto;">
 <p style="text-align: center;">🎨 AR coloring in action.</p>
 <br>
 
@@ -78,7 +78,7 @@ date: 2023-12-03T12:00:00+00:00
 <br> <strong>4.</strong> Finally, the texture is applied to the 3D model, <strong>displaying the colors of the color page</strong>. The number of vertices and polygons was kept low to avoid potential issues or lag.
 <br>
 <br>
-<img src="https://miro.medium.com/v2/resize:fit:700/1*JSc2VQHKI4nIp5TJuknKgA.png" alt="More AR Coloring Fun" style="display: block; margin-left: auto; margin-right: auto; width: 620px;">
+<img src="https://miro.medium.com/v2/resize:fit:700/1*JSc2VQHKI4nIp5TJuknKgA.png" alt="More AR Coloring Fun" style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; width: 620px; height: auto;">
 <p style="text-align: center;">🎨 More AR coloring fun.</p>
 <br>
 
@@ -87,12 +87,12 @@ date: 2023-12-03T12:00:00+00:00
 <br>
 <p>The enthusiastic response from the students at the school was a testament to the potential of the intersection of technology and education. Their deep involvement and joy as they watched their colored pages come to life in 3D models highlighted an important lesson: <strong>technology like AR can greatly enhance learning by making it interactive, immersive, and fun</strong>.</p>
 <br>
-<img src="https://miro.medium.com/v2/resize:fit:1442/1*Hu_da2SeJBehRZBMVEQ6dg.png" alt="Engagement Image 2" style="display: block; margin-left: auto; margin-right: auto; width: 620px;">
+<img src="https://miro.medium.com/v2/resize:fit:1442/1*Hu_da2SeJBehRZBMVEQ6dg.png" alt="Engagement Image 2" style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; width: 620px; height: auto;">
 <p style="text-align: center;">📈 Engagement with the activity was <strong>greatly enhanced</strong>.</p>
 <br>
 <p>Looking forward, <strong>the potential applications of AR in educational settings are vast and largely untapped</strong>. History lessons in which students can explore historical civilizations in 3D, or biology classes in which they can interact with complicated ecosystems, all powered by AR, promise to transform traditional learning into an immersive, interactive journey.</p>
 <br>
-<img src="https://miro.medium.com/v2/resize:fit:500/0*kNLN5iejOccGW-Jm.gif" alt="AR in Education" style="display: block; margin-left: auto; margin-right: auto; width: 620px;">
+<img src="https://miro.medium.com/v2/resize:fit:500/0*kNLN5iejOccGW-Jm.gif" alt="AR in Education" style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; width: 620px; height: auto;">
 <p style="text-align: center;">⚛️ Boom!</p>
 <br>
 <br>
