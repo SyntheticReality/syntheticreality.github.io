@@ -3,11 +3,23 @@ layout: default
 bodyClass: "page-education"
 ---
 
+<style>
+  @media (max-width: 576px) {
+    .logo-image {
+      max-width: 100%;
+    }
+  }
+</style>
+
+
 <div class="intro">
   <div class="container">
     <div class="row justify-content-start">
       <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1">
         {{ content }}
+        {% if page.show_call_box %}
+          {% include download.html show_button=true %}
+        {% endif %}
       </div>
       <div class="col-12 col-md-5 col-lg-6 order-1 order-md-2 mb-6 position-relative d-flex justify-content-center align-items-center">
         <video autoplay loop muted playsinline class="intro-video{% if page.intro_video_absolute %} intro-video-absolute{% endif %}{% if page.intro_video_hide_on_mobile %} intro-video-hide-mobile{% endif %}">
@@ -69,8 +81,14 @@ bodyClass: "page-education"
     <div class="col-12 text-center">
       <h1 style="margin-bottom: -30px; text-align: center;">Supported by regional <span style="color:#9065b0; font-style: italic;">partners</span></h1>
     </div>
-    <div class="col-12 text-center">
-      <img src="/images/logo/logo-supported.png" alt="Companies and Organizations supporting Virtual Reality Education" class="img-fluid mx-auto d-block" style="max-width: 100%; height: auto;">
+    <div class="col-12 mt-3">
+      <div class="row justify-content-center">
+        <div class="col-6 col-md-4 col-lg-2 d-flex justify-content-center logo-container"><img src="/images/logo/logo1.png" alt="Logo 1" class="img-fluid logo-image" style="max-width: 100%;"></div>
+        <div class="col-6 col-md-4 col-lg-2 d-flex justify-content-center logo-container"><img src="/images/logo/logo2.png" alt="Logo 2" class="img-fluid logo-image" style="max-width: 100%;"></div>
+        <div class="col-6 col-md-4 col-lg-2 d-flex justify-content-center logo-container"><img src="/images/logo/logo3.png" alt="Logo 3" class="img-fluid logo-image" style="max-width: 100%;"></div>
+        <div class="col-6 col-md-4 col-lg-2 d-flex justify-content-center logo-container"><img src="/images/logo/logo4.png" alt="Logo 4" class="img-fluid logo-image" style="max-width: 100%;"></div>
+        <div class="col-6 col-md-4 col-lg-2 d-flex justify-content-center logo-container"><img src="/images/logo/logo5.png" alt="Logo 5" class="img-fluid logo-image" style="max-width: 100%;"></div>
+      </div>
     </div>
   </div>
 </div>
