@@ -22,9 +22,14 @@ bodyClass: "page-education"
         {% endif %}
       </div>
       <div class="col-12 col-md-5 col-lg-6 order-1 order-md-2 mb-6 position-relative d-flex justify-content-center align-items-center">
-        <video autoplay loop muted playsinline class="intro-video{% if page.intro_video_absolute %} intro-video-absolute{% endif %}{% if page.intro_video_hide_on_mobile %} intro-video-hide-mobile{% endif %}">
-          <source src="{{ '/video/virtual-reality-education.mp4' | relURL }}" type="video/mp4">
-        </video>
+        <div style="position: relative; overflow: hidden; width: 100%; padding-top: 56.25%; border-radius: 20px;">
+          <iframe src="https://www.youtube-nocookie.com/embed/BVEjUp3QjTk?controls=0"
+            style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; border-radius: 20px;"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            title="YouTube video player"></iframe>
+        </div>
       </div>
     </div>
   </div>
