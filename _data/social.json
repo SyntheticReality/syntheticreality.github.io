@@ -8,5 +8,10 @@
     "name": "X",
     "link": "https://twitter.com/Syry_io",
     "image": "images/social/x.png"
+  },
+  {
+    "name": "Discord",
+    "link": "https://discord.gg/NqDeJX67",
+    "image": "images/social/discord.png"
   }
 ]

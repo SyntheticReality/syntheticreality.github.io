@@ -9,6 +9,6 @@ intro_image_hide_on_mobile: false
 show_call_box: true
 ---
 
-# Create virtual educational content *<span style="color:#9065b0">instantly</span>*
+# Create and share virtual lessons *<span style="color:#9065b0">instantly</span>*
 
 Set-up your scene, hit record, and start teaching. <strong style="font-weight: 900;">Relieve lessons in 3D</strong>.
