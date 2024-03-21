@@ -30,15 +30,18 @@ date: 2024-03-09T12:00:00+00:00
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col" style="max-width: 720px;">
-<p style="text-align: center;">Disclaimer: This post was written by a guest contributor. The views and opinions expressed herein are those of the author.</p>
-<br>
-
 
 <h2 style="text-align: center;">Sistemas de Rehabilitación Virtual como complemento a los procesos de rehabilitación</h2>
+<p style="text-align: center;">This post was written by a guest contributor. The views and opinions expressed herein are those of the author.</p>
+<div class="container my-4">
+  <div class="row">
+      <div class="col-12">
+            <img src="/images/illustrations/vr-rehabilitation.png" alt="Virtual Reality Rehabilitation and Recovery" style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; width: 620px; height: auto;">
+      </div>
+  </div>
+</div>
 
-<br>
-
-<h2 style="text-align: center;">Una experiencia orientado a destreza manual</h2>
+<h2 style="text-align: center;">Una experiencia orientada a destreza manual</h2>
       <div class="gradient-header"></div>
       <br>
 
