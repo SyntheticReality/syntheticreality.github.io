@@ -5,6 +5,7 @@ description: Revolucionando la recuperación motora con realidad virtual.
 author: "Elizabeth Vidal;  Eveling Castro-Gutierrez;  Robert Arisaca-Mamani; <br> Alfredo Paz-Valderrama;  Sergio Albiol-Pérez"
 categories: virtual-reality, rehabilitation
 date: 2024-03-09T12:00:00+00:00
+image: "/images/illustrations/vr-rehabilitation.png"
 ---
 
 <style>
