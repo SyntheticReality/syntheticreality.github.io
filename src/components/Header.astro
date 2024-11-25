@@ -1,0 +1,78 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import Sidebar from "@/components/Header/Sidebar.vue";
+import { SITE_TITLE } from "../consts";
+---
+
+<header>
+  <div
+    class="max-w-6xl mx-auto flex justify-between items-center py-5 md:py-7 px-4"
+  >
+    <div>
+      <a href="/">
+        <img src="/logo.svg" alt={SITE_TITLE} />
+      </a>
+    </div>
+    <nav class="hidden md:block">
+      <div class="text-primary flex justify-end items-center text-center gap-6">
+        <HeaderLink
+          href="/"
+          class="hover:font-bold inline-flex flex-col items-center justify-between"
+          data-text="Home"
+        >
+          Home
+        </HeaderLink>
+
+        <HeaderLink
+          href="/games"
+          class="hover:font-bold inline-flex flex-col items-center justify-between"
+          data-text="Games"
+        >
+          Games
+        </HeaderLink>
+
+        <HeaderLink
+          href="/simulations"
+          class="hover:font-bold inline-flex flex-col items-center justify-between"
+          data-text="Simulations"
+        >
+          Simulations
+        </HeaderLink>
+
+        <HeaderLink
+          href="/education"
+          class="hover:font-bold inline-flex flex-col items-center justify-between"
+          data-text="Education"
+        >
+          Education
+        </HeaderLink>
+
+        <HeaderLink
+          href="/blog"
+          class="hover:font-bold inline-flex flex-col items-center justify-between"
+          data-text="Blog"
+        >
+          Blog
+        </HeaderLink>
+      </div>
+    </nav>
+
+    <div class="md:hidden">
+      <Sidebar client:load>
+        <div slot="nav">
+          <nav class="pt-4">
+            <div
+              class="text-primary flex flex-col text-base gap-2 justify-start items-center"
+            >
+              <HeaderLink href="/">Home</HeaderLink>
+              <HeaderLink href="/games">Games</HeaderLink>
+              <HeaderLink href="/simulations">Simulations</HeaderLink>
+              <HeaderLink href="/education">Education</HeaderLink>
+              <HeaderLink href="/blog">Blog</HeaderLink>
+            </div>
+          </nav>
+        </div>
+      </Sidebar>
+    </div>
+  </div>
+</header>

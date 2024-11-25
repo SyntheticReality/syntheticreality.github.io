@@ -1,0 +1,46 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Hero from "@/components/Home/Hero.astro";
+import Section2 from "@/components/Home/Section2.astro";
+import Section3 from "@/components/Home/Section3.astro";
+import Section4 from "@/components/Home/Section4.astro";
+import Section5 from "@/components/Home/Section5.astro";
+import ContactForm from "@/components/ContactForm.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <Hero />
+
+      <Section2 />
+
+      <Section3 />
+
+      <Section4 />
+
+      <section class="max-w-6xl mx-auto px-4 py-12">
+        <div>
+          <img
+            class="mx-auto max-w-[240px] md:max-w-full animate-bounce-slow top-[9px] relative"
+            src="/home/sec3.png"
+            alt="Hero"
+          />
+        </div>
+      </section>
+
+      <Section5 />
+
+      <ContactForm />
+    </main>
+    <Footer />
+  </body>
+</html>

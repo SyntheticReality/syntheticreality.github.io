@@ -1,0 +1,50 @@
+---
+const images = [
+  "/simulations/gallery/1.png",
+  "/simulations/gallery/2.png",
+  "/simulations/gallery/3.png",
+  "/simulations/gallery/4.png",
+  "/simulations/gallery/5.png",
+  "/simulations/gallery/6.png",
+  "/simulations/gallery/7.png",
+  "/simulations/gallery/8.png",
+  "/simulations/gallery/9.png",
+  "/simulations/gallery/10.png",
+  "/simulations/gallery/11.png",
+  "/simulations/gallery/12.png",
+];
+---
+
+<section class="max-w-6xl mx-auto px-4 py-12 xl:py-16">
+  <div class="space-y-8 md:space-y-12">
+    <div class="text-center space-y-3 md:space-y-4">
+      <h2
+        class="text-2xl xl:text-3xl font-bold max-w-[22ch] mx-auto md:max-w-[30ch]"
+      >
+        Featured simulations we’ve
+        <span class="bg-gradient bg-clip-text text-transparent italic pr-1">
+          developed
+        </span>
+      </h2>
+
+      <p class="max-w-[55ch] mx-auto md:text-lg">
+        From heavy equipment simulators for mining to gamified onboarding
+        experiences, <span class="font-bold">we’ve got you covered.</span>
+      </p>
+    </div>
+
+    <div
+      class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center"
+    >
+      {
+        images.map((path, index) => (
+          <img
+            class="mx-auto shadow-md rounded-[22px]"
+            src={path}
+            alt={`Simulation ${index + 1}`}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

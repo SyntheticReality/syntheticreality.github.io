@@ -1,0 +1,58 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Hero from "@/components/Blog/Hero.astro";
+import { getCollection } from "astro:content";
+
+const title = "Blog";
+
+const description =
+  "Experts in developing gaming, simulation, and educational VR/AR projects.";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <Hero />
+
+      <section class="max-w-6xl mx-auto px-4 py-12 xl:py-16">
+        <div>
+          <ul class="grid gap-8 md:grid-cols-3 justify-center">
+            {
+              posts.map((post) => (
+                <li class="text-center gap-4 rounded-3xl px-4 py-6 shadow-[0_4px_8.7px_rgba(0,0,0,0.25)] max-w-[350px] w-full md:gap-5 md:p-8 min-h-[240px] flex flex-col justify-start items-center">
+                  <h2
+                    class="text-2xl xl:text-3xl font-bold max-w-[25ch] mx-auto md:max-w-[30ch]"
+                    class="title"
+                  >
+                    {post.data.title}
+                  </h2>
+
+                  <p>{post.data.description}</p>
+
+                  <a
+                    href={`/blog/${post.slug}/`}
+                    class="bg-gradient text-white rounded-full px-4 py-1 md:text-lg md:px-5 xl:text-xl xl:py-1.5 xl:px-6 transition-all top-0 hover:-top-1 hover:brightness-110 font-semibold relative"
+                  >
+                    Read more
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

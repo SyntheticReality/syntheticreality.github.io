@@ -1,0 +1,65 @@
+---
+import Carousel2 from "./CarouselSec2.vue";
+
+const clients = [
+  "/home/clients/ABB.png",
+  "/home/clients/Alpayana.png",
+  "/home/clients/Antamina.png",
+  "/home/clients/British Council.png",
+  "/home/clients/Enel.png",
+  "/home/clients/Engie.png",
+  "/home/clients/FAMESA.png",
+  "/home/clients/Hochschild.png",
+  "/home/clients/HP.png",
+  "/home/clients/Hudbay.png",
+  "/home/clients/IE.png",
+  "/home/clients/IIMP.png",
+  "/home/clients/KP.png",
+  "/home/clients/Layher.png",
+  "/home/clients/McCann.png",
+  "/home/clients/Minsur.png",
+  "/home/clients/MMG.png",
+  "/home/clients/Nestle.png",
+  "/home/clients/Nexa.png",
+  "/home/clients/Poderosa.png",
+  "/home/clients/Promigas.png",
+  "/home/clients/Scharff.png",
+  "/home/clients/Telefonica.png",
+  "/home/clients/UNDP.png",
+];
+---
+
+<section class="max-w-5xl mx-auto px-4 py-12 xl:py-16">
+  <div class="space-y-8 md:space-y-14 xl:space-y-16">
+    <div class="text-center space-y-6 xl:space-y-8">
+      <div class="space-y-3 md:space-y-4">
+        <h2
+          class="text-2xl xl:text-3xl font-bold max-w-[25ch] md:max-w-[35ch] mx-auto"
+        >
+          Experience delivering value to
+          <span class="bg-gradient bg-clip-text text-transparent italic pr-1">
+            global clients
+          </span>
+        </h2>
+
+        <p class="max-w-[55ch] mx-auto md:text-lg">
+          We're a hardcore team that has <span class="font-bold"
+            >successfully delivered over 60 projects</span
+          >
+          and been recognized by leading organizations.
+        </p>
+      </div>
+
+      <div>
+        <Carousel2 clients={clients} client:load />
+      </div>
+    </div>
+    <div>
+      <img
+        class="mx-auto max-w-[240px] md:max-w-full animate-bounce-slow top-[9px] relative"
+        src="/home/sec2.png"
+        alt="Hero"
+      />
+    </div>
+  </div>
+</section>

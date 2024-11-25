@@ -1,0 +1,102 @@
+---
+const today = new Date();
+import { SITE_TITLE } from "../consts";
+---
+
+<footer class="bg-gradient text-white">
+  <div
+    class="max-w-6xl mx-auto px-4 py-8 lg:py-10 flex flex-col gap-8 lg:flex-row lg:justify-between"
+  >
+    <div class="grid gap-4 lg:content-between lg:gap-6">
+      <div>
+        <a href="/">
+          <img src="/logo-footer.svg" alt={SITE_TITLE} />
+        </a>
+      </div>
+
+      <div class="space-y-2">
+        <p><span class="font-bold">Headquarters:</span> America & Europe</p>
+        <p><span class="font-bold">Email:</span> hello@syry.io</p>
+        <p><span class="font-bold">Phone:</span> +51 981 142 258</p>
+      </div>
+
+      <div class="flex flex-wrap justify-start items-center gap-2 font-bold">
+        <p>Terms and Conditions</p><span>-</span>
+        <p>Privacy Policy</p><span>-</span>
+        <p>Cookies Policy</p>
+      </div>
+    </div>
+    <div class="grid gap-4 lg:content-between lg:gap-6">
+      <div class="flex justify-start items-center gap-4">
+        <a href="#" class="hover:opacity-75 transition-all">
+          <img src="/linkedin.svg" alt="LinkeIn" />
+        </a>
+
+        <a href="#" class="hover:opacity-75 transition-all">
+          <img src="/x.svg" alt="X" />
+        </a>
+
+        <a href="#" class="hover:opacity-75 transition-all">
+          <img src="/medium.svg" alt="Medium" />
+        </a>
+      </div>
+
+      <form
+        class="space-y-1"
+        action="https://syry.us21.list-manage.com/subscribe/post?u=fbf0a63ae1b88e28646525eb8&id=6b99444b37&f_id=00f0efe6f0"
+        method="post"
+        id="mc-embedded-subscribe-form"
+        name="mc-embedded-subscribe-form"
+        target="_self"
+        novalidate=""
+      >
+        <p class="font-bold">Subscribe to our newsletter</p>
+        <div class="flex flex-wrap justify-start items-center gap-4">
+          <input
+            class="rounded-2xl border px-3 text-black"
+            type="email"
+            name="EMAIL"
+            id="mce-EMAIL"
+            placeholder="Email"
+            required
+          />
+          <input
+            type="submit"
+            class="bg-stone-900 px-4 rounded-3xl py-0.5 hover:opacity-80 transition-all text-white"
+            value="Subscribe"
+            name="subscribe"
+            id="mc-embedded-subscribe"
+          />
+        </div>
+
+        <div hidden="">
+          <input type="hidden" name="tags" value="2968756" />
+        </div>
+        <div id="mce-responses" class="clear foot">
+          <div class="response" id="mce-error-response" style="display: none;">
+          </div>
+          <div
+            class="response"
+            id="mce-success-response"
+            style="display: none;"
+          >
+          </div>
+        </div>
+        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+          /* real people should not fill this in and expect good things - do not
+          remove this or risk form bot signups */
+          <input
+            type="text"
+            name="b_fbf0a63ae1b88e28646525eb8_6b99444b37"
+            tabindex="-1"
+            value=""
+          />
+        </div>
+      </form>
+
+      <p>
+        &copy; {today.getFullYear()} Osyrys
+      </p>
+    </div>
+  </div>
+</footer>

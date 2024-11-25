@@ -1,0 +1,51 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ContactForm from "@/components/ContactForm.astro";
+import Hero from "@/components/Hero.astro";
+import Section2 from "@/components/Games/Section2.astro";
+import Section3 from "@/components/Games/Section3.astro";
+
+const title = "Games";
+
+const description =
+  "Experts in developing gaming, simulation, and educational VR/AR projects.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <Hero
+        title="Worldbuilding for"
+        titleAccent="virtual reality"
+        description1="We specialize in crafting immersive"
+        descriptionAccent="gaming experiences"
+        description2="for virtual reality."
+        image="/games/hero.png"
+      />
+
+      <Section2 />
+
+      <Section3 />
+
+      <section class="max-w-6xl mx-auto px-4 py-12">
+        <div>
+          <img
+            class="mx-auto max-w-[240px] md:max-w-full animate-bounce-slow top-[9px] relative"
+            src="/games/asset4.png"
+            alt="Hero"
+          />
+        </div>
+      </section>
+
+      <ContactForm />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,44 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ContactForm from "@/components/ContactForm.astro";
+import Hero from "@/components/Hero.astro";
+import Section2 from "@/components/Education/Section2.astro";
+import Section3 from "@/components/Education/Section3.astro";
+import Section4 from "@/components/Education/Section4.astro";
+
+const title = "Education";
+
+const description =
+  "Experts in developing gaming, simulation, and educational VR/AR projects.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <Hero
+        title="Your virtual classroom to"
+        titleAccent="teach and learn"
+        largeTitle
+        description1="Effortlessly set up your classroom, let students log in, and"
+        descriptionAccent="start teaching with ease."
+        video="https://www.youtube.com/embed/BVEjUp3QjTk"
+      />
+
+      <Section2 />
+
+      <Section3 />
+
+      <Section4 />
+
+      <ContactForm />
+    </main>
+    <Footer />
+  </body>
+</html>
