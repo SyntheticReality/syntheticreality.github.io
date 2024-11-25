@@ -1,4 +1,7 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="32" height="32" fill="white"/>
-<path d="M15.5 13.5927L18.5217 19H12.4783L15.5 13.5927Z" fill="#9065B0" stroke="#9065B0" stroke-width="10" stroke-linejoin="bevel"/>
+<mask id="path-1-inside-1_2231_2" fill="white">
+<path d="M22.9564 24L25 20.343L17.5436 7L13.4564 7L6 20.343L8.04359 24H22.9564Z"/>
+</mask>
+<path d="M22.9564 24L25 20.343L17.5436 7L13.4564 7L6 20.343L8.04359 24H22.9564Z" fill="#9065B0" stroke="#9065B0" stroke-width="20" stroke-linejoin="bevel" mask="url(#path-1-inside-1_2231_2)"/>
 </svg>
