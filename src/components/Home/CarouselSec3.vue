@@ -14,6 +14,8 @@ const projects = [
   { name: "Project 3", image: "project-3.png" },
   { name: "Project 4", image: "project-4.png" },
   { name: "Project 5", image: "project-5.png" },
+  { name: "Project 6", image: "project-6.png" },
+  { name: "Project 7", image: "project-7.png" },
 ];
 </script>
 
@@ -45,7 +47,5 @@ const projects = [
         </div>
       </CarouselItem>
     </CarouselContent>
-    <CarouselPrevious class="hidden xl:inline-flex" />
-    <CarouselNext class="hidden xl:inline-flex" />
   </Carousel>
 </template>
