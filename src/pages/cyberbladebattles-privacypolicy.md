@@ -8,7 +8,7 @@ title: "Cyberblade Battles Privacy Policy"
 
 **Effective Date:** January 1, 2025
 
-This Privacy Policy explains how SYNTHETIC REALITY S.A.C., operating under the brand name Osyrys (“Osyrys,” “we,” “us,” or “our”), collects, uses, and protects the Personal Information associated with Cyberblade Battles, our VR multiplayer game available on Meta Quest 2 and later headsets. By using our game and related services, you agree to the practices described in this Policy. If you have questions or need further clarification, please contact us via email at cyberbladebattles@syry.io or through our Discord support channels.
+This Privacy Policy explains how OSYRYS (“we,” “us,” or “our”), collects, uses, and protects the Personal Information associated with Cyberblade Battles, our VR multiplayer game available on Meta Quest 2 and later headsets. By using our game and related services, you agree to the practices described in this Policy. If you have questions or need further clarification, please contact us via email at cyberbladebattles@syry.io or through our Discord support channels.
 
 ---
 
