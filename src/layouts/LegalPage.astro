@@ -1,0 +1,69 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  frontmatter: {
+    title?: string;
+    description?: string;
+    productName?: string;
+    heading?: string;
+    headingAccent?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+const {
+  title = "Privacy Policy",
+  description = "Privacy and data-use information for Osyrys services.",
+  productName = "Osyrys",
+  heading = "Privacy",
+  headingAccent = "Policy",
+} = frontmatter;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="min-h-screen flex flex-col antialiased">
+    <Header />
+    <main class="flex-1 bg-gradient-to-b from-primary/10 via-white to-white">
+      <section class="max-w-5xl mx-auto px-4 pt-12 pb-8 md:pt-16 md:pb-10">
+        <div class="text-center space-y-3 md:space-y-4">
+          <p
+            class="text-sm md:text-base font-bold uppercase tracking-[0.18em] text-primary"
+          >
+            {productName}
+          </p>
+          <h1 class="text-3xl md:text-4xl xl:text-5xl font-bold text-pretty">
+            {heading}
+            <span
+              class="bg-gradient bg-clip-text text-transparent italic pr-1"
+            >
+              {headingAccent}
+            </span>
+          </h1>
+          <p class="max-w-2xl mx-auto text-base md:text-lg text-slate-600">
+            {description}
+          </p>
+        </div>
+      </section>
+
+      <section class="max-w-4xl mx-auto px-4 pb-16 md:pb-20">
+        <div
+          class="rounded-[28px] border border-primary/10 bg-white p-6 shadow-lg shadow-primary/5 sm:p-8 md:p-12"
+        >
+          <article
+            class="prose prose-slate md:prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:text-slate-950 prose-h2:mt-12 prose-h3:text-xl prose-h3:text-slate-900 prose-p:leading-relaxed prose-a:text-primary prose-a:font-semibold prose-a:underline prose-a:decoration-1 prose-a:underline-offset-4 hover:prose-a:opacity-75 focus-visible:prose-a:rounded-sm focus-visible:prose-a:outline-none focus-visible:prose-a:ring-2 focus-visible:prose-a:ring-primary focus-visible:prose-a:ring-offset-2 prose-strong:text-slate-950 prose-li:marker:text-primary prose-hr:border-primary/20"
+          >
+            <slot />
+          </article>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

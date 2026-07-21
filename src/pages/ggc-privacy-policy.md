@@ -1,8 +1,11 @@
 ---
+layout: ../layouts/LegalPage.astro
 title: "Galactic Gorilla Corps Privacy Policy"
+description: "How Osyrys collects, uses, and protects information associated with Galactic Gorilla Corps and its related services."
+productName: "Galactic Gorilla Corps"
+heading: "Privacy"
+headingAccent: "Policy"
 ---
-
-# Privacy Policy
 
 **Effective Date:** July 21, 2026
 
@@ -12,7 +15,7 @@ If you have questions or need further clarification, please contact us via email
 
 ---
 
-### 1. What Does This Privacy Policy Cover?
+## 1. What Does This Privacy Policy Cover?
 
 This Policy applies to the Services, including:
 
@@ -24,9 +27,9 @@ This Policy does not extend to information collected by third parties outside ou
 
 ---
 
-### 2. Information We Collect
+## 2. Information We Collect
 
-#### **Directly From You and Automatically:**
+### Directly From You and Automatically
 
 - **Meta Username:**
   We collect your Meta username to identify you within the game.
@@ -49,7 +52,7 @@ We do not require your email address to play. Service providers may process IP a
 
 ---
 
-### 3. How We Use Your Information
+## 3. How We Use Your Information
 
 We use the collected information for the following purposes:
 
@@ -68,7 +71,7 @@ We use the collected information for the following purposes:
 
 ---
 
-### 4. Third-Party Services
+## 4. Third-Party Services
 
 Galactic Gorilla Corps integrates with third parties that process information under their own terms and privacy practices:
 
@@ -85,7 +88,7 @@ Galactic Gorilla Corps integrates with third parties that process information un
 
 ---
 
-### 5. Age Restrictions and Parental Controls
+## 5. Age Restrictions and Parental Controls
 
 Galactic Gorilla Corps is intended for users aged 13 and older.
 
@@ -95,7 +98,7 @@ Galactic Gorilla Corps is intended for users aged 13 and older.
 
 ---
 
-### 6. Data Retention and Security
+## 6. Data Retention and Security
 
 We retain Personal Information only as long as reasonably necessary for:
 
@@ -109,7 +112,7 @@ We employ reasonable technical, administrative, and physical safeguards to prote
 
 ---
 
-### 7. Your Rights
+## 7. Your Rights
 
 Depending on applicable law, you may have the right to:
 
@@ -121,13 +124,13 @@ To exercise any of these rights, please contact us via a support ticket on Disco
 
 ---
 
-### 8. Changes to This Privacy Policy
+## 8. Changes to This Privacy Policy
 
 We may update this Privacy Policy as the Services change or as required by applicable law. If changes materially affect how we handle Personal Information, we will provide notice through the Services, on this website, through our Discord channels, or by another appropriate method. The effective date above will be updated accordingly.
 
 ---
 
-### 9. Contact Us
+## 9. Contact Us
 
 If you have any questions or concerns regarding this Privacy Policy or our data practices, please reach out to us at:
 
