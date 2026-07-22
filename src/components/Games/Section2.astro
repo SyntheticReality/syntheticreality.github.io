@@ -4,16 +4,12 @@ import Carousel from "./CarouselSec2.vue";
 const featuredGames = [
   {
     name: "Galactic Gorilla Corps",
-    description:
-      "Join the Corps and fight the Arachnids in a co-op VR action game built around squad missions, loadouts, and physical movement.",
     image: "/ggc/og.jpg",
     href: "/ggc",
     external: false,
   },
   {
     name: "Cyberblade Battles",
-    description:
-      "Fast, fluid cyberpunk warfare where blades, blasters, and aerial movement collide above the neon city of Osyrys.",
     image: "/games/cyberblade-battles.webp",
     href: "https://www.cyberbladebattles.com/",
     external: true,
@@ -43,7 +39,7 @@ const featuredGames = [
             href={game.href}
             target={game.external ? "_blank" : undefined}
             rel={game.external ? "noopener noreferrer" : undefined}
-            class="group overflow-hidden rounded-[28px] border border-white/10 bg-black text-white shadow-lg shadow-black/20 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 motion-reduce:transition-none"
+            class="group overflow-hidden rounded-[28px] border border-white/10 bg-black shadow-lg shadow-black/20 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 motion-reduce:transition-none"
             aria-label={`${game.name}${game.external ? " (opens in a new tab)" : ""}`}
           >
             <div class="aspect-[1200/630] overflow-hidden bg-slate-950">
@@ -53,12 +49,6 @@ const featuredGames = [
                 class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
                 loading="lazy"
               />
-            </div>
-            <div class="p-5 text-center sm:p-6">
-              <h3 class="sr-only">{game.name}</h3>
-              <p class="text-base leading-relaxed text-white">
-                {game.description}
-              </p>
             </div>
           </a>
         ))
