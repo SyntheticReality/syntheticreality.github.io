@@ -1,138 +1,117 @@
 ---
 layout: ../layouts/LegalPage.astro
 title: "Galactic Gorilla Corps Privacy Policy"
-description: "How Osyrys collects, uses, and protects information associated with Galactic Gorilla Corps and its related services."
+description: "How OSYRYS handles information for Galactic Gorilla Corps."
 productName: "Galactic Gorilla Corps"
 heading: "Privacy"
 headingAccent: "Policy"
 ---
 
-**Effective Date:** July 21, 2026
+**Effective Date:** July 22, 2026
 
-This Privacy Policy explains how OSYRYS (“Osyrys,” “we,” “us,” or “our”) collects, uses, and protects the Personal Information associated with Galactic Gorilla Corps and any related services, websites, Discord channels, social-media pages, digital items, updates, or content we provide (collectively, the “Services”). By using our game and related services, you agree to the practices described in this Privacy Policy.
+Galactic Gorilla Corps (**"GGC"**) is provided by **SYNTHETIC REALITY SAC** under the **OSYRYS** brand (**"OSYRYS," "we," "us,"** or **"our"**). This Privacy Policy explains what information is handled when you play GGC, use its online features, contact GGC support, or participate in official GGC community spaces.
 
-If you have questions or need further clarification, please contact us via email at hello@syry.io or through our Discord support channels.
-
----
-
-## 1. What Does This Privacy Policy Cover?
-
-This Policy applies to the Services, including:
-
-- Information collected directly from you while you play.
-- Data automatically generated during gameplay.
-- Information provided through our Discord channels and social media interactions.
-
-This Policy does not extend to information collected by third parties outside our control.
+This Policy is only for GGC. The general Syry website and Syry newsletter are separate from GGC and are not covered by this Policy.
 
 ---
 
-## 2. Information We Collect
+## 1. Information We Handle
 
-### Directly From You and Automatically
+Depending on which GGC features are available and which ones you use, we may handle:
 
-- **Meta Username:**
-  We collect your Meta username to identify you within the game.
-- **Meta User ID:**
-  We also collect the numeric User ID issued by Meta for your account. This identifier is immutable and is used for authentication, security, ban enforcement, and account recovery.
-- **Movement Data:**
-  To sync multiplayer gameplay, we automatically collect data from your VR controllers and headset. This information is used solely to maintain real-time gameplay interactions.
-- **Voice Data:**
-  Voice is captured and processed in real time to facilitate voice chat. No voice recordings are stored or archived.
-- **Diagnostics and Technical Data:**
-  We use Unity Engine Diagnostics to help identify crashes, errors, performance problems, and compatibility issues. Depending on the event, this may include crash or exception logs, session and performance information, app and Unity versions, device model, operating-system information, and an installation-specific identifier.
-- **Support Information:**
-  If you contact us, we receive the information you choose to provide, such as your name, email address, message, and any attachments.
-- **Community and Social-Media Information:**
-  If you interact with us through Discord or a social-media platform, we may receive your username, public posts, messages, and other information you choose to share through that platform.
-- **Website Technical Data:**
-  This policy is hosted through GitHub Pages. GitHub logs and stores visitors’ IP addresses for security purposes.
+Features that are not enabled do not collect information through GGC.
 
-We do not require your email address to play. Service providers may process IP addresses and other technical identifiers as described below.
+- **Account and platform information:** Your Meta user ID and, if GGC retrieves it for an in-game feature, your Meta display name. We may also receive platform information made available to GGC, such as account entitlement or age category. Unity Authentication may create a separate player ID linked to your Meta account.
+- **Gameplay and account data:** Progress, settings, loadouts, mission results, inventory, virtual currency, digital items, purchase or entitlement status, and records needed to address cheating, fraud, reports, suspensions, or bans.
+- **Multiplayer data:** Room, region, session, connection, and matchmaking information; IP address and network performance; and gameplay state such as avatar position, head and hand movement, interactions, and mission activity. Real-time pose and session data is primarily used to make multiplayer work.
+- **Voice data:** When voice chat is available and you turn on your microphone, Photon Voice transports your audio to players in the relevant voice channel. See Section 2 for important details.
+- **Technical data:** Device and operating-system information, app and Unity versions, an installation-specific identifier, IP address, crash and exception reports, application-not-responding events, basic telemetry and configuration metadata, performance data, and security events.
+- **Support and safety information:** If you contact us or submit a report, we receive what you provide, which may include your email address, Meta user ID, the reported player's identifier, messages, screenshots, clips, attachments, and session details.
+- **Community information:** If you interact with an official GGC Discord or social-media account, we may receive your platform username, public posts, messages, and anything else you choose to share there.
+
+We do not need your email address to let you play GGC. Purchases are processed by Meta or another applicable platform; OSYRYS does not receive your full payment-card details.
 
 ---
 
-## 3. How We Use Your Information
+## 2. Voice Chat and Future Safety Clips
 
-We use the collected information for the following purposes:
+Voice chat is a live part of the multiplayer experience. OSYRYS does not intentionally store the content of ordinary live voice after it has been transmitted. We do not create voiceprints or use voice for biometric identification or advertising.
 
-- **Gameplay Functionality:**
-  Your Meta username and movement data are used to provide multiplayer interactions and game synchronization.
-- **Account and Safety:**
-  Your Meta User ID is used for authentication, security, ban enforcement, and account recovery.
-- **Real-Time Communication:**
-  Voice data is processed live for in-game voice chat and is not recorded.
-- **Diagnostics and Improvement:**
-  Technical and diagnostic data helps us investigate crashes, errors, performance problems, and device compatibility.
-- **Support and Community Engagement:**
-  Information you provide through email, community channels, or social media helps us respond to questions, provide support, share updates, and manage our communities.
-- **Safety and Legal Compliance:**
-  We may use relevant information to protect the Services, enforce our agreements, resolve disputes, and comply with applicable law.
+Other players may hear, record, stream, or share what you say by using headset, platform, or external tools outside our control. Do not say anything in voice chat that you want to keep private, including your real name, address, school, precise location, phone number, passwords, or personal contact details.
+
+We plan to add a safeguarding feature that may create short, temporary voice clips when a safety report is submitted or potential serious misconduct is detected. **That feature is not enabled yet.** Before enabling it, we will update this Policy to explain what triggers a clip, which safety provider receives it, whether automated or human review is used, and how long clips are kept.
 
 ---
 
-## 4. Third-Party Services
+## 3. Why We Use Information
 
-Galactic Gorilla Corps integrates with third parties that process information under their own terms and privacy practices:
+We use information to:
 
-- **Meta:**
-  Meta provides the Quest platform, headset operating environment, store, and account information used to authenticate and identify you in the game.
-- **Photon:**
-  Photon provides multiplayer networking and real-time voice transport. It processes session identifiers, network connection information, movement data, and live voice data as needed to provide those features.
-- **Unity:**
-  Galactic Gorilla Corps is built with Unity and uses Unity services for authentication, player data, game systems, and diagnostics. Unity processes account, gameplay, diagnostic, and technical data as needed to provide those services.
-- **GitHub Pages:**
-  GitHub hosts this website and logs visitors’ IP addresses for security purposes.
-- **Discord and Social-Media Platforms:**
-  If you interact with our Discord channels or social-media pages, those interactions (including your username and public posts) are also governed by the privacy practices of the platform you use.
+- authenticate players and operate accounts;
+- provide multiplayer, voice chat, progression, inventory, purchases, and other game features;
+- keep sessions synchronized and connect players to an appropriate region or room;
+- provide support and respond to safety reports;
+- detect and address abuse, grooming, harassment, cheating, fraud, security incidents, and ban evasion;
+- diagnose crashes, fix errors, balance the game, and improve performance; and
+- protect players, OSYRYS, and the Services, and comply with valid legal obligations.
 
----
-
-## 5. Age Restrictions and Parental Controls
-
-Galactic Gorilla Corps is intended for users aged 13 and older.
-
-- **Parental Controls:**
-  Parents and guardians may use Meta’s available parental-supervision tools to help manage access on Meta Quest headsets.
-- Users under the age of 13 should not use this game.
+We do not sell GGC player information or use it for targeted advertising.
 
 ---
 
-## 6. Data Retention and Security
+## 4. Who Processes Information
 
-We retain Personal Information only as long as reasonably necessary for:
+We disclose information only as needed for the purposes above:
 
-- Providing and maintaining the gameplay experience.
-- Complying with legal obligations.
-- Resolving disputes and enforcing our agreements.
+- **Meta** provides the Quest platform, Meta accounts, store, payments, and platform safety tools.
+- **Unity** provides the game engine and enabled Diagnostics, which may process installation identifiers, crash and exception reports, application-not-responding events, and related technical data. Unity Gaming Services is planned to provide player authentication and durable storage for progression, settings, loadouts, inventory, virtual currency, purchases, entitlements, and related game records.
+- **Photon** is planned to provide multiplayer networking, room and session services, and live voice transport.
+- **Safety, support, hosting, and community providers** may process reports, evidence, support messages, or technical data on our behalf. We will identify any voice-safety provider before sending voice clips to it.
+- **Authorities or other parties** may receive relevant information when reasonably necessary to comply with law, respond to valid legal process, investigate fraud or security issues, protect someone from harm, or enforce our agreements.
 
-Diagnostic and technical data is retained according to our service configurations and the applicable retention practices of Unity and our other providers. Information processed independently by Meta, Photon, Unity, GitHub, Discord, or social-media platforms is retained according to those providers’ policies.
-
-We employ reasonable technical, administrative, and physical safeguards to protect your information. However, no storage or transmission method is entirely secure. If a security breach occurs, we will notify affected users and regulatory authorities as required by applicable law.
-
----
-
-## 7. Your Rights
-
-Depending on applicable law, you may have the right to:
-
-- **Access:** Request access to your Personal Information.
-- **Update or Correct:** Request updates or corrections to your Personal Information.
-- **Deletion:** Request deletion of your Personal Information (subject to applicable exceptions and verification of your identity).
-
-To exercise any of these rights, please contact us via a support ticket on Discord or by emailing hello@syry.io. We may need to verify your identity before completing a request.
+This policy page is hosted on GitHub Pages, which may receive technical request data such as IP addresses and browser information. Meta, Unity, Photon, GitHub, Discord, and social-media platforms also handle information under their own privacy notices when they act independently.
 
 ---
 
-## 8. Changes to This Privacy Policy
+## 5. How Long We Keep Information
 
-We may update this Privacy Policy as the Services change or as required by applicable law. If changes materially affect how we handle Personal Information, we will provide notice through the Services, on this website, through our Discord channels, or by another appropriate method. The effective date above will be updated accordingly.
+We keep information only for as long as reasonably needed for the purpose for which it was handled:
+
+- OSYRYS does not intentionally keep the content of ordinary live voice after transmission. Real-time pose data is not kept by OSYRYS after the session. A future, separately disclosed safety feature may create a short report clip.
+- Account, progression, inventory, purchase, entitlement, and settings data may remain in Unity Gaming Services while the player account is active and until it is deleted under our retention process.
+- Safety reports, enforcement records, and related identifiers may be kept after an account closes when reasonably needed to protect users, investigate serious misconduct, prevent ban evasion, resolve disputes, or meet legal obligations.
+- Support and community messages are kept as long as needed to answer the request, manage the community, or preserve a relevant safety record.
+- Unity states that personal data in its current [Diagnostics service](https://docs.unity.com/en-us/cloud/developer-data/privacy-overview) is retained for 90 days by default, subject to our Unity configuration and any provider changes.
+- Service providers may keep network, security, transaction, or platform records under their own retention rules.
 
 ---
 
-## 9. Contact Us
+## 6. Players Aged 13 and Older
 
-If you have any questions or concerns regarding this Privacy Policy or our data practices, please reach out to us at:
+GGC is intended only for players aged **13 or older**. Players under 13 may not use GGC. If we learn that a player under 13 has used GGC or provided information to us, we may restrict the account and delete the information we control, except where a limited record is reasonably needed for safety or legal reasons.
 
-- **Email:** hello@syry.io
-- **Support:** Submit a support ticket via our Discord channels
+If you are under the age of legal majority where you live, a parent or legal guardian should review this Policy and supervise your use of GGC, including voice chat. Meta's available family and parental-supervision tools may provide additional controls.
+
+---
+
+## 7. Your Choices and Requests
+
+Depending on applicable law, you may ask us to access, correct, or delete information we control about you. Email [hello@syry.io](mailto:hello@syry.io) and include enough information for us to identify the relevant GGC account. We may need to verify that the request is yours.
+
+Deleting account data may permanently remove progress, inventory, settings, or access to GGC features. A deletion request may not remove platform purchase records, information retained independently by a provider, or limited safety, fraud, transaction, dispute, or legal records that we reasonably need to keep.
+
+You can turn off your microphone, leave a session, and use available mute, block, and report controls. Platform privacy and parental settings are managed through Meta.
+
+---
+
+## 8. Security and Changes
+
+We use reasonable administrative, technical, and organizational safeguards designed to protect the information we control. No online system or transmission method is completely secure.
+
+We may update this Policy as GGC changes. We will post the revised Policy with a new effective date and provide an in-game or other appropriate notice before a material change takes effect. In particular, we will update this Policy before GGC or a provider acting for us records or retains voice, maintains a rolling voice buffer, transcribes or automatically analyzes voice, or creates safety clips.
+
+---
+
+## 9. Contact
+
+For privacy questions or requests, email [hello@syry.io](mailto:hello@syry.io).

@@ -13,7 +13,7 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
-  site: "https://syntheticreality.github.io",
+  site: "https://www.syry.io",
   integrations: [
     mdx(),
     sitemap(),
