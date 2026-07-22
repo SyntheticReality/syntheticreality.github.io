@@ -43,7 +43,7 @@ const featuredGames = [
             href={game.href}
             target={game.external ? "_blank" : undefined}
             rel={game.external ? "noopener noreferrer" : undefined}
-            class="group overflow-hidden rounded-[28px] border border-primary/10 bg-white shadow-lg shadow-primary/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 motion-reduce:transition-none"
+            class="group overflow-hidden rounded-[28px] border border-white/10 bg-black text-white shadow-lg shadow-black/20 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 motion-reduce:transition-none"
             aria-label={`${game.name}${game.external ? " (opens in a new tab)" : ""}`}
           >
             <div class="aspect-[1200/630] overflow-hidden bg-slate-950">
@@ -54,9 +54,9 @@ const featuredGames = [
                 loading="lazy"
               />
             </div>
-            <div class="space-y-3 p-5 text-center sm:p-6">
-              <h3 class="text-2xl font-bold leading-tight">{game.name}</h3>
-              <p class="text-base leading-relaxed text-slate-600">
+            <div class="p-5 text-center sm:p-6">
+              <h3 class="sr-only">{game.name}</h3>
+              <p class="text-base leading-relaxed text-white">
                 {game.description}
               </p>
             </div>

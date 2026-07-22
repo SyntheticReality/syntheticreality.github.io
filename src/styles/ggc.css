@@ -146,17 +146,6 @@
   line-height: 1.62;
 }
 
-.ggc-intro__copy .ggc-product-promise {
-  margin-top: 1rem;
-  color: var(--ggc-steel);
-  font-family: "Oxanium", "Titillium Web", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.55;
-  text-transform: uppercase;
-}
-
 .ggc-actions {
   display: flex;
   flex-wrap: wrap;
@@ -255,37 +244,25 @@
   clip-path: polygon(0 0, calc(100% - 25px) 0, 100% 25px, 100% 100%, 25px 100%, 0 calc(100% - 25px));
 }
 
-.ggc-corner-label {
-  position: absolute;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  padding: 0.55rem 0.75rem;
-  background: rgba(3, 9, 15, 0.9);
-  color: var(--ggc-cyan);
-  font-size: 0.61rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
 .ggc-feature-list {
   border-top: 1px solid var(--ggc-line);
 }
 
 .ggc-feature {
   display: grid;
-  grid-template-columns: 2.5rem 1fr;
+  grid-template-columns: 3rem 1fr;
   gap: 1rem;
   padding: clamp(1.2rem, 2.5vw, 1.65rem) 0;
   border-bottom: 1px solid var(--ggc-line);
 }
 
 .ggc-feature__number {
-  padding-top: 0.2rem;
+  padding-top: 0;
   color: var(--ggc-orange);
-  font-size: 0.7rem;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
   font-weight: 700;
   letter-spacing: 0.13em;
+  line-height: 1;
 }
 
 .ggc-feature h3 {
@@ -622,11 +599,6 @@
 
   .ggc-button {
     width: 100%;
-  }
-
-  .ggc-corner-label {
-    right: 1rem;
-    bottom: 1rem;
   }
 
   .ggc-document-nav {
