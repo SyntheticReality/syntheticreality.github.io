@@ -1,0 +1,254 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/ggc.css";
+
+const title = "Galactic Gorilla Corps | Co-op VR Action";
+const description =
+  "Join the Corps and fight the Arachnids in a co-op VR action game in development for Meta Quest.";
+
+const features = [
+  {
+    number: "01",
+    title: "Strong arms. Stronger squad.",
+    description:
+      "Run, climb, and leap through the battlefield with physical arm-driven movement built for VR.",
+  },
+  {
+    number: "02",
+    title: "Gear for the mission.",
+    description:
+      "Fight with your blaster, light the dark with glowsticks, and leave trail markers for the way home.",
+  },
+  {
+    number: "03",
+    title: "Enter the lunar hive.",
+    description:
+      "Cross a hostile lunar surface and push into winding procedural tunnels crawling with Arachnids.",
+  },
+];
+
+const missionStages = [
+  { number: "01", label: "Suit up", place: "Silverback Station" },
+  { number: "02", label: "Touch down", place: "Lunar surface" },
+  { number: "03", label: "Push deeper", place: "Bug tunnels" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image="/ggc/og.jpg" />
+    <meta name="theme-color" content="#03090f" />
+    <link
+      rel="preload"
+      href="/fonts/ggc/Oxanium.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" type="image/webp" href="/ggc/icon.webp" />
+  </head>
+  <body class="min-h-screen antialiased">
+    <Header />
+
+    <main class="ggc-theme">
+      <section class="ggc-art-hero" aria-label="Galactic Gorilla Corps">
+        <picture class="ggc-art-hero__picture">
+          <source media="(max-width: 700px)" srcset="/ggc/portrait.webp" />
+          <img
+            src="/ggc/hero.webp"
+            width="2400"
+            height="720"
+            alt="Galactic Gorilla Corps soldiers surrounded by alien Arachnids"
+            fetchpriority="high"
+          />
+        </picture>
+
+        <div class="ggc-art-hero__grid" aria-hidden="true"></div>
+        <div class="ggc-art-hero__status">
+          <span class="ggc-status-light" aria-hidden="true"></span>
+          In development for Meta Quest
+        </div>
+      </section>
+
+      <section class="ggc-intro" aria-labelledby="ggc-title">
+        <div class="ggc-shell ggc-intro__grid">
+          <div>
+            <p class="ggc-kicker">Co-op VR action</p>
+            <h1 id="ggc-title" class="ggc-display">
+              <span class="sr-only">Galactic Gorilla Corps: </span>
+              <span>Join the Corps.</span>
+              <span class="ggc-display__accent">Fight the Arachnids.</span>
+            </h1>
+          </div>
+
+          <div class="ggc-intro__copy">
+            <p>
+              Galactic Gorilla Corps is a co-op VR action game in development
+              where gorilla soldiers run, climb, and leap with their arms, gear
+              up for battle, and deploy into hostile lunar territory with their
+              squad.
+            </p>
+
+            <div class="ggc-actions">
+              <a class="ggc-button ggc-button--primary" href="#mission">
+                Mission briefing
+              </a>
+              <a class="ggc-button ggc-button--ghost" href="#updates">
+                Follow development
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ggc-shell ggc-facts" aria-label="Game information">
+          <div class="ggc-fact">
+            <span>Platform</span>
+            <strong>Meta Quest</strong>
+          </div>
+          <div class="ggc-fact">
+            <span>Format</span>
+            <strong>Co-op VR action</strong>
+          </div>
+          <div class="ggc-fact">
+            <span>Status</span>
+            <strong>In development</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="ggc-section" aria-labelledby="field-kit-title">
+        <div class="ggc-shell">
+          <div class="ggc-section-heading">
+            <p class="ggc-kicker">Field kit</p>
+            <h2 id="field-kit-title">Made for gorilla warfare.</h2>
+          </div>
+
+          <div class="ggc-feature-grid">
+            {
+              features.map((feature) => (
+                <article class="ggc-feature">
+                  <span class="ggc-feature__number" aria-hidden="true">
+                    {feature.number}
+                  </span>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="mission" class="ggc-section ggc-section--mission">
+        <div class="ggc-shell ggc-mission">
+          <div class="ggc-mission__art">
+            <img
+              src="/ggc/square.webp"
+              width="1100"
+              height="1100"
+              alt="Armored gorilla squad advancing through an Arachnid-filled lunar cavern"
+              loading="lazy"
+            />
+            <span class="ggc-corner-label">Current development slice</span>
+          </div>
+
+          <div class="ggc-mission__copy">
+            <p class="ggc-kicker">Mission briefing</p>
+            <h2>From Silverback Station to the lunar hive.</h2>
+            <p class="ggc-lede">
+              Gear up aboard the station, deploy to the lunar surface, and find
+              your way through dangerous tunnels where the Arachnids do not
+              intend to let you leave.
+            </p>
+
+            <ol class="ggc-mission-list">
+              {
+                missionStages.map((stage) => (
+                  <li>
+                    <span class="ggc-mission-list__number">{stage.number}</span>
+                    <span>
+                      <strong>{stage.label}</strong>
+                      <small>{stage.place}</small>
+                    </span>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="ggc-section ggc-section--squad" aria-labelledby="squad-title">
+        <div class="ggc-shell ggc-squad">
+          <div class="ggc-squad__icon" aria-hidden="true">
+            <img src="/ggc/icon.webp" width="512" height="512" alt="" loading="lazy" />
+          </div>
+
+          <div class="ggc-squad__copy">
+            <p class="ggc-kicker">Built for a squad</p>
+            <h2 id="squad-title">Fight together. Keep it fun.</h2>
+            <p>
+              Co-op squad play and spatial voice chat are part of the
+              development plan. Galactic Gorilla Corps is being made for
+              players 13 and older, with clear rules against harassment,
+              grooming, doxxing, and other behavior that puts players at risk.
+            </p>
+            <a class="ggc-text-link" href="/ggc-tou">
+              Read the player safety rules <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="updates" class="ggc-endcap" aria-labelledby="updates-title">
+        <div class="ggc-shell ggc-endcap__content">
+          <img
+            class="ggc-endcap__logo"
+            src="/ggc/logo.webp"
+            width="1300"
+            height="428"
+            alt="Galactic Gorilla Corps"
+            loading="lazy"
+          />
+          <p class="ggc-kicker">Incoming transmission</p>
+          <h2 id="updates-title">
+            The Arachnids are spreading.<br />The Corps needs recruits.
+          </h2>
+          <p>
+            Development updates are on the way. Follow Syry for mission intel
+            as Galactic Gorilla Corps takes shape.
+          </p>
+
+          <div class="ggc-actions ggc-actions--center">
+            <a
+              class="ggc-button ggc-button--primary"
+              href="https://x.com/Syry_io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Follow Syry on X
+            </a>
+            <a
+              class="ggc-button ggc-button--ghost"
+              href="mailto:hello@syry.io?subject=Galactic%20Gorilla%20Corps"
+            >
+              Contact the team
+            </a>
+          </div>
+
+          <nav class="ggc-legal" aria-label="Galactic Gorilla Corps legal">
+            <a href="/ggc-tou">Terms of Use</a>
+            <span aria-hidden="true">/</span>
+            <a href="/ggc-privacy-policy">Privacy Policy</a>
+          </nav>
+          <p class="ggc-credit">An OSYRYS game by Synthetic Reality.</p>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
