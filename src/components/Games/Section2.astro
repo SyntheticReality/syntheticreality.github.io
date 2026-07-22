@@ -4,22 +4,18 @@ import Carousel from "./CarouselSec2.vue";
 const featuredGames = [
   {
     name: "Galactic Gorilla Corps",
-    label: "In development for Meta Quest",
     description:
       "Join the Corps and fight the Arachnids in a co-op VR action game built around squad missions, loadouts, and physical movement.",
     image: "/ggc/og.jpg",
     href: "/ggc",
-    linkLabel: "Explore Galactic Gorilla Corps",
     external: false,
   },
   {
     name: "Cyberblade Battles",
-    label: "Free-to-play VR combat",
     description:
       "Fast, fluid cyberpunk warfare where blades, blasters, and aerial movement collide above the neon city of Osyrys.",
     image: "/games/cyberblade-battles.webp",
     href: "https://www.cyberbladebattles.com/",
-    linkLabel: "Visit Cyberblade Battles",
     external: true,
   },
 ];
@@ -48,7 +44,7 @@ const featuredGames = [
             target={game.external ? "_blank" : undefined}
             rel={game.external ? "noopener noreferrer" : undefined}
             class="group overflow-hidden rounded-[28px] border border-primary/10 bg-white shadow-lg shadow-primary/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 motion-reduce:transition-none"
-            aria-label={`${game.linkLabel}${game.external ? " (opens in a new tab)" : ""}`}
+            aria-label={`${game.name}${game.external ? " (opens in a new tab)" : ""}`}
           >
             <div class="aspect-[1200/630] overflow-hidden bg-slate-950">
               <img
@@ -58,28 +54,17 @@ const featuredGames = [
                 loading="lazy"
               />
             </div>
-            <div class="space-y-3 p-5 sm:p-6">
-              <p class="text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                {game.label}
-              </p>
+            <div class="space-y-3 p-5 text-center sm:p-6">
               <h3 class="text-2xl font-bold leading-tight">{game.name}</h3>
               <p class="text-base leading-relaxed text-slate-600">
                 {game.description}
               </p>
-              <span
-                class="inline-block pt-1 font-bold text-primary underline decoration-1 underline-offset-4"
-              >
-                {game.linkLabel}
-              </span>
             </div>
           </a>
         ))
       }
     </div>
 
-    <div class="space-y-5 border-t border-primary/10 pt-8">
-      <h3 class="text-center text-lg font-bold md:text-xl">More Syry games</h3>
-      <Carousel client:load />
-    </div>
+    <Carousel client:load />
   </div>
 </section>
