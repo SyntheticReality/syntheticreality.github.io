@@ -25,9 +25,9 @@ You need a valid Meta account and compatible device. You are responsible for pro
 
 ## 2. Your License to Play
 
-We give you a personal, limited, non-exclusive, non-transferable, revocable license to use GGC for your own non-commercial entertainment while you follow these Terms. GGC, its software, characters, artwork, audio, names, and other OSYRYS content remain owned by us or our licensors. The game is licensed, not sold.
+We give you a personal, limited, non-exclusive, non-transferable, revocable license to use GGC for your own non-commercial entertainment, except for gameplay videos and streams permitted by Section 6, while you follow these Terms. GGC, its software, characters, artwork, audio, names, and other OSYRYS content remain owned by us or our licensors. The game is licensed, not sold.
 
-Do not copy, sell, distribute, reverse-engineer, or commercially exploit GGC except where applicable law expressly allows it. If you voluntarily send us ideas or feedback, we may use them without restriction or payment to you.
+Do not copy, sell, distribute, reverse-engineer, or commercially exploit GGC except for creator content permitted by Section 6 or where applicable law expressly allows it. If you voluntarily send us ideas or feedback, we may use them without restriction or payment to you.
 
 ---
 
@@ -37,22 +37,21 @@ GGC is a fun roleplay game about gorillas fighting alien bugs. Energetic, compet
 
 These rules apply to voice, gestures, usernames, avatars, gameplay, reports, and official GGC community spaces. You must not:
 
-- **Sexualize or groom anyone.** No sexual content, sexual noises directed at others, sexual questions or requests, romantic or sexual advances toward minors, requests for intimate images, grooming, exploitation, or attempts to make a minor keep an interaction secret from a parent or trusted adult.
-- **Seek private contact with minors.** Adults must not seek private, secret, romantic, sexual, or off-platform contact with minors.
+- **Sexualize, groom, or seek private contact.** No sexual content, sexual noises directed at others, sexual questions or requests, grooming, exploitation, or requests for intimate images. Adults must not seek private, secret, romantic, sexual, or off-platform contact with minors or ask a minor to hide an interaction from a parent or trusted adult.
 - **Seek or expose personal information.** Do not ask for or share a player's real name, age or date of birth, home address, school, precise location, phone number, email, passwords, real-world photos or videos, or personal social-media details. Do not pressure anyone to move to private or off-platform chat, meet offline, or send money, gifts, or images.
 - **Harass or threaten people.** No bullying, stalking, intimidation, humiliation, credible threats, encouraging self-harm or violence, or repeatedly targeting someone who wants the interaction to stop.
 - **Use hate or discriminatory abuse.** No slurs, hateful conduct, or attacks based on race, ethnicity, nationality, religion, disability, sex, gender identity, sexual orientation, or another protected characteristic.
 - **Impersonate, deceive, or exploit.** Do not impersonate OSYRYS staff, moderators, another player, or an authority; scam players; steal credentials; manipulate purchases; coerce anyone; or send malicious links or files.
-- **Misuse recordings.** If you record or stream gameplay, follow applicable law and platform rules. Do not use another player's image, voice, username, or personal information to identify, sexualize, exploit, shame, threaten, or harass them.
+- **Abuse recordings or streams.** Do not use recordings or streams to violate another player's safety or privacy. Section 6 explains allowed creator content.
 - **Cheat or disrupt the game.** No bots, exploits, unauthorized mods, injectors, automation, abusive multiple accounts, griefing, deliberate service disruption, or attempts to access accounts, systems, or data without permission.
 - **Undermine safety tools.** Do not disable, evade, probe, or interfere with moderation, reporting, blocking, muting, security, or anti-cheat tools. Do not submit knowingly false reports, manipulate evidence, retaliate against a reporter, or evade a warning, restriction, suspension, or ban.
-- **Break the law or help others break these rules.** Do not use the Services for unlawful content or conduct, and do not encourage or assist another person in violating these Terms.
+- **Promote or arrange illegal activity.** Do not use GGC to plan, request, teach, encourage, advertise, or facilitate real-world illegal activity, or discuss it in a way that enables or glorifies real-world harm. Do not share illegal content or help another person violate these Terms. Fictional monkey-versus-bugs roleplay is not real-world illegal activity.
 
 ---
 
 ## 4. Voice Chat and Staying Safe
 
-Live voice chat is part of the GGC experience. It also means strangers can hear what you say. Never reveal personal information in voice chat. Other players may record, stream, or share a session using tools outside our control, even when doing so violates these Terms.
+Live voice chat is part of the GGC experience. It also means strangers can hear what you say. Never reveal personal information in voice chat. Other players may record, stream, and share ordinary gameplay, including voice heard during a session, for content on YouTube, TikTok, Twitch, and similar services, subject to Section 6.
 
 Use available mute, block, leave, and report tools when an interaction becomes uncomfortable or unsafe. Reports must be truthful and should include useful context. If someone may be in immediate danger, contact a trusted adult or the appropriate emergency service; an in-game report is not an emergency service.
 
@@ -82,7 +81,11 @@ You remain responsible for content you deliberately submit, including reports, m
 
 You give us a non-exclusive, worldwide, royalty-free license to host, copy, review, modify, and share submitted content only as reasonably needed to operate, secure, moderate, support, or improve the Services, or preserve evidence. Ordinary live voice chat is not licensed to us for advertising merely because it passes through the Services.
 
-You may share ordinary gameplay videos and streams, including through standard platform monetization, as long as you follow these Terms, respect other players' safety and privacy, do not imply OSYRYS endorsement, and do not expose confidential or unreleased material.
+You may record, stream, and share your own ordinary gameplay, including other players' voices as heard during the session, on YouTube, TikTok, Twitch, and similar services. Standard platform monetization is allowed. By using public or shared GGC voice chat, you understand and agree that other players may include your voice as part of ordinary gameplay content.
+
+This permission does not allow anyone to isolate or reuse another player's voice for impersonation or voice cloning, disclose personal information, target someone for sexualization, stalking, harassment, or exploitation, imply OSYRYS endorsement, or expose confidential or unreleased material. If a recording accidentally captures personal information, remove or mute that part before publishing.
+
+Creators remain responsible for following applicable law, platform rules, these Terms, and any rights that OSYRYS cannot grant on another person's behalf. Player-created recordings are not reviewed or endorsed by OSYRYS.
 
 ---
 
