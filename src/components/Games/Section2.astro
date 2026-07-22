@@ -1,27 +1,84 @@
 ---
 import Carousel from "./CarouselSec2.vue";
+
+const featuredGames = [
+  {
+    name: "Galactic Gorilla Corps",
+    label: "In development for Meta Quest",
+    description:
+      "Join the Corps and fight the Arachnids in a co-op VR action game built around squad missions, loadouts, and physical movement.",
+    image: "/ggc/og.jpg",
+    href: "/ggc",
+    linkLabel: "Explore Galactic Gorilla Corps",
+    external: false,
+  },
+  {
+    name: "Cyberblade Battles",
+    label: "Free-to-play VR combat",
+    description:
+      "Fast, fluid cyberpunk warfare where blades, blasters, and aerial movement collide above the neon city of Osyrys.",
+    image: "/games/cyberblade-battles.webp",
+    href: "https://www.cyberbladebattles.com/",
+    linkLabel: "Visit Cyberblade Battles",
+    external: true,
+  },
+];
 ---
 
 <section class="max-w-6xl mx-auto px-4 py-12 xl:py-16">
-  <div class="space-y-8 md:space-y-12">
-    <div class="text-center space-y-3 md:space-y-5 xl:space-y-8">
-      <div class="space-y-3 md:space-y-4">
-        <h2
-          class="text-2xl xl:text-3xl font-bold max-w-[25ch] mx-auto md:max-w-[30ch]"
-        >
-          Featured games we’ve
-          <span class="bg-gradient bg-clip-text text-transparent italic pr-1">
-            delevoped
-          </span>
-        </h2>
-
-        <p class="max-w-[55ch] mx-auto md:text-lg">
-          From artistic educational experiences to multiplayer competitive
-          games, <span class="font-bold">we’ve got you covered.</span>
-        </p>
-      </div>
+  <div class="space-y-10 md:space-y-12">
+    <div class="space-y-3 text-center md:space-y-4">
+      <h2 class="mx-auto max-w-[28ch] text-2xl font-bold xl:text-3xl">
+        Games built by
+        <span class="bg-gradient bg-clip-text pr-1 italic text-transparent">
+          Syry
+        </span>
+      </h2>
+      <p class="mx-auto max-w-[58ch] md:text-lg">
+        Step into original virtual worlds made for action, movement, and shared
+        experiences.
+      </p>
     </div>
-    <div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        featuredGames.map((game) => (
+          <a
+            href={game.href}
+            target={game.external ? "_blank" : undefined}
+            rel={game.external ? "noopener noreferrer" : undefined}
+            class="group overflow-hidden rounded-[28px] border border-primary/10 bg-white shadow-lg shadow-primary/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 motion-reduce:transition-none"
+            aria-label={`${game.linkLabel}${game.external ? " (opens in a new tab)" : ""}`}
+          >
+            <div class="aspect-[1200/630] overflow-hidden bg-slate-950">
+              <img
+                src={game.image}
+                alt={`${game.name} key art`}
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
+                loading="lazy"
+              />
+            </div>
+            <div class="space-y-3 p-5 sm:p-6">
+              <p class="text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                {game.label}
+              </p>
+              <h3 class="text-2xl font-bold leading-tight">{game.name}</h3>
+              <p class="text-base leading-relaxed text-slate-600">
+                {game.description}
+              </p>
+              <span
+                class="inline-block pt-1 font-bold text-primary underline decoration-1 underline-offset-4"
+              >
+                {game.linkLabel}
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="space-y-5 border-t border-primary/10 pt-8">
+      <h3 class="text-center text-lg font-bold md:text-xl">More Syry games</h3>
       <Carousel client:load />
     </div>
   </div>

@@ -3,17 +3,14 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "../ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 const projects = [
-  { name: "Project 1", image: "project-1.png" },
-  { name: "Project 2", image: "project-2.png" },
-  { name: "Project 3", image: "project-3.png" },
-  { name: "Project 4", image: "project-4.png" },
-  { name: "Project 5", image: "project-5.png" },
+  { name: "Cyberman 69", image: "project-2.png" },
+  { name: "Quantum Hack", image: "project-3.png" },
+  { name: "Whaacky Walls", image: "project-4.png" },
+  { name: "Andean Skies", image: "project-5.png" },
 ];
 </script>
 
@@ -40,7 +37,7 @@ const projects = [
           <img
             :src="`/games/${item.image}`"
             :alt="item.name"
-            class="shadow-md rounded-[22px]"
+            class="aspect-[260/157] w-full rounded-[22px] object-cover shadow-md"
           />
         </div>
       </CarouselItem>
