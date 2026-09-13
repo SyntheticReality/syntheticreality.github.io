@@ -7,7 +7,11 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare:website": "node scripts/prepare-seo.mjs",
+    "predev": "npm run prepare:website",
+    "prestart": "npm run prepare:website",
+    "prebuild": "npm run prepare:website"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

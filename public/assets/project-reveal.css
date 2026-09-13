@@ -1,0 +1,48 @@
+/* Only the media turns. Captions remain in normal document flow. */
+.project-reveal{position:relative;min-width:0}
+.reveal-media{position:relative;width:100%;min-width:0;aspect-ratio:1.6;perspective:1400px}
+.selected-projects .reveal-media{aspect-ratio:16/9}
+.reveal-toggle{position:absolute;inset:0;z-index:3;width:100%;height:100%;padding:0;border:0;border-radius:0;background:transparent;cursor:pointer;color:inherit;text-align:right}
+.reveal-toggle:focus-visible{outline:2px solid var(--purple);outline-offset:4px}
+.project-reveal.is-open .reveal-toggle{pointer-events:none}
+.reveal-turner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.22,.7,.2,1)}
+.project-reveal.is-open .reveal-turner{transform:rotateY(180deg)}
+.reveal-face{position:absolute;inset:0;min-width:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.reveal-front{transform:rotateY(0deg)}
+.reveal-media .reveal-front .project-image{display:block;width:100%;height:100%;max-width:none;object-fit:cover}
+.reveal-back{transform:rotateY(180deg);padding:16px;border:1px solid #69507f;background:linear-gradient(145deg,#1b1224,#0d0a12 80%)}
+.reveal-copy{height:100%;overflow:auto;overscroll-behavior:auto;scrollbar-width:thin;scrollbar-color:#826299 #100b16;cursor:pointer;touch-action:pan-y}
+.reveal-eyebrow{display:block;font-size:12px;line-height:1.5;color:var(--purple);margin-bottom:8px;letter-spacing:.03em}
+.reveal-headline{display:block;font-size:clamp(18px,1.7vw,26px);font-weight:400;line-height:1.2;letter-spacing:-.045em;color:var(--text);margin:0 0 14px}
+.reveal-facts{display:grid;gap:8px;margin:0}
+.reveal-facts>div{display:grid;grid-template-columns:62px minmax(0,1fr);gap:10px;align-items:baseline}
+.reveal-facts dt{font-size:12px;line-height:1.6;color:var(--purple)}
+.reveal-facts dd{margin:0;font-size:14px;line-height:1.55;color:#e2d9e9}
+.selected-projects .reveal-headline{font-size:18px;line-height:1.2;margin-bottom:10px}
+.selected-projects .reveal-back{padding:12px}
+.selected-projects .reveal-copy p{font-size:13px;line-height:1.5}
+.reveal-topics{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.reveal-topics li{position:relative;padding-left:13px;font-size:14px;line-height:1.5;color:#e2d9e9}
+.reveal-topics li::before{content:'›';position:absolute;left:0;color:var(--purple)}
+.reveal-links{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px}
+.reveal-links a{display:inline-flex;gap:7px;align-items:center;padding:4px 0;color:#eee5fa;font-size:14px;line-height:1.5;text-decoration:underline;text-decoration-color:#74568e;text-underline-offset:4px}
+.reveal-links a span,.reveal-links a:hover{color:var(--purple)}
+.project-reveal[data-project-name="Quantum Hack"] .reveal-links{flex-direction:column;align-items:flex-start;gap:3px}
+.project-reveal .reveal-summary{font-size:14px;line-height:1.55}
+.reveal-metric{font-size:30px;letter-spacing:-.05em}
+.reveal-metric>span{font-size:15px;letter-spacing:0;color:var(--purple)}
+.selected-projects .reveal-headline{font-size:18px;margin-bottom:7px}
+.selected-projects .reveal-metric{font-size:26px}
+.selected-projects .reveal-links{margin-top:7px;gap:4px 12px}
+.selected-projects .reveal-links a{font-size:12px;padding:3px 0}
+.selected-projects .reveal-topics{gap:6px}
+.selected-projects .reveal-topics li{font-size:13px}
+.project-detail-list{margin:28px 0 0;padding:0;list-style:none}
+.project-detail-list li{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:16px 0;border-top:1px solid var(--line);color:var(--text)}
+.project-detail-list span{font-size:13px;color:var(--purple)}
+.project-reveal .reveal-back p{font-size:15px;line-height:1.65;margin:0;color:#e2d9e9}
+.selected-projects .reveal-back p{font-size:13px;line-height:1.55}
+.reveal-copy:focus-visible{outline:1px solid var(--purple);outline-offset:3px}
+.reveal-media:hover .project-image{border-color:#9470bb}
+.project-reveal:not(.reveal-ready) .reveal-toggle{display:none}
+@media(prefers-reduced-motion:reduce){.reveal-turner{transition:none}}

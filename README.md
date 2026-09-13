@@ -1,68 +1,33 @@
-# Astro Starter Kit: Blog
+# Osyrys
+
+Public website: https://www.syry.io. GitHub Pages publishes successful builds from `master` using the existing `.github/workflows/deploy.yml`.
+
+## Editing
+
+- `website/`: approved company pages as complete HTML documents. The small wrappers in `src/pages/` render these documents without changing the authored canvas artwork, styles or interactions.
+- `public/assets/`: company-site images, fonts, CSS and JavaScript.
+- `seo.config.json`: production descriptions, canonical origin and search policy. `scripts/prepare-seo.mjs` runs automatically before development and builds; it updates website metadata and the three compatible sitemap endpoints in `public/`.
+- `src/pages/ggc/`, `src/pages/ggc-privacy-policy.md`, `src/pages/ggc-tou.md`, `src/pages/cyberbladebattles-privacypolicy.md`: retained game landing and legal content, with their original Astro layouts and assets.
+
+## Commands
 
 ```sh
-npm create astro@latest -- --template blog
+npm ci
+npm run dev
+npm run build
+npm run preview
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+Build runs Astro diagnostics and generates the complete static site in `dist/`. GitHub Pages uses that output. The company pages require no backend; contact links use `hello@syry.io`.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Launch routing and SEO
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+Home, Enterprise (`/work/`), Entertainment (`/play/`), About and Contact are indexable. The existing GGC landing page and three game policy pages keep their URLs and remain in the sitemap. Retained project detail pages remain noindex while project information is presented through image flips. Design comparison galleries remain in the separate prototype and are not published here.
 
-Features:
+Old `/games/`, `/simulations/` and `/education/` links lead to their new categories using immediate HTML redirects supported by static hosting. Their `#contact` calls to action lead to `/contact/`; the homepage also retains a `#contact` anchor. `/blog/` leads to the existing Medium publication; the old sample posts remain accessible but noindex and outside the sitemap. `/sitemap-index.xml` and `/sitemap-0.xml` remain compatible with existing submissions.
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+The GitHub Pages custom domain and DNS configuration are retained. After deployment, verify https://www.syry.io, the five primary pages, the four preserved game/legal pages, sitemap, assets and unknown-path 404 behavior. Search Console ownership/submission and field Web Vitals are account/measurement tasks, separate from publishing this source.
 
-## 🚀 Project Structure
+## Rollback
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+The previous production revision is `5e9693b45c783e5fc5a1ef9fe6b1252718bf99a1`, also tagged `pre-luminous-launch-2026-09-13`. To undo this launch while preserving history, revert the launch commit on `master` and push; the same Pages workflow publishes the previous design. Do not force-push the branch.

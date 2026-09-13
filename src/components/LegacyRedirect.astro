@@ -1,0 +1,21 @@
+---
+interface Props { destination: string; label: string; }
+const { destination, label } = Astro.props;
+const canonical = new URL(destination, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0;url=${destination}`} />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href={canonical} />
+    <title>Osyrys / {label}</title>
+    <script is:inline>
+      // Preserve the old category pages' contact calls to action.
+      if (location.hash === '#contact') location.replace('/contact/');
+    </script>
+  </head>
+  <body><p>This page has moved. <a href={destination}>Continue to {label}</a>.</p></body>
+</html>

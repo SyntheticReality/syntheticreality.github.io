@@ -1,0 +1,78 @@
+/* Tags follow the image, aligned with its lower-right edge. */
+.selected-projects .project-mini{display:flex;flex-direction:column}
+.selected-projects .project-number{margin-bottom:12px}
+.selected-projects .mini-body{display:flex;flex-direction:column;gap:14px;flex:1}
+.project-media-wrap{width:100%;min-width:0}
+.selected-projects .mini-media{width:100%;aspect-ratio:16/9}
+.project-tags{display:flex;justify-content:flex-end;align-items:flex-start;flex-wrap:wrap;gap:5px;margin-top:9px;min-height:60px}
+.project-tags .project-tag{font-size:12px;padding:2px 6px;line-height:1.5}
+.project-tags .category-tag{color:#e3d0f6;border-color:#72548a;background:#201329}
+.project-tags .tech-tag{color:#c0b7ca;border-color:#37313e}
+.selected-projects .mini-body>div:last-child{flex:0}
+.selected-projects .mini-body h3{font-size:16px}
+.selected-projects .mini-body p{margin:6px 0 0}
+
+/* Two equal groups make a seamless, continuous loop. */
+.client-carousel{position:relative;overflow:hidden;padding:17px 0 25px;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.client-carousel::before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,#9360b83d 0 1px,transparent 1px 16px) bottom/100% 3px no-repeat;opacity:.6}
+.client-carousel::after{content:'';position:absolute;bottom:0;left:-24%;height:1px;width:24%;background:linear-gradient(90deg,transparent,#bc89ff,transparent);box-shadow:0 0 12px #9855cc66;animation:client-scan 9s linear infinite;pointer-events:none}
+.client-track{display:flex;width:max-content;animation:client-drift 120s linear infinite;will-change:transform}
+.client-carousel .client-group{display:flex;align-items:center;gap:60px;flex:0 0 auto;width:max-content;padding:0 60px 0 0;margin:0}
+.client-carousel .client-group li{height:72px;flex:0 0 auto;width:auto}
+.client-carousel .client-group img{width:auto;height:auto;max-width:150px;max-height:48px;flex-shrink:0;transition:opacity .25s,filter .25s;opacity:.7}
+.client-carousel .client-group li:hover img{opacity:1;filter:invert(1) drop-shadow(0 0 10px #a065c977)}
+.client-carousel:hover .client-track,.client-carousel:focus-within .client-track,.client-carousel:hover::after,.client-carousel:focus-within::after,.client-carousel.is-inactive .client-track,.client-carousel.is-inactive::after{animation-play-state:paused}
+@keyframes client-drift{to{transform:translateX(-50%)}}
+@keyframes client-scan{to{left:100%}}
+
+/* Static type over a distinct procedural field for each division. */
+.page-intro.sector-hero{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:510px;padding:260px var(--gutter) 44px;overflow:hidden;background:radial-gradient(ellipse at 70% 22%,#26133a,#100a19 58%,#08080a)}
+.sector-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.sector-hero::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(0deg,#08080afa,rgba(8,8,10,.58) 30%,transparent 66%),linear-gradient(90deg,#08080a66,transparent 68%)}
+.sector-content{width:100%;min-width:0}
+.page-intro .sector-title{font-size:clamp(38px,7.6vw,112px);line-height:1.15;letter-spacing:-.065em;max-width:none;margin:0 0 22px;text-shadow:0 2px 20px #08080a}
+.sector-hero .intro-bottom{gap:30px;align-items:flex-end}
+.sector-hero .intro-bottom p{color:#e2dbe9;font-size:16px;margin:0;max-width:680px;text-shadow:0 1px 14px #08080a}
+@media(max-width:1100px){.project-tags{min-height:55px}.page-intro.sector-hero{min-height:470px;padding-top:240px}}
+@media(max-width:700px){.selected-projects .project-mini{padding:22px 0}.selected-projects .mini-body{display:flex;gap:12px}.project-tags{min-height:0}.selected-projects .mini-body h3{font-size:19px}.client-carousel .client-group{width:max-content;gap:44px;padding-right:44px}.client-carousel .client-group img{max-width:120px;max-height:42px;width:auto;height:auto}.client-carousel .client-group li{height:60px}.page-intro.sector-hero{min-height:450px;padding-top:255px;padding-bottom:30px}.page-intro .sector-title{font-size:9.3vw;margin-bottom:20px;letter-spacing:-.06em}.sector-hero .intro-bottom{display:flex;flex-direction:column;align-items:flex-start;gap:18px}.sector-hero .intro-bottom p{font-size:14px;line-height:1.75}}
+@media(prefers-reduced-motion:reduce){.client-track,.client-carousel::after{animation:none;will-change:auto}.client-carousel::after{display:none}.client-carousel{mask-image:none}.client-carousel .client-track{display:block;width:100%}.client-carousel .client-group{display:grid;width:100%;padding:0;gap:25px;grid-template-columns:repeat(6,minmax(0,1fr))}.client-carousel .client-group[aria-hidden=true]{display:none}}
+@media(prefers-reduced-motion:reduce) and (max-width:700px){.client-carousel .client-group{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.client-carousel .client-group img{max-width:100%}}
+
+/* Let the field occupy the whole hero, with only a light scrim for copy. */
+.sector-hero::after{background:linear-gradient(0deg,rgba(8,8,10,.7),rgba(8,8,10,.25) 34%,transparent 68%)}
+.sector-hero[data-sector="about"]{padding-top:200px}
+.sector-hero[data-sector="about"] .sector-title{font-size:clamp(38px,5.8vw,88px)}
+@media(max-width:700px){.sector-hero[data-sector="about"]{padding-top:200px}.sector-hero[data-sector="about"] .sector-title{font-size:9vw}}
+
+/* Match the homepage transition from the field into the text area. */
+.sector-hero::after{background:linear-gradient(0deg,#08080a 0%,rgba(8,8,10,.93) 6%,rgba(8,8,10,.63) 25%,rgba(8,8,10,.04) 52%,transparent 76%)}
+.sector-canvas{mask-image:linear-gradient(180deg,#000 0%,#000 56%,rgba(0,0,0,.38) 75%,transparent 93%)}
+.selected-projects .mini-body{gap:13px}
+.project-caption{display:flex;align-items:flex-start;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;width:100%;min-width:0}
+.project-identity{flex:1 0 auto;min-width:0;max-width:100%}
+.project-caption .project-tags{flex:1 1 140px;justify-content:flex-end;align-content:flex-start;margin:0;min-height:0;gap:5px}
+.selected-projects .project-caption h3{font-size:16px;line-height:1.45;margin:0}
+.selected-projects .project-caption p{font-size:12px;line-height:1.5;margin-top:6px}
+@media(max-width:700px){.selected-projects .project-caption h3{font-size:17px}.project-caption .project-tags{flex-basis:145px}}
+
+.project-caption .project-tag{white-space:nowrap}
+.selected-projects .project-caption .project-tags{display:flex;flex-direction:column;align-items:flex-end;flex:0 0 auto;max-width:100%;gap:5px}
+.selected-projects .tag-line{display:flex;justify-content:flex-end;gap:5px;white-space:nowrap}
+
+/* Category pages use the same responsive hero dimensions as Home. */
+.page-intro.sector-hero{height:var(--site-hero-height);min-height:var(--site-hero-min-height);padding-top:0;padding-bottom:36px}
+.sector-hero[data-sector="about"]{padding-top:0}
+.portfolio-caption{grid-template-columns:24px minmax(0,1fr)}
+.portfolio-card-info{min-width:0}
+.portfolio-title-row,.portfolio-meta-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.portfolio-title-row h3{min-width:0;font-size:19px;line-height:1.45}
+.portfolio-title-row>.project-tag{flex-shrink:0;margin-top:3px}
+.portfolio-card .project-tag{font-size:12px;padding:2px 6px;line-height:1.5}
+.portfolio-card .category-tag{color:#e3d0f6;border-color:#72548a;background:#201329}
+.portfolio-meta-row{flex-wrap:wrap;gap:8px 12px;margin-top:8px}
+.portfolio-meta-row p{flex:1 1 80px;margin:0;min-height:0}
+.portfolio-caption .project-tags{flex:0 1 auto;max-width:100%;margin:0 0 0 auto;min-height:0;justify-content:flex-end;gap:5px}
+.portfolio-caption .project-tags:empty{display:none}
+.portfolio-caption .project-tags .project-tag{white-space:nowrap}
+@media(max-width:700px){.page-intro.sector-hero{padding-bottom:32px}.portfolio-caption{gap:8px}}

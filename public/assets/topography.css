@@ -1,0 +1,33 @@
+.topography-lab .lab-heading{align-items:flex-start}
+.topography-lab .lab-heading>div>p{font-size:13px;margin:8px 0 0;color:#b4a4c5}
+.topography-heading-links{display:flex;gap:24px;flex-wrap:wrap;justify-content:flex-end}
+.topography-controls{display:flex;flex-direction:column;background:#0c0b10}
+.topography-order{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;font-size:12px;color:#baa7cc;border-bottom:1px solid var(--line)}
+.topography-order>span:nth-child(2){color:var(--purple)}
+.topography-controls .experiment-choices{flex:1}
+.topography-controls .experiment-choice{font-size:13px;min-height:45px}
+.topography-level{font-size:12px;color:var(--purple);margin-left:13px;white-space:nowrap}
+.topography-lab .experiment-details h2{display:inline;font-size:18px}
+.topography-lab #experiment-description{margin-top:13px}
+.topography-mobile-controls{display:none}
+.topography-lab .experiment-canvas{background:radial-gradient(ellipse at 52% 28%,#180e25 0%,#0c0912 50%,#08080a 90%)}
+.topography-lab .experiment-preview:after{background:linear-gradient(0deg,#08080a 0%,rgba(8,8,10,.93) 6%,rgba(8,8,10,.68) 24%,rgba(8,8,10,.03) 51%,transparent 77%)}
+.experiment-entry{display:flex;flex-wrap:wrap;gap:18px 32px}
+.topography-discovery{padding-top:23px;margin-top:12px;border-top:1px solid var(--line)}
+.topography-discovery p{font-size:14px;margin:0 0 12px}
+@media(max-width:700px){
+ .topography-lab .lab-heading{display:block}
+ .topography-lab .lab-heading h1{font-size:21px}
+ .topography-heading-links{justify-content:flex-start;margin-top:15px;gap:22px}
+ .topography-controls{display:none}
+ .topography-mobile-controls{display:grid;grid-template-columns:1fr 42px 42px;gap:8px;align-items:end;margin:0 0 12px}
+ .topography-mobile-controls label{display:flex;flex-direction:column;gap:7px;font-size:12px;color:#bca9ce;min-width:0}
+ .topography-mobile-controls select{font-family:var(--mono);font-size:13px;background:#181020;border:1px solid #493753;color:#eee0ff;height:44px;width:100%;padding:0 10px;border-radius:0}
+ .topography-mobile-controls button{height:44px;border:1px solid #493753;background:#181020;color:#dec2ff;font-size:20px}
+ .topography-mobile-controls button:active{background:#352143}
+ .topography-lab .experiment-preview.hero{height:540px;min-height:540px}
+ .topography-lab .experiment-details h2{display:block;font-size:18px}
+ .topography-level{display:inline-block;margin:8px 0 0}
+ .topography-lab .experiment-details{padding-top:19px}
+ .topography-lab #experiment-description{margin-top:11px}
+}

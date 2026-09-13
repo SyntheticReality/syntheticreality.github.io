@@ -1,0 +1,19 @@
+.portrait-options-page{padding-top:150px}
+.portrait-options-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px}
+.portrait-options-heading h1{font-size:clamp(36px,4vw,64px);line-height:1.1;margin:0;letter-spacing:-.045em}
+.portrait-options-heading a{font-size:14px;color:var(--purple)}
+.portrait-options-intro{max-width:760px;margin:22px 0 28px;color:#d3cbdc;font-size:16px;line-height:1.7}
+.portrait-option-controls{display:flex;gap:12px;flex-wrap:wrap}
+.portrait-option-controls button{font:inherit;font-size:14px;line-height:1.5;color:#d3cbdc;cursor:pointer;background:transparent;border:1px solid #413448;padding:12px 16px}
+.portrait-option-controls button span{color:var(--purple);margin-right:9px}
+.portrait-option-controls button[aria-pressed=true]{border-color:var(--purple);color:#fff;background:#b48ae00e}
+.portrait-option-controls button:focus-visible{outline:2px solid var(--purple);outline-offset:4px}
+.portrait-option-description{font-size:14px;color:#b8a8c8;margin-top:18px;min-height:2.8em;max-width:740px;line-height:1.6}
+.portrait-option-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;margin:0 0 70px;--portrait-width:520px}
+.portrait-stage{height:800px;max-height:66vw;display:flex;align-items:center;justify-content:center;min-width:0}
+.portrait-stage .founder-portrait{width:100%;max-width:var(--portrait-width);flex:0 1 auto}
+.portrait-option-layout[data-option=airy]{--portrait-width:560px}
+.portrait-option-layout[data-option=shoulders]{--portrait-width:600px}
+.portrait-option-layout[data-option=floating]{--portrait-width:640px}
+.portrait-options-page .founder-profile{align-self:center;padding-bottom:65px}
+@media(max-width:800px){.portrait-options-page{padding-top:120px}.portrait-option-layout{grid-template-columns:1fr;gap:0;margin-bottom:55px}.portrait-stage{height:auto;max-height:none}.portrait-stage .founder-portrait{max-width:min(var(--portrait-width),100%)}.portrait-options-page .founder-profile{padding-bottom:0}.portrait-options-heading{align-items:flex-start}.portrait-options-heading a{white-space:nowrap}.portrait-option-controls{gap:8px}.portrait-option-controls button{padding:10px 12px}.portrait-option-description{min-height:4em}}

@@ -1,0 +1,20 @@
+.hero-links{align-items:center;gap:16px;justify-content:flex-start}
+.explore-label{font-size:14px;color:#eee8f6;line-height:1.8}
+.hero-links .terminal-link{gap:8px}
+.experiment-preview .hero-links{align-items:center;gap:12px}
+.experiment-preview .explore-label{font-size:12px}
+.capability-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.capability-card{min-width:0;background:#100c16;border:1px solid #3a2c46;transition:border-color .25s,background .25s;overflow:hidden}
+.capability-card:hover{border-color:#9368bc;background:#15101d}
+.capability-art{display:block;width:100%;padding:0;border:0;border-radius:0;height:clamp(155px,14vw,205px);position:relative;border-bottom:1px solid #30243c;overflow:hidden;background:radial-gradient(ellipse at 50% 60%,#27143a,#100b18 76%);color:inherit;font:inherit;text-align:inherit;cursor:pointer;touch-action:manipulation}
+.capability-art:focus-visible{outline:2px solid var(--purple);outline-offset:-3px}
+.capability-art:hover{background:radial-gradient(ellipse at 50% 60%,#352047,#100b18 80%)}
+.capability-art canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.card-number{position:absolute;top:13px;left:14px;font-size:12px;line-height:1;color:#b69acb;z-index:1;pointer-events:none}
+.capability-copy{padding:22px 17px 24px}
+.capability-copy h3{font-size:18px;line-height:1.45;letter-spacing:-.035em;margin:0 0 14px;min-height:2.9em}
+.capability-copy p{font-size:13px;line-height:1.8;color:#c6bbd0;margin:0}
+@media(min-width:1700px){.capability-copy{padding:25px}.capability-copy h3{font-size:22px}.capability-copy p{font-size:14px}}
+@media(max-width:1200px){.capability-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.capability-art{height:180px}.capability-copy h3{min-height:0}.capability-copy p{font-size:14px}}
+@media(max-width:850px){.capability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.capability-copy h3{min-height:2.9em}.capability-art{height:190px}}
+@media(max-width:550px){.capability-grid{grid-template-columns:1fr;gap:18px}.capability-art{height:185px}.capability-copy{padding:21px}.capability-copy h3{font-size:21px;min-height:0;margin-bottom:10px}.hero-links{justify-content:flex-start;gap:14px}.hero-links .terminal-link{font-size:13px;gap:6px}.explore-label{font-size:13px}.experiment-preview .hero-links{gap:12px}.experiment-preview .explore-label,.experiment-preview .hero-links .terminal-link{font-size:12px}}

@@ -1,0 +1,47 @@
+{
+  "origin": "https://www.syry.io",
+  "mode": "production",
+  "pages": {
+    "/": {
+      "type": "WebPage",
+      "description": "Osyrys engineers interactive media: VR/AR games, simulations and real-time 3D experiences for enterprise and entertainment."
+    },
+    "/work/": {
+      "type": "CollectionPage",
+      "description": "Explore Osyrys enterprise projects in VR training, adaptive simulations, shared experiences and generative content pipelines."
+    },
+    "/play/": {
+      "type": "CollectionPage",
+      "description": "Explore games, online worlds and interactive storytelling by Osyrys, from cooperative VR experiences to cultural adventures."
+    },
+    "/about/": {
+      "type": "AboutPage",
+      "description": "Osyrys is an interactive media company. Meet programmer and architect Alexis Salinas Mark, with 8+ years in VR/AR and 60+ projects delivered by Osyrys."
+    },
+    "/contact/": {
+      "type": "ContactPage",
+      "description": "Contact Osyrys about your next interactive experience. Share your idea, audience, timing and project scope at hello@syry.io."
+    }
+  },
+  "deferredDescriptions": {
+    "/projects/galactic-gorilla-corps/": "Join Galactic Gorilla Corps, an upcoming co-op VR game from Osyrys. Complete squad missions, build your loadout and fight the Arachnids.",
+    "/projects/cyberblade-battles/": "Cyberblade Battles is a solo or co-op VR game from Osyrys featuring procedural raids, loot, bosses, guns and cyberblades.",
+    "/projects/quantum-hack/": "Quantum Hack is a cooperative VR puzzle experience for IE University. Stop a hacker while exploring qubits, superposition and entanglement.",
+    "/projects/andean-skies/": "Andean Skies is a cultural VR experience for Planetarium Cusco exploring Andean astronomy, Inca traditions, seasons and agriculture.",
+    "/projects/apu/": "APU is a mythic voxel mountain adventure from Osyrys. Survive cold, wind and sheer cliffs in a web game built with GPT-5.5 and Codex.",
+    "/projects/work-at-heights/": "Work at Heights is a Meta Quest VR simulation for Mine Class covering PPE, fall-arrest checks, scaffold inspection and safe ascent.",
+    "/projects/inappropriate-workplace-behaviours/": "A VR avatar embodiment experience for PowerSkillsAI that helps participants recognise inappropriate workplace interactions from another perspective.",
+    "/projects/logistics-training/": "Picking and Packing is a VR simulation for Simulogix / PowerSkillsAI covering product scanning, packaging, sealing, labeling and dispatch.",
+    "/projects/modasa-digital-twin/": "Manufacturing Factory is a VR tour of Modasa's plant, exploring generator production, bus manufacturing, service workshops and safety.",
+    "/projects/cyclone-cleaning/": "Cyclone Tower Cleaning is a VR simulation for Pacasmayo covering PPE, equipment isolation, air-cannon lockout, cleaning and blockage response.",
+    "/projects/warehouse-forklift-safety/": "Warehouse Forklift Safety is a VR simulation for Overall covering forklift hazards, equipment authorisation, tool inspections and safe decisions.",
+    "/projects/raise-boring-experience/": "Raise Boring Experience is a VR showroom for Tumi Mining covering SBM 400 SR transport, positioning, pilot drilling and upward reaming.",
+    "/404.html": "This Osyrys page could not be found."
+  },
+  "retainedRoutes": [
+    "/ggc/",
+    "/ggc-privacy-policy/",
+    "/ggc-tou/",
+    "/cyberbladebattles-privacypolicy/"
+  ]
+}
