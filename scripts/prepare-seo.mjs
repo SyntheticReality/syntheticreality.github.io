@@ -62,6 +62,25 @@ for (const file of files) {
   // Do not invent public canonical URLs for private visual studies or error pages.
   if (page || route.startsWith('/projects/')) tags.push(`  <link rel="canonical" href="${escape(absolute(route))}">`);
   if (page) {
+    const previewImage = absolute('/assets/osyrys-social-preview.png');
+    const previewAlt = 'Osyrys — Interactive media. Engineered. Purple pixel topography on charcoal.';
+    tags.push(
+      '  <meta property="og:type" content="website">',
+      '  <meta property="og:site_name" content="Osyrys">',
+      `  <meta property="og:title" content="${escape(title)}">`,
+      `  <meta property="og:description" content="${escape(description)}">`,
+      `  <meta property="og:url" content="${escape(absolute(route))}">`,
+      `  <meta property="og:image" content="${previewImage}">`,
+      '  <meta property="og:image:type" content="image/png">',
+      '  <meta property="og:image:width" content="1200">',
+      '  <meta property="og:image:height" content="630">',
+      `  <meta property="og:image:alt" content="${escape(previewAlt)}">`,
+      '  <meta name="twitter:card" content="summary_large_image">',
+      `  <meta name="twitter:title" content="${escape(title)}">`,
+      `  <meta name="twitter:description" content="${escape(description)}">`,
+      `  <meta name="twitter:image" content="${previewImage}">`,
+      `  <meta name="twitter:image:alt" content="${escape(previewAlt)}">`
+    );
     const pageEntity = {
       '@type': page.type, '@id': absolute(`${route}#webpage`), url: absolute(route), name: title,
       description, inLanguage: 'en', isPartOf: { '@id': websiteId }, about: { '@id': orgId }
