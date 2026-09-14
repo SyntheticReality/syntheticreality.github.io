@@ -5,8 +5,8 @@ const STAGES = [
   { id: 'develop', label: 'Develop', description: 'Gameplay & simulation logic · VR/AR interactions · Multiplayer · Procedural Systems · Content tools' },
   { id: 'deployment', label: 'Deploy', description: 'Device testing · Performance optimization · Release builds · Store submissions · Web deployment' },
 ];
-const STAGE_DURATION = 6;
-const TRANSITION_DURATION = 2;
+const STAGE_DURATION = 4;
+const TRANSITION_DURATION = 1;
 const clamp = (value, min = 0, max = 1) => Math.max(min, Math.min(max, value));
 const mix = (a, b, t) => a + (b - a) * t;
 const smooth = t => t * t * (3 - 2 * t);

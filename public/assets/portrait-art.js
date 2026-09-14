@@ -2,6 +2,10 @@ const clamp = (v, low, high) => Math.max(low, Math.min(high, v));
 const GLYPHS = '.:-=+*#%@';
 const smoothstep = (a, b, v) => { const t = clamp((v-a)/(b-a), 0, 1); return t*t*(3-2*t); };
 const noise = (x, y) => { let n = Math.imul(x+1, 374761393) ^ Math.imul(y+1, 668265263); n = Math.imul(n ^ (n >>> 13), 1274126177); return ((n ^ (n >>> 16)) >>> 0) / 4294967296; };
+const roundedBox = (x, y, cx, cy, halfWidth, halfHeight, radius) => {
+  const dx = Math.abs(x-cx)-halfWidth+radius, dy = Math.abs(y-cy)-halfHeight+radius;
+  return Math.hypot(Math.max(dx,0),Math.max(dy,0))+Math.min(Math.max(dx,dy),0)-radius;
+};
 export const PORTRAIT_VARIANTS = {
   soft: { start: .68, end: 1, power: 1.1 },
   airy: { start: .62, end: .98, power: 1.55 },
@@ -22,10 +26,6 @@ export function portraitPresence(cell, columns, rows, variant = 'soft') {
 // Model the fitted headset on the photograph's glyph grid, including its depth.
 export function buildHeadset(columns, rows) {
   const cells = [], mask = new Set();
-  const roundedBox = (x, y, cx, cy, halfWidth, halfHeight, radius) => {
-    const dx = Math.abs(x-cx)-halfWidth+radius, dy = Math.abs(y-cy)-halfHeight+radius;
-    return Math.hypot(Math.max(dx,0),Math.max(dy,0))+Math.min(Math.max(dx,dy),0)-radius;
-  };
   for (let y = 0; y < rows; y++) for (let x = 0; x < columns; x++) {
     const nx = (x+.5)/columns, ny = (y+.5)/rows;
     const shellDistance = roundedBox(nx,ny,.508,.350,.253,.091,.046);
@@ -71,6 +71,38 @@ export function buildHeadset(columns, rows) {
   return {cells,mask};
 }
 
+// Slim frames, transparent lenses and a small camera share the portrait's grid.
+export function buildSmartGlasses(columns, rows) {
+  const cells = [], mask = new Map();
+  const rim = Math.max(.009, .66 / rows);
+  for (let y = 0; y < rows; y++) for (let x = 0; x < columns; x++) {
+    const nx = (x+.5)/columns, ny = (y+.5)/rows;
+    const lensDistance = Math.min(...[.388, .628].map(center =>
+      roundedBox(nx,ny,center,.351,.106,.052,.022)));
+    const lens = lensDistance < -rim;
+    const frame = lensDistance <= .003 && !lens;
+    const bridge = nx>.488 && nx<.528 && Math.abs(ny-(.328+Math.abs(nx-.508)*.35))<rim*.65;
+    const temple = nx>.252 && nx<.764 && (nx<.284 || nx>.732)
+      && Math.abs(ny-(.315+Math.abs(nx-.508)*.06))<rim*.85;
+    if (!lens && !frame && !bridge && !temple) continue;
+    let tone = lens ? .25 : ny<.335 ? .94 : .70;
+    let alpha = lens ? .25 : 1;
+    // A compact camera at the left hinge and a status light at the right hinge.
+    const camera = Math.hypot((nx-.291)/.013, (ny-.320)/.015);
+    if (!lens && camera<1.4) tone=camera<.70 ? .12 : .98;
+    if (!lens && Math.abs(nx-.724)<.013 && Math.abs(ny-.319)<.012) tone=1;
+    // A restrained reflection keeps the eye visible through each lens.
+    if (lens && Math.abs(ny-(.325+(nx<.508 ? nx-.32 : nx-.56)*.35))<.008) {
+      tone=.63; alpha=.38;
+    }
+    tone=clamp(tone+(noise(x+311,y+47)-.5)*.035,0,1);
+    const glyph=GLYPHS[Math.min(GLYPHS.length-1,Math.floor(tone*GLYPHS.length))];
+    cells.push({x,y,tone,glyph,alpha});
+    mask.set(y*columns+x,lens ? .22 : 1);
+  }
+  return {cells,mask,revealTop:.285,revealHeight:.13};
+}
+
 // Sample the supplied photograph. Flood-fill only the connected pastel backdrop.
 export function samplePortrait({ data, width, height }) {
   const count = width * height, background = new Uint8Array(count), candidates = new Uint8Array(count);
@@ -100,42 +132,49 @@ export function samplePortrait({ data, width, height }) {
     cell.presence = Object.fromEntries(Object.keys(PORTRAIT_VARIANTS).map(key => [key, portraitPresence(cell, width, height, key)]));
     cells.push(cell);
   }
-  return { cells, columns: width, rows: height, headset: buildHeadset(width,height) };
+  return { cells, columns: width, rows: height, headset: buildHeadset(width,height), smartGlasses: buildSmartGlasses(width,height) };
 }
 
-function headsetCoverage(cell, rows, amount) {
-  const row = clamp(((cell.y + .5) / rows - .1) / .34, 0, 1);
+function accessoryCoverage(cell, rows, amount, accessory) {
+  const row = clamp(((cell.y + .5) / rows - (accessory.revealTop ?? .1)) / (accessory.revealHeight ?? .34), 0, 1);
   const start = row * .68 + noise(cell.x + 97, cell.y + 151) * .12;
   return smoothstep(start, start + .2, amount);
 }
 
-export function drawPortrait(ctx, portrait, width, height, time = 0, pointer = null, variant = 'soft', headsetAmount = 0) {
+export function drawPortrait(ctx, portrait, width, height, time = 0, pointer = null, variant = 'soft', headsetAmount = 0, glassesAmount = 0) {
   ctx.clearRect(0, 0, width, height);
-  const amount = clamp(Number(headsetAmount) || 0, 0, 1);
+  const accessories = [
+    { art: portrait.headset, amount: clamp(Number(headsetAmount) || 0, 0, 1) },
+    { art: portrait.smartGlasses, amount: clamp(Number(glassesAmount) || 0, 0, 1) }
+  ].filter(({art,amount}) => art && amount);
   const cw = width / portrait.columns, ch = height / portrait.rows;
   ctx.font = `${cw * 1.32}px OsyrysMono, monospace`;
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   const scan = (time * .055) % 1;
   for (const cell of portrait.cells) {
-    // The face clears by the same coverage used to assemble each headset glyph.
-    const coverage = amount && portrait.headset?.mask.has(cell.y*portrait.columns+cell.x)
-      ? headsetCoverage(cell, portrait.rows, amount) : 0;
-    if (coverage === 1) continue;
+    // Solid frames replace face glyphs; the smart-glasses lenses stay transparent.
+    let faceVisibility = 1;
+    const index = cell.y*portrait.columns+cell.x;
+    for (const {art,amount} of accessories) {
+      const mask = art.mask instanceof Map ? (art.mask.get(index) || 0) : Number(art.mask.has(index));
+      if (mask) faceVisibility *= 1-mask*accessoryCoverage(cell,portrait.rows,amount,art);
+    }
+    if (!faceVisibility) continue;
     const presence = cell.presence?.[variant] ?? portraitPresence(cell, portrait.columns, portrait.rows, variant);
     if (!presence) continue;
     const x = (cell.x + .5) * cw, y = (cell.y + .5) * ch;
     const band = time ? Math.max(0, 1 - Math.abs(y / height - scan) / .035) * .12 : 0;
     const hover = pointer ? Math.max(0, 1 - Math.hypot(x-pointer.x, y-pointer.y) / 75) * .2 : 0;
-    const alpha = clamp(.16 + cell.tone * .75 + cell.edge * .13 + band + hover, .15, 1) * presence * (1 - coverage);
+    const alpha = clamp(.16 + cell.tone * .75 + cell.edge * .13 + band + hover, .15, 1) * presence * faceVisibility;
     ctx.fillStyle = `rgba(${Math.round(168 + cell.tone * 54)},${Math.round(115 + cell.tone * 69)},255,${alpha})`;
     ctx.fillText(cell.glyph, x, y);
   }
-  if (amount && portrait.headset) for (const cell of portrait.headset.cells) {
-    const coverage = headsetCoverage(cell, portrait.rows, amount);
+  for (const {art,amount} of accessories) for (const cell of art.cells) {
+    const coverage = accessoryCoverage(cell, portrait.rows, amount, art);
     if (!coverage) continue;
     const x=(cell.x+.5)*cw, y=(cell.y+.5)*ch;
     const highlight=pointer?Math.max(0,1-Math.hypot(x-pointer.x,y-pointer.y)/75)*.14:0;
-    ctx.fillStyle=`rgba(${Math.round(168+cell.tone*54)},${Math.round(115+cell.tone*69)},255,${clamp(.22+cell.tone*.76+highlight,0,1)*coverage})`;
+    ctx.fillStyle=`rgba(${Math.round(168+cell.tone*54)},${Math.round(115+cell.tone*69)},255,${clamp(.22+cell.tone*.76+highlight,0,1)*coverage*(cell.alpha ?? 1)})`;
     ctx.fillText(cell.glyph,x,y);
   }
 }
@@ -145,33 +184,50 @@ export function startPortraitArt(canvas) {
   if (!ctx) return { destroy() {}, setVariant() {} };
   let variant = canvas.dataset.portraitVariant || 'soft';
   const toggle=canvas.closest?.('.portrait-toggle');
-  let headsetOn=false;
-  const headsetHoldSeconds = 3, headsetTransitionSeconds = 1.2;
-  let headsetAmount = 0, headsetFrom = 0, headsetAge = 0, headsetHold = 0;
+  const accessories = [
+    { id:'none', label:'no eyewear', amounts:[0,0] },
+    { id:'vr', label:'a VR headset', amounts:[1,0] },
+    { id:'smart-glasses', label:'smart AI glasses', amounts:[0,1] }
+  ];
+  const accessoryHoldSeconds = 1.8, accessoryTransitionSeconds = .6;
+  let accessoryIndex = 0, accessoryAmounts = [0,0], accessoryFrom = [0,0];
+  let accessoryAge = accessoryTransitionSeconds, accessoryHold = 0;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const source = new Image(), sample = document.createElement('canvas');
   const sampleContext = sample.getContext('2d', { willReadFrequently: true });
   let portrait = null, width = 1, height = 1, visible = true, frame = 0, previous = 0, time = 0, pointer = null, destroyed = false;
   const removers = [];
   const listen = (target, event, fn) => { target.addEventListener(event, fn, { passive: true }); removers.push(() => target.removeEventListener(event, fn)); };
-  const render = () => { if (portrait) drawPortrait(ctx, portrait, width, height, reduced.matches ? 0 : time, pointer, variant, headsetAmount); };
-  function setHeadset(on) {
-    headsetOn = on;
-    headsetFrom = headsetAmount;
-    headsetAge = 0;
-    headsetHold = 0;
-    if (reduced.matches) headsetAmount = Number(on);
-    toggle?.setAttribute('aria-pressed', String(on));
+  const render = () => { if (portrait) drawPortrait(ctx, portrait, width, height, reduced.matches ? 0 : time, pointer, variant, ...accessoryAmounts); };
+  function updateAccessoryLabel() {
+    const current = accessories[accessoryIndex], next = accessories[(accessoryIndex+1)%accessories.length];
+    if (toggle) {
+      toggle.dataset.portraitAccessory = current.id;
+      toggle.setAttribute('aria-label', `Portrait with ${current.label}. Click to show ${next.label}.`);
+      toggle.setAttribute('title', `Show ${next.label}`);
+    }
+    canvas.setAttribute('aria-label', `Alexis Salinas Mark with ${current.label}, rendered as purple text dissolving from the shoulders`);
   }
-  function advanceHeadset(dt) {
+  function nextAccessory() {
+    accessoryIndex = (accessoryIndex+1)%accessories.length;
+    accessoryFrom = [...accessoryAmounts];
+    accessoryAge = 0;
+    accessoryHold = 0;
+    if (reduced.matches) {
+      accessoryAmounts = [...accessories[accessoryIndex].amounts];
+      accessoryAge = accessoryTransitionSeconds;
+    }
+    updateAccessoryLabel();
+  }
+  function advanceAccessory(dt) {
     if (!toggle) return;
-    if (headsetAmount !== Number(headsetOn)) {
-      headsetAge = Math.min(headsetTransitionSeconds, headsetAge + dt);
-      const blend = smoothstep(0, headsetTransitionSeconds, headsetAge);
-      headsetAmount = headsetFrom + (Number(headsetOn) - headsetFrom) * blend;
+    if (accessoryAge < accessoryTransitionSeconds) {
+      accessoryAge = Math.min(accessoryTransitionSeconds, accessoryAge + dt);
+      const blend = smoothstep(0, accessoryTransitionSeconds, accessoryAge);
+      accessoryAmounts = accessoryFrom.map((from,i) => from+(accessories[accessoryIndex].amounts[i]-from)*blend);
     } else if (!toggle.matches(':focus-visible')) {
-      headsetHold += dt;
-      if (headsetHold >= headsetHoldSeconds) setHeadset(!headsetOn);
+      accessoryHold += dt;
+      if (accessoryHold >= accessoryHoldSeconds) nextAccessory();
     }
   }
   function tick(timestamp) {
@@ -180,7 +236,7 @@ export function startPortraitArt(canvas) {
     if (!previous || timestamp - previous >= 1000 / 20) {
       const dt = previous ? Math.min(.1, (timestamp - previous) / 1000) : 0;
       time += dt;
-      advanceHeadset(dt);
+      advanceAccessory(dt);
       previous = timestamp; render();
     }
     frame = requestAnimationFrame(tick);
@@ -214,16 +270,23 @@ export function startPortraitArt(canvas) {
   });
   listen(canvas, 'pointerleave', () => { pointer = null; render(); });
   if (toggle) listen(toggle,'click',()=>{
-    setHeadset(!headsetOn);
+    nextAccessory();
     render();
   });
-  if (toggle) listen(toggle, 'blur', () => { headsetHold = 0; });
+  if (toggle) listen(toggle, 'blur', () => { accessoryHold = 0; });
   listen(document, 'visibilitychange', sync);
   listen(reduced, 'change', () => {
-    if (reduced.matches) headsetAmount = Number(headsetOn);
-    headsetHold = 0;
+    if (reduced.matches) {
+      accessoryAmounts = [...accessories[accessoryIndex].amounts];
+      accessoryAge = accessoryTransitionSeconds;
+    }
+    accessoryHold = 0;
     sync();
   });
+  if (toggle) {
+    toggle.removeAttribute('aria-pressed');
+    updateAccessoryLabel();
+  }
   source.decoding = 'async'; source.src = canvas.dataset.portraitSource;
   return {
     setVariant(next) { if (destroyed) return; variant = PORTRAIT_VARIANTS[next] ? next : 'soft'; canvas.dataset.portraitVariant = variant; resize(); },
