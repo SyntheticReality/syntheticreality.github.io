@@ -71,36 +71,63 @@ export function buildHeadset(columns, rows) {
   return {cells,mask};
 }
 
-// Slim frames, transparent lenses and a small camera share the portrait's grid.
+// Tapered smart-glasses frames keep their shape and hardware at small grid sizes.
 export function buildSmartGlasses(columns, rows) {
   const cells = [], mask = new Map();
-  const rim = Math.max(.009, .66 / rows);
+  const rim = Math.max(.012, .85 / rows);
+  const cameraX = Math.max(.017, 1.1 / columns), cameraY = Math.max(.014, .85 / rows);
   for (let y = 0; y < rows; y++) for (let x = 0; x < columns; x++) {
     const nx = (x+.5)/columns, ny = (y+.5)/rows;
-    const lensDistance = Math.min(...[.388, .628].map(center =>
-      roundedBox(nx,ny,center,.351,.106,.052,.022)));
-    const lens = lensDistance < -rim;
-    const frame = lensDistance <= .003 && !lens;
-    const bridge = nx>.488 && nx<.528 && Math.abs(ny-(.328+Math.abs(nx-.508)*.35))<rim*.65;
-    const temple = nx>.252 && nx<.764 && (nx<.284 || nx>.732)
-      && Math.abs(ny-(.315+Math.abs(nx-.508)*.06))<rim*.85;
-    if (!lens && !frame && !bridge && !temple) continue;
-    let tone = lens ? .25 : ny<.335 ? .94 : .70;
-    let alpha = lens ? .25 : 1;
-    // A compact camera at the left hinge and a status light at the right hinge.
-    const camera = Math.hypot((nx-.291)/.013, (ny-.320)/.015);
-    if (!lens && camera<1.4) tone=camera<.70 ? .12 : .98;
-    if (!lens && Math.abs(nx-.724)<.013 && Math.abs(ny-.319)<.012) tone=1;
-    // A restrained reflection keeps the eye visible through each lens.
-    if (lens && Math.abs(ny-(.325+(nx<.508 ? nx-.32 : nx-.56)*.35))<.008) {
-      tone=.63; alpha=.38;
+    // A broad brow tapers toward the cheek, with a recessed lens inside the rim.
+    const lensCenter = nx<.508 ? .387 : .629;
+    const taper = 1-.17*smoothstep(.325,.416,ny);
+    const lensX = lensCenter+(nx-lensCenter)/taper;
+    const distance = roundedBox(lensX,ny,lensCenter,.353,.111,.063,.022);
+    const brow = ny<.328;
+    const lens = distance < -(brow ? rim*1.25 : rim);
+    const frame = distance<=.003 && !lens;
+    const bridgeY = .322+Math.abs(nx-.508)*.44;
+    const bridge = nx>.486 && nx<.53 && Math.abs(ny-bridgeY)<rim*.6;
+    const temple = nx>.246 && nx<.77 && (nx<.291 || nx>.725)
+      && Math.abs(ny-(.307+Math.abs(nx-.508)*.065))<rim;
+    const camera = Math.hypot((nx-.279)/cameraX,(ny-.321)/cameraY);
+    const sensor = Math.hypot((nx-.737)/(cameraX*.82),(ny-.321)/(cameraY*.82));
+    const hardware = camera<=1.28 || sensor<=1.28;
+    if (!lens && !frame && !bridge && !temple && !hardware) continue;
+
+    let tone = lens ? .25 : brow ? .96 : .68;
+    let alpha = lens ? .28 : 1;
+    let occlusion = lens ? .44 : 1;
+    let glyph;
+    if (frame && !brow) {
+      // The bright outer bevel and shaded inner edge give the rims thickness.
+      tone=distance>-rim*.36 ? .87 : .39;
+    }
+    if (temple) tone=ny<.329 ? .75 : .40;
+    if (hardware) {
+      const ring=Math.min(camera,sensor);
+      tone=ring<.56 ? .14 : ring<.97 ? 1 : .49;
+      glyph=ring<.56 ? ':' : '@';
+      alpha=1; occlusion=1;
+    }
+    if (lens && !hardware) {
+      // A soft diagonal reflection leaves the eyes visible through tinted glass.
+      const reflection = Math.abs(ny-(.326+(nx-lensCenter)*.45));
+      if (reflection<.010) {tone=.80;alpha=.43;}
+      // A tiny display sits in the lower outside corner of the right lens.
+      const displayX=Math.round(columns*.658), displayY=Math.round(rows*.374);
+      const dx=x-displayX, dy=y-displayY;
+      if ((dy===0 && dx>=0 && dx<=2) || (dy===1 && dx>=0 && dx<=1)) {
+        tone=1; alpha=.94; occlusion=.74;
+        glyph=dy===0 ? '=' : ':';
+      }
     }
     tone=clamp(tone+(noise(x+311,y+47)-.5)*.035,0,1);
-    const glyph=GLYPHS[Math.min(GLYPHS.length-1,Math.floor(tone*GLYPHS.length))];
+    glyph ??= GLYPHS[Math.min(GLYPHS.length-1,Math.floor(tone*GLYPHS.length))];
     cells.push({x,y,tone,glyph,alpha});
-    mask.set(y*columns+x,lens ? .22 : 1);
+    mask.set(y*columns+x,occlusion);
   }
-  return {cells,mask,revealTop:.285,revealHeight:.13};
+  return {cells,mask,revealTop:.278,revealHeight:.145};
 }
 
 // Sample the supplied photograph. Flood-fill only the connected pastel backdrop.
