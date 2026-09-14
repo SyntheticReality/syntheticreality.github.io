@@ -36,6 +36,34 @@ export function startEngineeringProcess(container) {
   const buttons = [...container.querySelectorAll('[data-engineering-stage]')];
   const label = container.querySelector('[data-engineering-label]');
   const description = container.querySelector('[data-engineering-description]');
+  const enhancedBefore = container.classList.contains('engineering-process-enhanced');
+  const captionStackBefore = description?.classList.contains('engineering-caption-stack');
+  const captionLayers = [];
+  const visualWeights = [];
+  const buttonStates = buttons.map(button => ({
+    button,
+    index: STAGES.findIndex(item => item.id === button.dataset.engineeringStage),
+    previousWeight: button.style.getPropertyValue('--engineering-weight'),
+    previousPriority: button.style.getPropertyPriority('--engineering-weight'),
+  }));
+  let captionText = description;
+  if (description) {
+    // One accessible caption changes immediately. Decorative layers fade through
+    // the same stage weights, without replacing visible text mid-transition.
+    captionText = document.createElement('span');
+    captionText.className = 'engineering-caption-text';
+    description.replaceChildren(captionText);
+    description.classList.add('engineering-caption-stack');
+    for (const item of STAGES) {
+      const layer = document.createElement('span');
+      layer.className = 'engineering-caption-layer';
+      layer.setAttribute('aria-hidden', 'true');
+      layer.textContent = item.description;
+      description.append(layer);
+      captionLayers.push(layer);
+    }
+  }
+  container.classList.add('engineering-process-enhanced');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const removers = [];
   let width = 1, height = 1, dpr = 1, unit = 1;
@@ -54,8 +82,22 @@ export function startEngineeringProcess(container) {
     const selected = STAGES[stage];
     buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.engineeringStage === selected.id)));
     if (label) label.textContent = selected.label;
-    if (description) description.textContent = selected.description;
+    if (captionText) captionText.textContent = selected.description;
     container.dataset.engineeringActive = selected.id;
+  }
+
+  function updateVisualControls() {
+    weights.forEach((weight, index) => {
+      const value = weight.toFixed(4);
+      if (visualWeights[index] === value) return;
+      visualWeights[index] = value;
+      for (const state of buttonStates) {
+        if (state.index === index) state.button.style.setProperty('--engineering-weight', value);
+      }
+      // Briefly fade through the background so unlike strings never form a
+      // bright, overlapping jumble during a crossfade or a rapid stage jump.
+      if (captionLayers[index]) captionLayers[index].style.opacity = smooth(clamp((weight - .45) / .55)).toFixed(4);
+    });
   }
 
   function selectStage(index) {
@@ -189,7 +231,9 @@ export function startEngineeringProcess(container) {
   }
 
   function draw() {
-    if (!ctx || dead || width < 2 || height < 2) return;
+    if (dead) return;
+    updateVisualControls();
+    if (!ctx || width < 2 || height < 2) return;
     const design = weights[0], develop = weights[1], deployment = weights[2];
     elevation = develop + deployment;
     const population = deployment ** 2;
@@ -344,6 +388,15 @@ export function startEngineeringProcess(container) {
     resizeObserver?.disconnect();
     intersectionObserver?.disconnect();
     removers.forEach(remove => remove());
+    for (const { button, previousWeight, previousPriority } of buttonStates) {
+      if (previousWeight) button.style.setProperty('--engineering-weight', previousWeight, previousPriority);
+      else button.style.removeProperty('--engineering-weight');
+    }
+    if (!enhancedBefore) container.classList.remove('engineering-process-enhanced');
+    if (description) {
+      description.textContent = STAGES[stage].description;
+      if (!captionStackBefore) description.classList.remove('engineering-caption-stack');
+    }
     instances.delete(container);
   }
 
@@ -367,6 +420,7 @@ export function startEngineeringProcess(container) {
   }
   instances.set(container, cleanup);
   updateText();
+  updateVisualControls();
   resize();
   sync();
   return cleanup;
