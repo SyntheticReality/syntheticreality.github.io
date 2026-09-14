@@ -1,10 +1,12 @@
-/** One small isometric world, from spatial wireframe to a finished interaction. */
+/** A flat plan extrudes into architecture, then fills with people and activity. */
 const instances = new WeakMap();
 const STAGES = [
-  { id: 'design', label: 'Design', description: 'Interaction design · UI/UX · Spatial prototypes' },
-  { id: 'develop', label: 'Develop', description: 'Gameplay · Simulation rules · Multiplayer systems' },
-  { id: 'deliver', label: 'Deliver', description: 'Visual polish · Performance · Platform builds' },
+  { id: 'design', label: 'Design', description: 'Concept · UI/UX · Prototypes' },
+  { id: 'develop', label: 'Develop', description: 'VR/AR · Web · PC · Mobile' },
+  { id: 'deployment', label: 'Deployment', description: 'Testing · Optimization · Release' },
 ];
+const STAGE_DURATION = 6;
+const TRANSITION_DURATION = 2;
 const clamp = (value, min = 0, max = 1) => Math.max(min, Math.min(max, value));
 const mix = (a, b, t) => a + (b - a) * t;
 const smooth = t => t * t * (3 - 2 * t);
@@ -39,7 +41,7 @@ export function startEngineeringProcess(container) {
   let width = 1, height = 1, dpr = 1, unit = 1;
   let frame = 0, last = null, elapsed = 0, time = 0, stage = 0;
   let visible = !('IntersectionObserver' in window), dead = false, suspended = false;
-  let manual = false, transitionAge = 1.2;
+  let transitionAge = TRANSITION_DURATION, elevation = 0, layerOpacity = 1;
   let weights = [1, 0, 0], fromWeights = [...weights];
   let resizeObserver, intersectionObserver;
 
@@ -56,25 +58,26 @@ export function startEngineeringProcess(container) {
     container.dataset.engineeringActive = selected.id;
   }
 
-  function selectStage(index, userSelected = false) {
+  function selectStage(index) {
     stage = index;
-    if (userSelected) manual = true;
     fromWeights = [...weights];
-    transitionAge = reduced.matches || !ctx ? 1.2 : 0;
+    transitionAge = reduced.matches || !ctx ? TRANSITION_DURATION : 0;
     elapsed = 0;
+    last = performance.now();
     updateText();
-    if (transitionAge === 1.2) weights = STAGES.map((_, i) => Number(i === stage));
+    if (transitionAge === TRANSITION_DURATION) weights = STAGES.map((_, i) => Number(i === stage));
     draw();
     sync();
   }
 
   function project(x, y, z = 0) {
-    return [width * .5 + (x - y) * unit, height * .51 + (x + y) * unit * .47 - z * unit * .98];
+    // The camera and the XY footprint never move; only height is interpolated.
+    return [width * .5 + (x - y) * unit, height * .53 + (x + y) * unit * .47 - z * unit * .98 * elevation];
   }
 
   function pixel(x, y, size, opacity, color = '#be95ff') {
     if (opacity < .012) return;
-    ctx.globalAlpha = clamp(opacity);
+    ctx.globalAlpha = clamp(opacity * layerOpacity);
     ctx.fillStyle = color;
     const side = Math.max(1 / dpr, Math.round(size * dpr) / dpr);
     ctx.fillRect(Math.round((x - side / 2) * dpr) / dpr, Math.round((y - side / 2) * dpr) / dpr, side, side);
@@ -96,7 +99,7 @@ export function startEngineeringProcess(container) {
 
   function polygon(points, color, opacity) {
     if (opacity < .01) return;
-    ctx.globalAlpha = clamp(opacity);
+    ctx.globalAlpha = clamp(opacity * layerOpacity);
     ctx.fillStyle = color;
     ctx.beginPath();
     points.forEach((point, index) => {
@@ -109,6 +112,7 @@ export function startEngineeringProcess(container) {
 
   // Sample faces on a fixed spatial lattice: every stage keeps the same geometry.
   function face(origin, axisA, axisB, intensity, material, seed, ground = false) {
+    if (material < .01) return;
     const aLength = Math.hypot(...axisA), bLength = Math.hypot(...axisB);
     const rows = Math.ceil(aLength / .20), columns = Math.ceil(bLength / .20);
     const color = intensity > .65 ? '#d0a7ff' : '#a56ce5';
@@ -129,28 +133,33 @@ export function startEngineeringProcess(container) {
   }
 
   function box(x, y, w, d, h, z = 0, bright = 0) {
-    const design = weights[0], develop = weights[1], deliver = weights[2];
-    const material = develop * .44 + deliver * .88;
+    const design = weights[0], develop = weights[1], deployment = weights[2];
+    const material = develop * .84 + deployment * .92;
     const top = [[x, y, z + h], [x + w, y, z + h], [x + w, y + d, z + h], [x, y + d, z + h]];
     const right = [[x + w, y, z], [x + w, y + d, z], top[2], top[1]];
     const left = [[x, y + d, z], [x + w, y + d, z], top[2], top[3]];
-    const solid = (develop * .65 + deliver) * .97;
+    const solid = (develop + deployment) * .97;
     polygon(left, '#21142e', solid);
     face([x, y + d, z], [w, 0, 0], [0, 0, h], .45 + bright, material, 13);
     polygon(right, '#160f23', solid);
     face([x + w, y, z], [0, d, 0], [0, 0, h], .3 + bright, material, 29);
     polygon(top, '#302040', solid);
     face(top[0], [w, 0, 0], [0, d, 0], .85 + bright, material, 7);
-    const edge = design * .67 + develop * .46 + deliver * .63;
+    const edge = design * .76 + develop * .75 + deployment * .79;
     loop(top, edge + bright * .2, '#d1adff');
-    for (const i of [1, 2, 3]) line([top[i][0], top[i][1], z], top[i], edge * .76);
-    line([x, y + d, z], [x + w, y + d, z], edge * .45);
-    line([x + w, y, z], [x + w, y + d, z], edge * .45);
-    if (design > .01) {
-      line([x, y, z], top[0], design * .22);
-      line([x, y, z], [x + w, y, z], design * .2);
-      line([x, y, z], [x, y + d, z], design * .2);
+    if (elevation > .01) {
+      for (const i of [1, 2, 3]) line([top[i][0], top[i][1], z], top[i], edge * .86);
+      line([x, y + d, z], [x + w, y + d, z], edge * .45);
+      line([x + w, y, z], [x + w, y + d, z], edge * .45);
     }
+  }
+
+  function footprint(x, y, w, d, opacity) {
+    const corners = [[x, y, 0], [x + w, y, 0], [x + w, y + d, 0], [x, y + d, 0]];
+    polygon(corners, '#9861cc', opacity * .08);
+    loop(corners, opacity, '#cfacff', .12, .075);
+    // Plan hatching belongs to the same rectangle that will be raised upward.
+    for (let u = .22; u < w; u += .26) line([x + u, y + .08, 0], [x + u, y + d - .08, 0], opacity * .30, '#bb8be9', .17, .045);
   }
 
   function pad(x, y, intensity, active) {
@@ -160,51 +169,66 @@ export function startEngineeringProcess(container) {
     pixel(...p, unit * .1, intensity, '#eadbff');
   }
 
-  function player(point, phase, active) {
+  function player(point, phase, population) {
     const [x, y] = point;
-    const bob = active * Math.sin(phase) * .035;
+    const bob = Math.sin(phase) * .025;
+    const stride = Math.sin(phase * 2) * .07;
+    layerOpacity = population;
     const p = project(x, y, .045);
-    pixel(...p, unit * .32, active * .16);
-    box(x - .14, y - .14, .28, .28, .32, .04 + bob, .48);
-    box(x - .1, y - .1, .20, .20, .18, .42 + bob, .85);
-    const head = project(x, y, .60 + bob);
-    pixel(...head, unit * .105, .7 + active * .3, '#f0e4ff');
+    pixel(...p, unit * .42, .22);
+    // Head, torso, arms and alternating feet stay legible at mobile canvas sizes.
+    box(x - .17, y - .13, .34, .26, .36, .19 + bob, .55);
+    box(x - .115, y - .105, .23, .21, .23, .62 + bob, .9);
+    line([x - .23, y, .47 + bob], [x - .24, y + stride, .25], .88, '#e8d5ff', .07, .085);
+    line([x + .23, y, .47 + bob], [x + .24, y - stride, .25], .88, '#e8d5ff', .07, .085);
+    line([x - .085, y, .20], [x - .085, y + stride, .04], .98, '#dfc5ff', .065, .09);
+    line([x + .085, y, .20], [x + .085, y - stride, .04], .98, '#dfc5ff', .065, .09);
+    const head = project(x, y, .86 + bob);
+    pixel(...head, unit * .13, 1, '#f6ecff');
+    layerOpacity = 1;
   }
 
   function draw() {
     if (!ctx || dead || width < 2 || height < 2) return;
-    const design = weights[0], develop = weights[1], deliver = weights[2];
-    const active = develop + deliver;
+    const design = weights[0], develop = weights[1], deployment = weights[2];
+    elevation = develop + deployment;
+    const population = deployment ** 2;
+    layerOpacity = 1;
     ctx.clearRect(0, 0, width, height);
     ctx.globalAlpha = 1;
     const halo = ctx.createRadialGradient(width * .51, height * .52, 0, width * .51, height * .52, unit * 6);
-    halo.addColorStop(0, `rgba(125, 60, 189, ${.03 + deliver * .08})`);
+    halo.addColorStop(0, `rgba(125, 60, 189, ${.03 + elevation * .045 + deployment * .04})`);
     halo.addColorStop(1, 'rgba(125, 60, 189, 0)');
     ctx.fillStyle = halo;
     ctx.fillRect(0, 0, width, height);
 
     // Ground slab and spatial grid remain in place throughout the progression.
     box(-4.3, -3.35, 8.6, 6.7, .27, -.30);
-    face([-4.3, -3.35, -.025], [8.6, 0, 0], [0, 6.7, 0], .27, .15 + develop * .16 + deliver * .5, 41, true);
-    for (let x = -4; x <= 4; x++) line([x, -3.35, -.01], [x, 3.35, -.01], .15 * design + .07 * develop + .04 * deliver, '#ad79e7', .22, .04);
-    for (let y = -3; y <= 3; y++) line([-4.3, y, -.01], [4.3, y, -.01], .15 * design + .07 * develop + .04 * deliver, '#ad79e7', .22, .04);
+    face([-4.3, -3.35, -.025], [8.6, 0, 0], [0, 6.7, 0], .27, .10 + develop * .22 + deployment * .45, 41, true);
+    for (let x = -4; x <= 4; x++) line([x, -3.35, 0], [x, 3.35, 0], .24 * design + .07 * develop + .04 * deployment, '#ad79e7', .22, .05);
+    for (let y = -3; y <= 3; y++) line([-4.3, y, 0], [4.3, y, 0], .24 * design + .07 * develop + .04 * deployment, '#ad79e7', .22, .05);
+    for (const building of BUILDINGS) footprint(building.x, building.y, building.w, building.d, design * .67 + develop * .20);
+    footprint(1.5, -2.65, .35, .5, design * .74);
+    footprint(3, -2.65, .35, .5, design * .74);
 
     // The movement loop is laid out in Design and becomes a working interaction.
     for (let i = 0; i < ROUTE.length; i++) {
       const a = [...ROUTE[i], .02], b = [...ROUTE[(i + 1) % ROUTE.length], .02];
-      line(a, b, design * .24 + develop * .36 + deliver * .12, '#c696ff', .20, .05);
+      line(a, b, design * .30 + develop * .12 + deployment * .24, '#c696ff', .20, .05);
     }
-    const a = routePoint(.09 + time * .035);
-    const b = routePoint(.58 - time * .026);
-    const trigger = active * Math.exp(-((a[0] - 2.3) ** 2 + (a[1] + 1.35) ** 2) * 1.9);
-    pad(-2.5, 1.95, .3 + active * .32, 0);
+    const people = [0, .20, .41, .62, .82].map((offset, i) => ({
+      point: routePoint(offset + time * (i % 2 ? -.023 : .028)),
+      phase: time * 2.6 + i * 1.7,
+    }));
+    const trigger = population * Math.max(...people.map(({ point }) => Math.exp(-((point[0] - 2.3) ** 2 + (point[1] + 1.35) ** 2) * 1.9)));
+    pad(-2.5, 1.95, .3 + population * .32, 0);
     pad(2.3, -1.35, .35 + trigger * .6, trigger);
 
-    if (develop > .01) {
-      // Two route trails make motion legible without synthetic data or HUD labels.
-      for (let i = 1; i <= 10; i++) {
-        const p = project(...routePoint(.09 + (time - i * .14) * .035), .035);
-        pixel(...p, Math.max(1.2, unit * .065), develop * (1 - i / 12) * .58, '#e4cdff');
+    if (population > .01) {
+      // Activity follows the plan's circulation route, only once it is deployed.
+      for (let i = 1; i <= 9; i++) {
+        const p = project(...routePoint((time - i * .14) * .028), .035);
+        pixel(...p, Math.max(1.2, unit * .065), population * (1 - i / 11) * .58, '#e4cdff');
       }
     }
 
@@ -214,22 +238,22 @@ export function startEngineeringProcess(container) {
       box(1.5, -2.65, .35, .5, 1.9);
       box(3.0, -2.65, .35, .5, 1.9);
       box(1.5, -2.65, 1.85, .5, .30, 1.9, .18);
-      const gateOpacity = active * (.28 + deliver * .27) * (1 - trigger * .82);
+      const gateOpacity = elevation * (.25 + deployment * .20) * (1 - trigger * .82);
       for (let x = 1.94; x < 2.96; x += .16) {
         line([x, -2.39, .15 + trigger * 1.5], [x, -2.39, 1.80], gateOpacity, '#c79cff', .19, .045);
       }
-      line([1.65, -2.12, 2.22], [3.2, -2.12, 2.22], .25 + deliver * .65 + trigger * .1, '#ecd9ff', .13, .085);
+      line([1.65, -2.12, 2.22], [3.2, -2.12, 2.22], elevation * .45 + deployment * .4 + trigger * .1, '#ecd9ff', .13, .085);
     }});
-    for (const [point, phase] of [[a, time * 2], [b, time * 2 + Math.PI]]) objects.push({ depth: point[0] + point[1], render: () => player(point, phase, active) });
+    if (population > .01) for (const { point, phase } of people) objects.push({ depth: point[0] + point[1], render: () => player(point, phase, population) });
     objects.sort((left, right) => left.depth - right.depth).forEach(object => object.render());
 
     // Finishing light is attached to the architecture, never a free particle cloud.
-    if (deliver > .01) {
-      line([-3.3, -1.43, 1.46], [-1.7, -1.43, 1.46], deliver * .8, '#e5ceff', .14, .095);
-      line([-.1, .65, .56], [1.23, .65, .56], deliver * .7, '#e2c6ff', .15, .07);
+    if (elevation > .01) {
+      line([-3.3, -1.43, 1.46], [-1.7, -1.43, 1.46], elevation * .5 + deployment * .3, '#e5ceff', .14, .095);
+      line([-.1, .65, .56], [1.23, .65, .56], elevation * .4 + deployment * .3, '#e2c6ff', .15, .07);
       for (let i = 0; i < 6; i++) {
         const p = project(-3.85 + i * 1.55, 3.35, -.02);
-        pixel(...p, unit * .12, deliver * .7, '#dbbaff');
+        pixel(...p, unit * .12, elevation * .25 + deployment * .45, '#dbbaff');
       }
     }
 
@@ -256,7 +280,7 @@ export function startEngineeringProcess(container) {
   }
 
   function canAnimate() {
-    return ctx && !dead && visible && !suspended && !document.hidden && !reduced.matches && (!manual || transitionAge < 1.2);
+    return ctx && !dead && visible && !suspended && !document.hidden && !reduced.matches;
   }
 
   function stop() {
@@ -266,7 +290,10 @@ export function startEngineeringProcess(container) {
 
   function sync() {
     if (!canAnimate()) stop();
-    else if (!frame) frame = requestAnimationFrame(tick);
+    else if (!frame) {
+      if (last === null) last = performance.now();
+      frame = requestAnimationFrame(tick);
+    }
   }
 
   function tick(now) {
@@ -277,12 +304,24 @@ export function startEngineeringProcess(container) {
     const delta = now - last;
     // A modest frame rate keeps this supporting illustration inexpensive.
     if (delta >= 1000 / 30) {
-      const dt = Math.min(delta / 1000, .08);
+      const dt = delta / 1000;
       last = now;
-      if (!manual) { time += dt * (weights[1] + weights[2]); elapsed += dt; }
-      if (!manual && elapsed >= 8) selectStage((stage + 1) % STAGES.length);
-      transitionAge = Math.min(1.2, transitionAge + dt);
-      const blend = smooth(transitionAge / 1.2);
+      // Only walking is capped. Stage timing follows real visible elapsed time,
+      // including when a visible or occluded window receives very few frames.
+      time += Math.min(dt, .25) * weights[2];
+      elapsed += dt;
+      const crossedStages = Math.floor(elapsed / STAGE_DURATION);
+      if (crossedStages) {
+        // Resolve any number of missed boundaries in one step, preserving the
+        // exact remainder and the transition out of the preceding settled stage.
+        const previousStage = (stage + crossedStages - 1) % STAGES.length;
+        stage = (stage + crossedStages) % STAGES.length;
+        elapsed %= STAGE_DURATION;
+        fromWeights = STAGES.map((_, i) => Number(i === previousStage));
+        transitionAge = Math.min(TRANSITION_DURATION, elapsed);
+        updateText();
+      } else transitionAge = Math.min(TRANSITION_DURATION, transitionAge + dt);
+      const blend = smooth(transitionAge / TRANSITION_DURATION);
       weights = fromWeights.map((weight, i) => mix(weight, Number(i === stage), blend));
       draw();
     }
@@ -291,7 +330,7 @@ export function startEngineeringProcess(container) {
 
   function onMotionChange() {
     if (reduced.matches) {
-      transitionAge = 1.2;
+      transitionAge = TRANSITION_DURATION;
       weights = STAGES.map((_, i) => Number(i === stage));
       draw();
     }
@@ -310,7 +349,7 @@ export function startEngineeringProcess(container) {
 
   buttons.forEach(button => {
     const index = STAGES.findIndex(item => item.id === button.dataset.engineeringStage);
-    if (index >= 0) listen(button, 'click', () => selectStage(index, true));
+    if (index >= 0) listen(button, 'click', () => selectStage(index));
   });
   listen(reduced, 'change', onMotionChange);
   listen(document, 'visibilitychange', sync);

@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="/assets/refinements.css">
   <link rel="stylesheet" href="/assets/portfolio-updates.css">
   <link rel="stylesheet" href="/assets/applications.css">
-  <link rel="stylesheet" href="/assets/founder.css?v=20260914">
-  <link rel="stylesheet" href="/assets/engineering-process.css">
-  <script type="module" src="/assets/app.js?v=20260914"></script>
+  <link rel="stylesheet" href="/assets/founder.css?v=20260914b">
+  <link rel="stylesheet" href="/assets/engineering-process.css?v=20260914b">
+  <script type="module" src="/assets/app.js?v=20260914b"></script>
   <link rel="modulepreload" href="/assets/category-topography.js">
   <link rel="stylesheet" href="/assets/back-to-top.css">
   <script type="module" src="/assets/back-to-top.js"></script>
@@ -57,13 +57,13 @@
       <div class="engineering-viewport"><canvas data-engineering-canvas aria-hidden="true"></canvas></div>
       <div class="engineering-process-footer">
         <div class="engineering-stage-controls" role="group" aria-label="Engineering stages">
-          <button type="button" data-engineering-stage="design" aria-pressed="true">[ 01 Design ]</button>
-          <button type="button" data-engineering-stage="develop" aria-pressed="false">[ 02 Develop ]</button>
-          <button type="button" data-engineering-stage="deliver" aria-pressed="false">[ 03 Deliver ]</button>
+          <button type="button" data-engineering-stage="design" aria-pressed="true">[ Design ]</button>
+          <button type="button" data-engineering-stage="develop" aria-pressed="false">[ Develop ]</button>
+          <button type="button" data-engineering-stage="deployment" aria-pressed="false">[ Deployment ]</button>
         </div>
       </div>
-      <figcaption class="engineering-process-caption"><strong data-engineering-label>Design</strong><span data-engineering-description>Interaction design · UI/UX · Spatial prototypes</span></figcaption>
-      <noscript><p class="engineering-fallback">Design the space and interactions. Develop movement and rules. Polish the experience for its platform.</p></noscript>
+      <figcaption class="engineering-process-caption"><span data-engineering-description>Concept · UI/UX · Prototypes</span></figcaption>
+      <noscript><p class="engineering-fallback">Concept, UI/UX and prototypes. Development for VR/AR, Web, PC and Mobile. Testing, optimization and release.</p></noscript>
     </figure>
   </div>
 
@@ -72,14 +72,26 @@
   <div class="section-label"><h2 id="support-title">Support and recognition</h2><span class="rule"></span></div>
   <div class="support-grid">
     <article class="support-entry">
-      <h3>ProInnóvate / StartUp Perú</h3>
-      <p>Supported by ProInnóvate.<br>StartUp Perú 10G winner, 2024.</p>
-      <a class="terminal-link" href="https://andina.pe/agencia/noticia-conoce-las-ocho-startups-estan-transformando-mercado-peruano-1057329.aspx" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> Coverage <span aria-hidden="true">↗ ]</span></a>
+      <h3>StartUp Perú</h3>
+      <p>10G Winner, 2024.<br>Supported by ProInnóvate,<br>Peru’s Ministry of Production.</p>
+      <div class="support-links">
+        <a class="terminal-link" href="https://startup.proinnovate.gob.pe/wp-content/uploads/2024/04/Resultados-CD-Emprendimientos-Innovadores-10G-1.pdf" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> 10G results <span aria-hidden="true">↗ ]</span></a>
+        <a class="terminal-link" href="https://www.gob.pe/institucion/proinnovate/noticias/1321785-ocho-startups-que-estan-transformando-el-mercado-con-el-impulso-de-proinnovate" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> ProInnóvate <span aria-hidden="true">↗ ]</span></a>
+        <a class="terminal-link" href="https://andina.pe/agencia/noticia-conoce-las-ocho-startups-estan-transformando-mercado-peruano-1057329.aspx" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> Andina <span aria-hidden="true">↗ ]</span></a>
+      </div>
     </article>
     <article class="support-entry">
-      <h3>IFE EdTech</h3>
+      <h3>Institute for the Future of Education</h3>
       <p>Supported by IFE EdTech,<br>Tecnológico de Monterrey.</p>
-      <a class="terminal-link" href="https://tec.mx/sites/default/files/repositorio/ife/pdf/IFE-Impact-Report-EN-tec-de-monterrey.pdf" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> Impact report <span aria-hidden="true">↗ ]</span></a>
+      <div class="support-links">
+        <a class="terminal-link" href="https://tec.mx/sites/default/files/repositorio/ife/pdf/IFE-Impact-Report-EN-tec-de-monterrey.pdf" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> Impact report <span aria-hidden="true">↗ ]</span></a>
+        <a class="terminal-link" href="https://edtech.tec.mx/en" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> Programs <span aria-hidden="true">↗ ]</span></a>
+      </div>
+    </article>
+    <article class="support-entry">
+      <h3>Startup Wise Guys</h3>
+      <p>Pre-accelerator graduate.<br>Batch 69.</p>
+      <div class="support-links"><a class="terminal-link" href="https://startupwiseguys.com/building/xr-pre-revenue-program/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> Program <span aria-hidden="true">↗ ]</span></a></div>
     </article>
   </div>
 </section>
@@ -91,14 +103,10 @@
       <h2 id="founder-name">Alexis Salinas Mark<span class="purple">.</span></h2>
       <span class="founder-role">Founder</span>
       <p>Alexis is a self-taught programmer with a degree in architecture, bringing design and engineering together. Over 10 years in VR/AR, games and product design, he has delivered 80+ projects for clients worldwide.</p>
-      <div class="founder-background">
-        <span class="background-label">Background</span>
-        <ul aria-label="Areas of background"><li>UI/UX design</li><li>Sciences</li><li>Architecture</li><li>Programming</li><li>Game development</li></ul>
-      </div>
       <nav class="founder-links" aria-label="Alexis’s links">
         <a class="terminal-link" href="https://www.linkedin.com/in/salinasmark/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> LinkedIn <span aria-hidden="true">↗ ]</span></a>
         <a class="terminal-link" href="https://medium.com/@a.salinas.mark" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> Articles <span aria-hidden="true">↗ ]</span></a>
-        <a class="terminal-link" href="https://salinasmark.notion.site/Spatial-Hub-ba5c7823b0c84976ad07670bde532326" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> Design resources <span aria-hidden="true">↗ ]</span></a>
+        <a class="terminal-link" href="https://salinasmark.notion.site/Spatial-Hub-ba5c7823b0c84976ad07670bde532326" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[</span> Resources <span aria-hidden="true">↗ ]</span></a>
       </nav>
     </div>
   </div>
