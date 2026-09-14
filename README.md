@@ -22,7 +22,7 @@ Build runs Astro diagnostics and generates the complete static site in `dist/`. 
 
 ## Launch routing and SEO
 
-Home, Enterprise (`/work/`), Entertainment (`/play/`), About and Contact are indexable. The existing GGC landing page and three game policy pages keep their URLs and remain in the sitemap. Retained project detail pages remain noindex while project information is presented through image flips. Design comparison galleries remain in the separate prototype and are not published here.
+Home, Enterprise (`/enterprise/`), Entertainment (`/entertainment/`), About and Contact are indexable. The old `/work/` and `/play/` URLs forward immediately to their new category pages using static redirects, preserving query strings and fragments when JavaScript is enabled. The existing GGC landing page and three game policy pages keep their URLs and remain in the sitemap. Retained project detail pages remain noindex while project information is presented through image flips. Design comparison galleries remain in the separate prototype and are not published here.
 
 Old `/games/`, `/simulations/` and `/education/` links lead to their new categories using immediate HTML redirects supported by static hosting. Their `#contact` calls to action lead to `/contact/`; the homepage also retains a `#contact` anchor. `/blog/` leads to the existing Medium publication; the old sample posts remain accessible but noindex and outside the sitemap. `/sitemap-index.xml` and `/sitemap-0.xml` remain compatible with existing submissions.
 

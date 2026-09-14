@@ -6,17 +6,17 @@
       "type": "WebPage",
       "description": "Osyrys engineers interactive media: VR/AR games, simulations and real-time 3D experiences for enterprise and entertainment."
     },
-    "/work/": {
+    "/enterprise/": {
       "type": "CollectionPage",
       "description": "Explore Osyrys enterprise projects in VR training, adaptive simulations, shared experiences and generative content pipelines."
     },
-    "/play/": {
+    "/entertainment/": {
       "type": "CollectionPage",
       "description": "Explore games, online worlds and interactive storytelling by Osyrys, from cooperative VR experiences to cultural adventures."
     },
     "/about/": {
       "type": "AboutPage",
-      "description": "Osyrys is an interactive media company. Meet programmer and architect Alexis Salinas Mark, with 8+ years in VR/AR and 60+ projects delivered by Osyrys."
+      "description": "Meet Alexis Salinas Mark: self-taught programmer, architecture graduate and Osyrys founder with 10 years in VR/AR, games and product design, and 80+ projects delivered."
     },
     "/contact/": {
       "type": "ContactPage",

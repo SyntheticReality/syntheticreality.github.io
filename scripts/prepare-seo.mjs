@@ -89,7 +89,7 @@ for (const file of files) {
     if (route === '/about/') {
       const personId = absolute('/about/#alexis-salinas-mark');
       graph.push({ '@type': 'Person', '@id': personId, name: 'Alexis Salinas Mark', jobTitle: 'Founder',
-        worksFor: { '@id': orgId }, sameAs: ['https://www.linkedin.com/in/salinasmark/'] });
+        worksFor: { '@id': orgId }, sameAs: ['https://www.linkedin.com/in/salinasmark/', 'https://medium.com/@a.salinas.mark'] });
       pageEntity.mentions = { '@id': personId };
     }
     if (route === '/contact/') pageEntity.mainEntity = { '@id': orgId };

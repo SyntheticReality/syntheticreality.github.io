@@ -1,6 +1,6 @@
 ---
-interface Props { destination: string; label: string; }
-const { destination, label } = Astro.props;
+interface Props { destination: string; label: string; preserveLocation?: boolean; }
+const { destination, label, preserveLocation = false } = Astro.props;
 const canonical = new URL(destination, Astro.site);
 ---
 <!doctype html>
@@ -12,9 +12,15 @@ const canonical = new URL(destination, Astro.site);
     <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href={canonical} />
     <title>Osyrys / {label}</title>
-    <script is:inline>
+    <script is:inline define:vars={{ destination, preserveLocation }}>
+      if (preserveLocation) {
+        const redirectUrl = new URL(destination, location.origin);
+        redirectUrl.search = location.search;
+        redirectUrl.hash = location.hash;
+        location.replace(redirectUrl.href);
+      }
       // Preserve the old category pages' contact calls to action.
-      if (location.hash === '#contact') location.replace('/contact/');
+      else if (location.hash === '#contact') location.replace('/contact/');
     </script>
   </head>
   <body><p>This page has moved. <a href={destination}>Continue to {label}</a>.</p></body>

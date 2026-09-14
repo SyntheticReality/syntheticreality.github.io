@@ -1,0 +1,4 @@
+---
+import html from "../../../website/entertainment/index.html?raw";
+---
+<Fragment set:html={html.replace(/^<!doctype html>\s*/i, "")} />

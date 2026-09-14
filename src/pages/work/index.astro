@@ -1,4 +1,4 @@
 ---
-import html from "../../../website/work/index.html?raw";
+import LegacyRedirect from '../../components/LegacyRedirect.astro';
 ---
-<Fragment set:html={html.replace(/^<!doctype html>\s*/i, "")} />
+<LegacyRedirect destination="/enterprise/" label="Enterprise" preserveLocation />

@@ -19,25 +19,53 @@ export function portraitPresence(cell, columns, rows, variant = 'soft') {
   return noise(cell.x, cell.y) < density ? Math.sqrt(fade)*side : 0;
 }
 
-// Build the visor and straps on the same grid as the original photograph.
+// Model the fitted headset on the photograph's glyph grid, including its depth.
 export function buildHeadset(columns, rows) {
   const cells = [], mask = new Set();
+  const roundedBox = (x, y, cx, cy, halfWidth, halfHeight, radius) => {
+    const dx = Math.abs(x-cx)-halfWidth+radius, dy = Math.abs(y-cy)-halfHeight+radius;
+    return Math.hypot(Math.max(dx,0),Math.max(dy,0))+Math.min(Math.max(dx,dy),0)-radius;
+  };
   for (let y = 0; y < rows; y++) for (let x = 0; x < columns; x++) {
     const nx = (x+.5)/columns, ny = (y+.5)/rows;
-    const dx = Math.abs(nx-.507)-.224, dy = Math.abs(ny-.347)-.057;
-    const distance = Math.hypot(Math.max(dx,0),Math.max(dy,0))+Math.min(Math.max(dx,dy),0)-.027;
-    const nose = ny>.405 && Math.abs(nx-.507)<.024+(ny-.405)*.5;
-    const visor = distance<0 && !nose;
-    const sideStrap = ny>.318 && ny<.355 && nx>.237 && nx<.771;
-    const topStrap = ny>.11 && ny<.28 && Math.abs(nx-(.499+(ny-.11)*.035))<.017;
-    if (!visor && !sideStrap && !topStrap) continue;
-    let tone=.34, glyph='=';
-    if (visor) {
-      const edge=distance>-.012;
-      const sensor=[.348,.507,.666].some(center=>((nx-center)/.012)**2+((ny-.345)/.023)**2<1);
-      tone=sensor?.06:edge?.92:.52+(.40-ny)*.65;
-      glyph=sensor?':':edge?'#':(x+y)%3===0?'+':'=';
-    } else if(topStrap) { tone=.36; glyph=':'; }
+    const shellDistance = roundedBox(nx,ny,.508,.350,.253,.091,.046);
+    const frontDistance = roundedBox(nx,ny,.505,.342,.234,.069,.035);
+    const noseCutout = ny>.410 && Math.abs(nx-.508)<.014+(ny-.410)*.72;
+    const shell = shellDistance<0 && !noseCutout;
+    const crownX = .499+(ny-.108)*.045;
+    const crownHalfWidth = .015+(ny-.108)*.026;
+    const crown = ny>.108 && ny<.282 && Math.abs(nx-crownX)<crownHalfWidth;
+    const temple = roundedBox(nx,ny,.508,.329,.276,.023,.012)<0;
+    if (!shell && !crown && !temple) continue;
+
+    let tone;
+    if (shell) {
+      // A bright upper bevel and darker underside give the housing real thickness.
+      const across = (nx-.508)/.253;
+      const topLight = 1-smoothstep(.272,.405,ny);
+      tone = .28+topLight*.49-Math.abs(across)*.07;
+      if (frontDistance<0) {
+        const highlight = Math.exp(-(((nx-.405)/.22)**2+((ny-.302)/.09)**2));
+        tone = .50+highlight*.23-smoothstep(.355,.411,ny)*.13;
+        // Three vertical tracking windows are recessed into the curved faceplate.
+        const sensorDistance = Math.min(...[.354,.505,.656].map(center =>
+          roundedBox(nx,ny,center,.342,.016,.029,.011)));
+        if (sensorDistance<0) tone = sensorDistance>-.005 ? .24 : .035;
+        else if (sensorDistance<.005) tone = .79;
+      } else if (shellDistance>-.007) {
+        tone = ny<.35 ? .77 : .40;
+      }
+      // A short, inset bottom seam separates the faceplate from the soft gasket.
+      if (ny>.413 && ny<.422 && Math.abs(nx-.508)>.053 && Math.abs(nx-.508)<.184) tone=.18;
+    } else if (crown) {
+      const edge = Math.abs(nx-crownX)/crownHalfWidth;
+      tone = edge>.62 ? .48 : ((y%3)===0 ? .33 : .22);
+    } else {
+      // Compact temple arms connect the shell to the strap without a loose outline.
+      tone = ny<.322 ? .51 : .29;
+    }
+    tone = clamp(tone+(noise(x+127,y+73)-.5)*.045,0,1);
+    const glyph = GLYPHS[Math.min(GLYPHS.length-1,Math.floor(tone*GLYPHS.length))];
     cells.push({x,y,tone,glyph}); mask.add(y*columns+x);
   }
   return {cells,mask};
