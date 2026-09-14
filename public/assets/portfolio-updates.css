@@ -76,3 +76,11 @@
 .portfolio-caption .project-tags:empty{display:none}
 .portfolio-caption .project-tags .project-tag{white-space:nowrap}
 @media(max-width:700px){.page-intro.sector-hero{padding-bottom:32px}.portfolio-caption{gap:8px}}
+
+/* A wrapped tag group still follows the image's right edge on mobile. */
+@media(max-width:700px){
+  .selected-projects .project-caption .project-tags{margin-left:auto}
+  .selected-projects .tag-line{max-width:100%;flex-wrap:wrap}
+}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

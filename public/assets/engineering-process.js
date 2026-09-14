@@ -69,6 +69,7 @@ export function startEngineeringProcess(container) {
   let width = 1, height = 1, dpr = 1, unit = 1;
   let frame = 0, last = null, elapsed = 0, time = 0, stage = 0;
   let visible = !('IntersectionObserver' in window), dead = false, suspended = false;
+  let focused = container.contains(document.activeElement);
   let transitionAge = TRANSITION_DURATION, elevation = 0, layerOpacity = 1;
   let weights = [1, 0, 0], fromWeights = [...weights];
   let resizeObserver, intersectionObserver;
@@ -353,7 +354,9 @@ export function startEngineeringProcess(container) {
       // Only walking is capped. Stage timing follows real visible elapsed time,
       // including when a visible or occluded window receives very few frames.
       time += Math.min(dt, .25) * weights[2];
-      elapsed += dt;
+      // Keep the caption stable while someone uses the stage controls. The
+      // selected stage can still finish its transition and animate normally.
+      if (!focused) elapsed += dt;
       const crossedStages = Math.floor(elapsed / STAGE_DURATION);
       if (crossedStages) {
         // Resolve any number of missed boundaries in one step, preserving the
@@ -403,6 +406,13 @@ export function startEngineeringProcess(container) {
   buttons.forEach(button => {
     const index = STAGES.findIndex(item => item.id === button.dataset.engineeringStage);
     if (index >= 0) listen(button, 'click', () => selectStage(index));
+  });
+  listen(container, 'focusin', () => { focused = true; });
+  listen(container, 'focusout', event => {
+    if (event.relatedTarget && container.contains(event.relatedTarget)) return;
+    focused = false;
+    elapsed = 0;
+    last = performance.now();
   });
   listen(reduced, 'change', onMotionChange);
   listen(document, 'visibilitychange', sync);

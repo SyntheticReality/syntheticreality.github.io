@@ -47,6 +47,14 @@
 .reveal-copy:focus-visible{outline:1px solid var(--purple);outline-offset:3px}
 .reveal-media:hover .project-image{border-color:#9470bb}
 .project-reveal:not(.reveal-ready) .reveal-toggle{display:none}
+/* Content is readable before enhancement, including when the module fails. */
+.project-reveal:not(.reveal-ready) .reveal-media{aspect-ratio:auto;perspective:none}
+.project-reveal:not(.reveal-ready) .reveal-turner{position:static;transform:none;transition:none}
+.project-reveal:not(.reveal-ready) .reveal-face{position:relative;transform:none;backface-visibility:visible;-webkit-backface-visibility:visible}
+.project-reveal:not(.reveal-ready) .reveal-front{aspect-ratio:1.6;overflow:hidden}
+.selected-projects .project-reveal:not(.reveal-ready) .reveal-front{aspect-ratio:16/9}
+.project-reveal:not(.reveal-ready) .reveal-back{margin-top:12px}
+.project-reveal:not(.reveal-ready) .reveal-copy{height:auto;overflow:visible;cursor:auto;overflow-wrap:anywhere}
 @media(prefers-reduced-motion:reduce){.reveal-turner{transition:none}}
 
 /* One player is created on demand, outside the card's transformed faces. */
