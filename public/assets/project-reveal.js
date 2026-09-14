@@ -1,5 +1,8 @@
+import { startProjectVideos } from './project-video.js?v=20260914d';
+
 export function startProjectReveals(root = document) {
   const doc = root.ownerDocument || root;
+  const stopVideos = startProjectVideos(root);
   const cards = [...root.querySelectorAll('.project-reveal')];
   const entries = cards.map(card => ({
     card,
@@ -36,10 +39,12 @@ export function startProjectReveals(root = document) {
     };
   });
   const escape = event => {
+    if (doc.querySelector('.project-video-dialog[open]')) return;
     if (event.key === 'Escape') entries.forEach(entry => setOpen(entry, false));
   };
   root.addEventListener('keydown', escape);
   return () => {
+    stopVideos();
     listeners.forEach(remove => remove());
     root.removeEventListener('keydown', escape);
     entries.forEach(entry => { setOpen(entry, false); entry.card.classList.remove('reveal-ready'); });

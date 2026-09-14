@@ -18,7 +18,7 @@ if (capabilityCanvases.length) import('./capability-art.js').then(({ startCapabi
 const engineeringProcess = document.querySelector('[data-engineering-process]');
 if (engineeringProcess) import('./engineering-process.js?v=20260914c').then(({ startEngineeringProcess }) => startEngineeringProcess(engineeringProcess));
 
-if (document.querySelector('.project-reveal')) import('./project-reveal.js').then(({ startProjectReveals }) => startProjectReveals());
+if (document.querySelector('.project-reveal')) import('./project-reveal.js?v=20260914d').then(({ startProjectReveals }) => startProjectReveals());
 
 // Category imagery moves; the section titles remain still.
 const sectorCanvas = document.querySelector('[data-sector-art]');
