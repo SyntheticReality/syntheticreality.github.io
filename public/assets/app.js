@@ -12,7 +12,7 @@ if (pixelField) import('./hero-experiments.js').then(({ startHeroExperiment }) =
 
 const capabilityCanvases = [...document.querySelectorAll('[data-capability]')];
 const portraitCanvas = document.querySelector('[data-portrait-source]:not([data-portrait-comparison])');
-if (portraitCanvas) import('./portrait-art.js?v=20260914').then(({ startPortraitArt }) => startPortraitArt(portraitCanvas));
+if (portraitCanvas) import('./portrait-art.js?v=20260914i').then(({ startPortraitArt }) => startPortraitArt(portraitCanvas));
 if (capabilityCanvases.length) import('./capability-art.js').then(({ startCapabilityArt }) => startCapabilityArt(capabilityCanvases));
 
 const engineeringProcess = document.querySelector('[data-engineering-process]');

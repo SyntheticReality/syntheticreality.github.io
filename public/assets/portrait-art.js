@@ -103,27 +103,39 @@ export function samplePortrait({ data, width, height }) {
   return { cells, columns: width, rows: height, headset: buildHeadset(width,height) };
 }
 
-export function drawPortrait(ctx, portrait, width, height, time = 0, pointer = null, variant = 'soft', headsetOn = false) {
+function headsetCoverage(cell, rows, amount) {
+  const row = clamp(((cell.y + .5) / rows - .1) / .34, 0, 1);
+  const start = row * .68 + noise(cell.x + 97, cell.y + 151) * .12;
+  return smoothstep(start, start + .2, amount);
+}
+
+export function drawPortrait(ctx, portrait, width, height, time = 0, pointer = null, variant = 'soft', headsetAmount = 0) {
   ctx.clearRect(0, 0, width, height);
+  const amount = clamp(Number(headsetAmount) || 0, 0, 1);
   const cw = width / portrait.columns, ch = height / portrait.rows;
   ctx.font = `${cw * 1.32}px OsyrysMono, monospace`;
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   const scan = (time * .055) % 1;
   for (const cell of portrait.cells) {
-    if (headsetOn && portrait.headset?.mask.has(cell.y*portrait.columns+cell.x)) continue;
+    // The face clears by the same coverage used to assemble each headset glyph.
+    const coverage = amount && portrait.headset?.mask.has(cell.y*portrait.columns+cell.x)
+      ? headsetCoverage(cell, portrait.rows, amount) : 0;
+    if (coverage === 1) continue;
     const presence = cell.presence?.[variant] ?? portraitPresence(cell, portrait.columns, portrait.rows, variant);
     if (!presence) continue;
     const x = (cell.x + .5) * cw, y = (cell.y + .5) * ch;
     const band = time ? Math.max(0, 1 - Math.abs(y / height - scan) / .035) * .12 : 0;
     const hover = pointer ? Math.max(0, 1 - Math.hypot(x-pointer.x, y-pointer.y) / 75) * .2 : 0;
-    const alpha = clamp(.16 + cell.tone * .75 + cell.edge * .13 + band + hover, .15, 1) * presence;
+    const alpha = clamp(.16 + cell.tone * .75 + cell.edge * .13 + band + hover, .15, 1) * presence * (1 - coverage);
     ctx.fillStyle = `rgba(${Math.round(168 + cell.tone * 54)},${Math.round(115 + cell.tone * 69)},255,${alpha})`;
     ctx.fillText(cell.glyph, x, y);
   }
-  if (headsetOn && portrait.headset) for (const cell of portrait.headset.cells) {
+  if (amount && portrait.headset) for (const cell of portrait.headset.cells) {
+    const coverage = headsetCoverage(cell, portrait.rows, amount);
+    if (!coverage) continue;
     const x=(cell.x+.5)*cw, y=(cell.y+.5)*ch;
     const highlight=pointer?Math.max(0,1-Math.hypot(x-pointer.x,y-pointer.y)/75)*.14:0;
-    ctx.fillStyle=`rgba(${Math.round(168+cell.tone*54)},${Math.round(115+cell.tone*69)},255,${clamp(.22+cell.tone*.76+highlight,0,1)})`;
+    ctx.fillStyle=`rgba(${Math.round(168+cell.tone*54)},${Math.round(115+cell.tone*69)},255,${clamp(.22+cell.tone*.76+highlight,0,1)*coverage})`;
     ctx.fillText(cell.glyph,x,y);
   }
 }
@@ -134,18 +146,41 @@ export function startPortraitArt(canvas) {
   let variant = canvas.dataset.portraitVariant || 'soft';
   const toggle=canvas.closest?.('.portrait-toggle');
   let headsetOn=false;
+  const headsetHoldSeconds = 3, headsetTransitionSeconds = 1.2;
+  let headsetAmount = 0, headsetFrom = 0, headsetAge = 0, headsetHold = 0;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const source = new Image(), sample = document.createElement('canvas');
   const sampleContext = sample.getContext('2d', { willReadFrequently: true });
   let portrait = null, width = 1, height = 1, visible = true, frame = 0, previous = 0, time = 0, pointer = null, destroyed = false;
   const removers = [];
   const listen = (target, event, fn) => { target.addEventListener(event, fn, { passive: true }); removers.push(() => target.removeEventListener(event, fn)); };
-  const render = () => { if (portrait) drawPortrait(ctx, portrait, width, height, reduced.matches ? 0 : time, pointer, variant, headsetOn); };
+  const render = () => { if (portrait) drawPortrait(ctx, portrait, width, height, reduced.matches ? 0 : time, pointer, variant, headsetAmount); };
+  function setHeadset(on) {
+    headsetOn = on;
+    headsetFrom = headsetAmount;
+    headsetAge = 0;
+    headsetHold = 0;
+    if (reduced.matches) headsetAmount = Number(on);
+    toggle?.setAttribute('aria-pressed', String(on));
+  }
+  function advanceHeadset(dt) {
+    if (!toggle) return;
+    if (headsetAmount !== Number(headsetOn)) {
+      headsetAge = Math.min(headsetTransitionSeconds, headsetAge + dt);
+      const blend = smoothstep(0, headsetTransitionSeconds, headsetAge);
+      headsetAmount = headsetFrom + (Number(headsetOn) - headsetFrom) * blend;
+    } else if (!toggle.matches(':focus-visible')) {
+      headsetHold += dt;
+      if (headsetHold >= headsetHoldSeconds) setHeadset(!headsetOn);
+    }
+  }
   function tick(timestamp) {
     frame = 0;
     if (destroyed || reduced.matches || document.hidden || !visible || !portrait) return;
     if (!previous || timestamp - previous >= 1000 / 20) {
-      time += previous ? Math.min(.1, (timestamp - previous) / 1000) : 0;
+      const dt = previous ? Math.min(.1, (timestamp - previous) / 1000) : 0;
+      time += dt;
+      advanceHeadset(dt);
       previous = timestamp; render();
     }
     frame = requestAnimationFrame(tick);
@@ -179,13 +214,16 @@ export function startPortraitArt(canvas) {
   });
   listen(canvas, 'pointerleave', () => { pointer = null; render(); });
   if (toggle) listen(toggle,'click',()=>{
-    headsetOn=!headsetOn;
-    toggle.setAttribute('aria-pressed',String(headsetOn));
-    toggle.setAttribute('aria-label',headsetOn?'Remove VR headset from Alexis’s portrait':'Add VR headset to Alexis’s portrait');
-    canvas.setAttribute('aria-label',`Alexis Salinas Mark${headsetOn?' wearing a VR headset':''}, rendered as purple text dissolving from the shoulders`);
+    setHeadset(!headsetOn);
     render();
   });
-  listen(document, 'visibilitychange', sync); listen(reduced, 'change', sync);
+  if (toggle) listen(toggle, 'blur', () => { headsetHold = 0; });
+  listen(document, 'visibilitychange', sync);
+  listen(reduced, 'change', () => {
+    if (reduced.matches) headsetAmount = Number(headsetOn);
+    headsetHold = 0;
+    sync();
+  });
   source.decoding = 'async'; source.src = canvas.dataset.portraitSource;
   return {
     setVariant(next) { if (destroyed) return; variant = PORTRAIT_VARIANTS[next] ? next : 'soft'; canvas.dataset.portraitVariant = variant; resize(); },
