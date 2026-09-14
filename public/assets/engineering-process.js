@@ -1,9 +1,9 @@
 /** A flat plan extrudes into architecture, then fills with people and activity. */
 const instances = new WeakMap();
 const STAGES = [
-  { id: 'design', label: 'Design', description: 'Concept · UI/UX · Prototypes' },
-  { id: 'develop', label: 'Develop', description: 'VR/AR · Web · PC · Mobile' },
-  { id: 'deployment', label: 'Deployment', description: 'Testing · Optimization · Release' },
+  { id: 'design', label: 'Design', description: 'Concept development · UI/UX · Interaction flows · Technical architecture · Playable prototypes' },
+  { id: 'develop', label: 'Develop', description: 'Gameplay & simulation logic · VR/AR interactions · Multiplayer · Procedural Systems · Content tools' },
+  { id: 'deployment', label: 'Deploy', description: 'Device testing · Performance optimization · Release builds · Store submissions · Web deployment' },
 ];
 const STAGE_DURATION = 6;
 const TRANSITION_DURATION = 2;
