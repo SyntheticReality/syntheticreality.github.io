@@ -74,10 +74,11 @@ export function buildHeadset(columns, rows) {
 // Tapered smart-glasses frames keep their shape and hardware at small grid sizes.
 export function buildSmartGlasses(columns, rows) {
   const cells = [], mask = new Map();
+  const frameWidth = 1.08;
   const rim = Math.max(.012, .85 / rows);
   const cameraX = Math.max(.017, 1.1 / columns), cameraY = Math.max(.014, .85 / rows);
   for (let y = 0; y < rows; y++) for (let x = 0; x < columns; x++) {
-    const nx = (x+.5)/columns, ny = (y+.5)/rows;
+    const nx = .508+((x+.5)/columns-.508)/frameWidth, ny = (y+.5)/rows;
     // A broad brow tapers toward the cheek, with a recessed lens inside the rim.
     const lensCenter = nx<.508 ? .387 : .629;
     const taper = 1-.17*smoothstep(.325,.416,ny);
@@ -115,7 +116,7 @@ export function buildSmartGlasses(columns, rows) {
       const reflection = Math.abs(ny-(.326+(nx-lensCenter)*.45));
       if (reflection<.010) {tone=.80;alpha=.43;}
       // A tiny display sits in the lower outside corner of the right lens.
-      const displayX=Math.round(columns*.658), displayY=Math.round(rows*.374);
+      const displayX=Math.round(columns*(.508+(.658-.508)*frameWidth)), displayY=Math.round(rows*.374);
       const dx=x-displayX, dy=y-displayY;
       if ((dy===0 && dx>=0 && dx<=2) || (dy===1 && dx>=0 && dx<=1)) {
         tone=1; alpha=.94; occlusion=.74;
