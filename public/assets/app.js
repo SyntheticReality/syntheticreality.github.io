@@ -16,7 +16,7 @@ if (portraitCanvas) import('./portrait-art.js?v=20260914l').then(({ startPortrai
 if (capabilityCanvases.length) import('./capability-art.js').then(({ startCapabilityArt }) => startCapabilityArt(capabilityCanvases));
 
 const engineeringProcess = document.querySelector('[data-engineering-process]');
-if (engineeringProcess) import('./engineering-process.js?v=20260914k').then(({ startEngineeringProcess }) => startEngineeringProcess(engineeringProcess));
+if (engineeringProcess) import('./engineering-process.js?v=20260914m').then(({ startEngineeringProcess }) => startEngineeringProcess(engineeringProcess));
 
 if (document.querySelector('.project-reveal')) import('./project-reveal.js?v=20260914h').then(({ startProjectReveals }) => startProjectReveals());
 

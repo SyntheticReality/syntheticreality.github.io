@@ -1,10 +1,12 @@
-/** A flat plan extrudes into architecture, then fills with people and activity. */
+/** Survey a plot, draw its plan, raise the architecture, then bring it to life. */
 const instances = new WeakMap();
 const STAGES = [
+  { id: 'discovery', label: 'Discovery', description: 'Goals & use cases · Technical feasibility · Platform selection · Scope & roadmap' },
   { id: 'design', label: 'Design', description: 'Concept development · UI/UX · Interaction flows · Technical architecture · Playable prototypes' },
   { id: 'develop', label: 'Develop', description: 'Gameplay & simulation logic · VR/AR interactions · Multiplayer · Procedural Systems · Content tools' },
   { id: 'deployment', label: 'Deploy', description: 'Device testing · Performance optimization · Release builds · Store submissions · Web deployment' },
 ];
+const STAGE_INDEX = Object.fromEntries(STAGES.map(({ id }, index) => [id, index]));
 const STAGE_DURATION = 3;
 const TRANSITION_DURATION = 1;
 const clamp = (value, min = 0, max = 1) => Math.max(min, Math.min(max, value));
@@ -67,11 +69,11 @@ export function startEngineeringProcess(container) {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const removers = [];
   let width = 1, height = 1, dpr = 1, unit = 1;
-  let frame = 0, last = null, elapsed = 0, time = 0, stage = 0;
+  let frame = 0, last = null, elapsed = 0, time = 0, surveyTime = 0, stage = 0;
   let visible = !('IntersectionObserver' in window), dead = false, suspended = false;
   let focused = container.contains(document.activeElement);
   let transitionAge = TRANSITION_DURATION, elevation = 0, layerOpacity = 1;
-  let weights = [1, 0, 0], fromWeights = [...weights];
+  let weights = STAGES.map((_, index) => Number(index === stage)), fromWeights = [...weights];
   let resizeObserver, intersectionObserver;
 
   function listen(target, event, callback) {
@@ -126,18 +128,19 @@ export function startEngineeringProcess(container) {
     ctx.fillRect(Math.round((x - side / 2) * dpr) / dpr, Math.round((y - side / 2) * dpr) / dpr, side, side);
   }
 
-  function line(a, b, opacity, color = '#be95ff', spacing = .15, size = .075) {
+  function line(a, b, opacity, color = '#be95ff', spacing = .15, size = .075, progress = 1) {
+    if (progress <= 0 || opacity * layerOpacity < .012) return;
     const length = Math.hypot(b[0] - a[0], b[1] - a[1], (b[2] || 0) - (a[2] || 0));
-    const count = Math.max(1, Math.ceil(length / spacing));
+    const count = Math.max(1, Math.ceil(length * progress / spacing));
     for (let i = 0; i <= count; i++) {
-      const t = i / count;
+      const t = i / count * progress;
       const p = project(mix(a[0], b[0], t), mix(a[1], b[1], t), mix(a[2] || 0, b[2] || 0, t));
       pixel(p[0], p[1], Math.max(1.1, unit * size), opacity, color);
     }
   }
 
-  function loop(points, opacity, color, spacing, size) {
-    points.forEach((point, i) => line(point, points[(i + 1) % points.length], opacity, color, spacing, size));
+  function loop(points, opacity, color, spacing, size, progress = 1) {
+    points.forEach((point, i) => line(point, points[(i + 1) % points.length], opacity, color, spacing, size, clamp(progress * points.length - i)));
   }
 
   function polygon(points, color, opacity) {
@@ -167,7 +170,7 @@ export function startEngineeringProcess(container) {
         const z = origin[2] + axisA[2] * u + axisB[2] * v;
         const n = noise(row + seed, column - seed);
         if (n < (ground ? .20 : .08)) continue;
-        const light = ground ? Math.exp(-((x - .6) ** 2 + (y + .1) ** 2) / 7) * weights[2] * .4 : 0;
+        const light = ground ? Math.exp(-((x - .6) ** 2 + (y + .1) ** 2) / 7) * weights[STAGE_INDEX.deployment] * .4 : 0;
         const p = project(x, y, z);
         const opacity = material * intensity * (.42 + n * .5) + light;
         pixel(p[0], p[1], Math.max(1.1, unit * (ground ? .065 : .086)), opacity, color);
@@ -176,7 +179,8 @@ export function startEngineeringProcess(container) {
   }
 
   function box(x, y, w, d, h, z = 0, bright = 0) {
-    const design = weights[0], develop = weights[1], deployment = weights[2];
+    const design = weights[STAGE_INDEX.design], develop = weights[STAGE_INDEX.develop], deployment = weights[STAGE_INDEX.deployment];
+    const planProgress = 1 - weights[STAGE_INDEX.discovery];
     const material = develop * .84 + deployment * .92;
     const top = [[x, y, z + h], [x + w, y, z + h], [x + w, y + d, z + h], [x, y + d, z + h]];
     const right = [[x + w, y, z], [x + w, y + d, z], top[2], top[1]];
@@ -189,7 +193,7 @@ export function startEngineeringProcess(container) {
     polygon(top, '#302040', solid);
     face(top[0], [w, 0, 0], [0, d, 0], .85 + bright, material, 7);
     const edge = design * .76 + develop * .75 + deployment * .79;
-    loop(top, edge + bright * .2, '#d1adff');
+    loop(top, edge + bright * .2 * planProgress, '#d1adff', undefined, undefined, planProgress);
     if (elevation > .01) {
       for (const i of [1, 2, 3]) line([top[i][0], top[i][1], z], top[i], edge * .86);
       line([x, y + d, z], [x + w, y + d, z], edge * .45);
@@ -198,11 +202,12 @@ export function startEngineeringProcess(container) {
   }
 
   function footprint(x, y, w, d, opacity) {
+    const progress = 1 - weights[STAGE_INDEX.discovery];
     const corners = [[x, y, 0], [x + w, y, 0], [x + w, y + d, 0], [x, y + d, 0]];
-    polygon(corners, '#9861cc', opacity * .08);
-    loop(corners, opacity, '#cfacff', .12, .075);
+    polygon(corners, '#9861cc', opacity * .08 * progress);
+    loop(corners, opacity, '#cfacff', .12, .075, progress);
     // Plan hatching belongs to the same rectangle that will be raised upward.
-    for (let u = .22; u < w; u += .26) line([x + u, y + .08, 0], [x + u, y + d - .08, 0], opacity * .30, '#bb8be9', .17, .045);
+    for (let u = .22; u < w; u += .26) line([x + u, y + .08, 0], [x + u, y + d - .08, 0], opacity * .30 * smooth(clamp((progress - .6) / .4)), '#bb8be9', .17, .045);
   }
 
   function pad(x, y, intensity, active) {
@@ -235,7 +240,9 @@ export function startEngineeringProcess(container) {
     if (dead) return;
     updateVisualControls();
     if (!ctx || width < 2 || height < 2) return;
-    const design = weights[0], develop = weights[1], deployment = weights[2];
+    const discovery = weights[STAGE_INDEX.discovery], design = weights[STAGE_INDEX.design];
+    const develop = weights[STAGE_INDEX.develop], deployment = weights[STAGE_INDEX.deployment];
+    const planProgress = 1 - discovery;
     elevation = develop + deployment;
     const population = deployment ** 2;
     layerOpacity = 1;
@@ -247,11 +254,25 @@ export function startEngineeringProcess(container) {
     ctx.fillStyle = halo;
     ctx.fillRect(0, 0, width, height);
 
-    // Ground slab and spatial grid remain in place throughout the progression.
+    // Survey and construction share one plot, with a fixed camera and boundary.
+    const plot = [[-4.3, -3.35, 0], [4.3, -3.35, 0], [4.3, 3.35, 0], [-4.3, 3.35, 0]];
+    polygon(plot, '#9861cc', discovery * .035);
+    loop(plot, discovery * .48, '#c8a3f0', .18, .065);
     box(-4.3, -3.35, 8.6, 6.7, .27, -.30);
     face([-4.3, -3.35, -.025], [8.6, 0, 0], [0, 6.7, 0], .27, .10 + develop * .22 + deployment * .45, 41, true);
-    for (let x = -4; x <= 4; x++) line([x, -3.35, 0], [x, 3.35, 0], .24 * design + .07 * develop + .04 * deployment, '#ad79e7', .22, .05);
-    for (let y = -3; y <= 3; y++) line([-4.3, y, 0], [4.3, y, 0], .24 * design + .07 * develop + .04 * deployment, '#ad79e7', .22, .05);
+    const surveyX = mix(-4.3, 4.3, reduced.matches ? .55 : (surveyTime / 2.4) % 1);
+    for (let x = -4; x <= 4; x++) line([x, -3.35, 0], [x, 3.35, 0], discovery * (.11 + .12 * Math.exp(-((x - surveyX) ** 2) * 2)) + .24 * design + .07 * develop + .04 * deployment, '#ad79e7', .22, .05);
+    for (let y = -3; y <= 3; y++) line([-4.3, y, 0], [4.3, y, 0], .11 * discovery + .24 * design + .07 * develop + .04 * deployment, '#ad79e7', .22, .05);
+    if (discovery > .01) {
+      // A restrained scan and edge ticks read as site measurements, not a building.
+      for (let i = 0; i < 5; i++) {
+        const x = surveyX - i * .18;
+        if (x < -4.3) continue;
+        line([x, -3.35, .015], [x, 3.35, .015], discovery * (i ? .16 * (1 - i / 5) : .72), '#e1c8ff', .12, i ? .05 : .09);
+      }
+      for (let x = -4; x <= 4; x += 1) line([x, -3.55, 0], [x, -3.39, 0], discovery * .40, '#c8a3f0', .07, .065);
+      for (let y = -3; y <= 3; y += 1) line([4.35, y, 0], [4.51, y, 0], discovery * .40, '#c8a3f0', .07, .065);
+    }
     for (const building of BUILDINGS) footprint(building.x, building.y, building.w, building.d, design * .67 + develop * .20);
     footprint(1.5, -2.65, .35, .5, design * .74);
     footprint(3, -2.65, .35, .5, design * .74);
@@ -259,15 +280,15 @@ export function startEngineeringProcess(container) {
     // The movement loop is laid out in Design and becomes a working interaction.
     for (let i = 0; i < ROUTE.length; i++) {
       const a = [...ROUTE[i], .02], b = [...ROUTE[(i + 1) % ROUTE.length], .02];
-      line(a, b, design * .30 + develop * .12 + deployment * .24, '#c696ff', .20, .05);
+      line(a, b, design * .30 + develop * .12 + deployment * .24, '#c696ff', .20, .05, clamp(planProgress * ROUTE.length - i));
     }
     const people = [0, .20, .41, .62, .82].map((offset, i) => ({
       point: routePoint(offset + time * (i % 2 ? -.023 : .028)),
       phase: time * 2.6 + i * 1.7,
     }));
     const trigger = population * Math.max(...people.map(({ point }) => Math.exp(-((point[0] - 2.3) ** 2 + (point[1] + 1.35) ** 2) * 1.9)));
-    pad(-2.5, 1.95, .3 + population * .32, 0);
-    pad(2.3, -1.35, .35 + trigger * .6, trigger);
+    pad(-2.5, 1.95, .3 * planProgress + population * .32, 0);
+    pad(2.3, -1.35, .35 * planProgress + trigger * .6, trigger);
 
     if (population > .01) {
       // Activity follows the plan's circulation route, only once it is deployed.
@@ -302,11 +323,12 @@ export function startEngineeringProcess(container) {
       }
     }
 
-    // Small construction marks ground the first stage in authored spatial work.
-    if (design > .01) {
+    // Survey markers stay in place as the blueprint is drawn onto the plot.
+    if (discovery + design > .01) {
       for (const [x, y] of [[-4.65, -3.65], [4.65, -3.65], [-4.65, 3.65], [4.65, 3.65]]) {
-        line([x - .18, y, 0], [x + .18, y, 0], design * .55, '#d6b9ff');
-        line([x, y - .18, 0], [x, y + .18, 0], design * .55, '#d6b9ff');
+        const strength = design * .55 + discovery * (.45 + .25 * Math.exp(-((x - surveyX) ** 2)));
+        line([x - .18, y, 0], [x + .18, y, 0], strength, '#d6b9ff');
+        line([x, y - .18, 0], [x, y + .18, 0], strength, '#d6b9ff');
       }
     }
     ctx.globalAlpha = 1;
@@ -353,7 +375,8 @@ export function startEngineeringProcess(container) {
       last = now;
       // Only walking is capped. Stage timing follows real visible elapsed time,
       // including when a visible or occluded window receives very few frames.
-      time += Math.min(dt, .25) * weights[2];
+      time += Math.min(dt, .25) * weights[STAGE_INDEX.deployment];
+      surveyTime += Math.min(dt, .25) * weights[STAGE_INDEX.discovery];
       // Keep the caption stable while someone uses the stage controls. The
       // selected stage can still finish its transition and animate normally.
       if (!focused) elapsed += dt;
