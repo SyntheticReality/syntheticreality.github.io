@@ -16,7 +16,7 @@
     },
     "/about/": {
       "type": "AboutPage",
-      "description": "Meet Alexis Salinas Mark: self-taught programmer, architecture graduate and Osyrys founder with nearly 10 years in VR/AR, games and product design, and 80+ projects delivered."
+      "description": "Osyrys brings design and engineering together to build games, simulations and real-time 3D applications for enterprise and entertainment."
     },
     "/contact/": {
       "type": "ContactPage",
