@@ -49,8 +49,9 @@ for (const file of files) {
   const titleMatch = html.match(/<title>([^<]+)<\/title>/);
   const descriptionMatch = html.match(/<meta name="description" content="([^"]*)">/);
   if (!titleMatch || !descriptionMatch) throw new Error(`Missing title/description: ${route}`);
-  const title = decode(titleMatch[1]);
   const page = config.pages[route];
+  const title = page?.title ?? decode(titleMatch[1]);
+  if (page?.title) html = html.replace(titleMatch[0], `<title>${escape(title)}</title>`);
   const description = page?.description ?? config.deferredDescriptions[route] ?? decode(descriptionMatch[1]);
   html = html.replace(descriptionMatch[0], `<meta name="description" content="${escape(description)}">`);
   // Only approved primary routes become indexable at launch. Labs and deferred profiles stay noindex.
@@ -86,6 +87,15 @@ for (const file of files) {
       description, inLanguage: 'en', isPartOf: { '@id': websiteId }, about: { '@id': orgId }
     };
     const graph = [organization, website, pageEntity];
+    if (page.service) {
+      const serviceId = absolute(`${route}#service`);
+      graph.push({
+        '@type': 'Service', '@id': serviceId, name: page.service.name,
+        serviceType: page.service.serviceType, description, url: absolute(route),
+        provider: { '@id': orgId }
+      });
+      pageEntity.mainEntity = { '@id': serviceId };
+    }
     if (route === '/about/') {
       const personId = absolute('/about/#alexis-salinas-mark');
       graph.push({ '@type': 'Person', '@id': personId, name: 'Alexis Salinas Mark', jobTitle: 'Founder',

@@ -10,6 +10,15 @@
       "type": "CollectionPage",
       "description": "Explore Osyrys enterprise projects in VR training, adaptive simulations, shared experiences and generative content pipelines."
     },
+    "/enterprise/vr-training/": {
+      "type": "WebPage",
+      "title": "Osyrys / VR training",
+      "description": "Custom VR training and simulation development for equipment, procedures, workflows and human interaction across industries.",
+      "service": {
+        "name": "VR training and simulation development",
+        "serviceType": "Custom VR training and simulation development"
+      }
+    },
     "/entertainment/": {
       "type": "CollectionPage",
       "description": "Explore games, online worlds and interactive storytelling by Osyrys, from cooperative VR experiences to cultural adventures."
