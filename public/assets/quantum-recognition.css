@@ -1,0 +1,13 @@
+.project-award-badge{position:absolute;top:12px;left:12px;z-index:1;display:inline-flex;align-items:center;gap:8px;max-width:calc(100% - 24px);padding:8px 10px;border:1px solid #b48bea88;background:#140d20e8;color:#ddc0ff;font-size:10px;line-height:1.25;letter-spacing:.025em;text-transform:uppercase;pointer-events:none;box-shadow:0 4px 18px #03010755;backdrop-filter:blur(5px)}
+.project-award-badge svg{flex:none;filter:drop-shadow(0 0 5px #bb78ff70)}
+.project-award-count{margin-left:3px;color:#b77aff}
+.reveal-recognition{display:grid;width:100%;min-width:0;gap:6px;margin:0 0 4px}
+.reveal-recognition-year{font-size:10px;line-height:1.4;letter-spacing:.025em;text-transform:uppercase;color:#b996df}
+.project-reveal .reveal-recognition .reveal-award{display:block;margin:0;color:#f0e4fc;font:inherit;font-size:13px;line-height:1.55;overflow-wrap:break-word}
+.reveal-recognition a.reveal-award{text-decoration:underline;text-decoration-color:#8761a5;text-underline-offset:4px}
+.reveal-recognition a.reveal-award:hover,.award-link-arrow{color:var(--purple)}
+.reveal-recognition a.reveal-award:focus-visible{outline:1px solid var(--purple);outline-offset:3px}
+.selected-projects .project-award-badge{top:10px;left:10px;font-size:9px;padding:7px 9px;gap:7px}
+.selected-projects .reveal-recognition{gap:5px;margin-bottom:3px}
+.selected-projects .reveal-recognition .reveal-award{font-size:11px;line-height:1.5}
+@media(max-width:700px){.project-award-badge{top:10px;left:10px;font-size:9px;padding:7px 9px}.project-reveal .reveal-recognition .reveal-award{font-size:12px}.selected-projects .reveal-recognition .reveal-award{font-size:11px}}
