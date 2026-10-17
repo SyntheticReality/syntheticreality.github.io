@@ -15,11 +15,19 @@ const escape = text => text.replaceAll('&', '&amp;').replaceAll('"', '&quot;').r
 const decode = text => text.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>');
 const orgId = absolute('/#organization');
 const websiteId = absolute('/#website');
+const founderId = absolute('/about/#alexis-salinas-mark');
 const organization = {
   '@type': 'Organization', '@id': orgId, name: 'Osyrys', url: absolute('/'),
   logo: absolute('/assets/osyrys-icon.svg'), email: 'hello@syry.io',
-  description: 'An interactive media company creating games and simulations.',
+  description: 'Osyrys is an interactive media company engineering games, training simulations and real-time 3D experiences for enterprise and entertainment.',
+  founder: { '@id': founderId },
+  knowsAbout: ['Virtual reality', 'Augmented reality', 'Game development', 'Multiplayer', 'Training simulations', 'Real-time 3D', 'Procedural generation', 'AI content pipelines'],
   sameAs: ['https://www.linkedin.com/company/0syrys/', 'https://medium.com/syry-io']
+};
+const founder = {
+  '@type': 'Person', '@id': founderId, name: 'Alexis Salinas Mark', jobTitle: 'Founder',
+  worksFor: { '@id': orgId },
+  sameAs: ['https://www.linkedin.com/in/salinasmark/', 'https://medium.com/@a.salinas.mark']
 };
 const website = {
   '@type': 'WebSite', '@id': websiteId, name: 'Osyrys', url: absolute('/'),
@@ -86,7 +94,7 @@ for (const file of files) {
       '@type': page.type, '@id': absolute(`${route}#webpage`), url: absolute(route), name: title,
       description, inLanguage: 'en', isPartOf: { '@id': websiteId }, about: { '@id': orgId }
     };
-    const graph = [organization, website, pageEntity];
+    const graph = [organization, website, pageEntity, founder];
     if (page.service) {
       const serviceId = absolute(`${route}#service`);
       graph.push({
@@ -97,10 +105,7 @@ for (const file of files) {
       pageEntity.mainEntity = { '@id': serviceId };
     }
     if (route === '/about/') {
-      const personId = absolute('/about/#alexis-salinas-mark');
-      graph.push({ '@type': 'Person', '@id': personId, name: 'Alexis Salinas Mark', jobTitle: 'Founder',
-        worksFor: { '@id': orgId }, sameAs: ['https://www.linkedin.com/in/salinasmark/', 'https://medium.com/@a.salinas.mark'] });
-      pageEntity.mentions = { '@id': personId };
+      pageEntity.mentions = { '@id': founderId };
     }
     if (route === '/contact/') pageEntity.mainEntity = { '@id': orgId };
     const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replaceAll('<', '\\u003c');
