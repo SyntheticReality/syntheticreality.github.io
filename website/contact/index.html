@@ -15,6 +15,8 @@
   <script type="module" src="/assets/app.js"></script>
   <link rel="stylesheet" href="/assets/back-to-top.css">
   <script type="module" src="/assets/back-to-top.js"></script>
+  <link rel="stylesheet" href="/assets/contact-form.css">
+  <script type="module" src="/assets/contact-form.js"></script>
   <!-- SEO:START -->
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://www.syry.io/contact/">
@@ -52,7 +54,38 @@
     </section>
     <section class="section-space" aria-labelledby="conversation-title">
       <div class="section-label"><h2 id="conversation-title">Project enquiries</h2><span class="rule"></span></div>
-      <div class="contact-email-panel"><a class="email-link" href="mailto:hello@syry.io?subject=Let%E2%80%99s%20build%20an%20experience">hello@syry.io <span aria-hidden="true">↗</span></a><div class="contact-actions"><a class="terminal-link" href="mailto:hello@syry.io?subject=Let%E2%80%99s%20build%20an%20experience"><span>[</span> Write an email <span aria-hidden="true">↗</span><span>]</span></a><button class="terminal-link copy-email" type="button"><span>[</span> Copy email <span>]</span></button><span class="copy-status" aria-live="polite"></span></div></div>
+      <div class="enquiry-layout">
+        <aside class="enquiry-direct" aria-labelledby="direct-title">
+          <span class="enquiry-kicker">A direct line</span>
+          <h3 id="direct-title">Prefer email<span class="purple">?</span></h3>
+          <a class="enquiry-email" href="mailto:hello@syry.io?subject=Osyrys%20%2F%20Project%20enquiry">hello@syry.io <span aria-hidden="true">↗</span></a>
+          <div class="contact-actions"><button class="terminal-link copy-email" type="button"><span aria-hidden="true">[</span> Copy email <span aria-hidden="true">]</span></button><span class="copy-status" role="status" aria-live="polite"></span></div>
+        </aside>
+        <div class="enquiry-form-panel">
+          <p class="enquiry-guidance">An early idea or a detailed brief.<br>We’re ready to hear it.</p>
+          <form id="project-enquiry" class="enquiry-form" method="post" aria-label="Project enquiry">
+            <fieldset class="enquiry-fields" disabled>
+              <legend class="visually-hidden">Your project enquiry</legend>
+              <div class="enquiry-field-row">
+                <div class="enquiry-field"><label for="enquiry-name">Name</label><input id="enquiry-name" name="name" type="text" autocomplete="name" placeholder="> Your name" maxlength="120" required aria-describedby="enquiry-name-error"><span class="field-error" id="enquiry-name-error"></span></div>
+                <div class="enquiry-field"><label for="enquiry-email">Email</label><input id="enquiry-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" placeholder="> you@company.com" maxlength="254" required aria-describedby="enquiry-email-error"><span class="field-error" id="enquiry-email-error"></span></div>
+              </div>
+              <div class="enquiry-field"><label for="enquiry-company">Company <span class="field-optional">(optional)</span></label><input id="enquiry-company" name="company" type="text" autocomplete="organization" placeholder="> Your team or company" maxlength="160"></div>
+              <div class="enquiry-field"><label for="enquiry-message">Tell us about your project</label><textarea id="enquiry-message" name="message" rows="5" maxlength="6000" placeholder="> What are we building?&#10;The idea, the challenge, the outcome." required aria-describedby="enquiry-message-error"></textarea><span class="field-error" id="enquiry-message-error"></span></div>
+              <div class="enquiry-honeypot" aria-hidden="true"><label for="enquiry-botcheck">Leave this field empty</label><input id="enquiry-botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
+              <div class="enquiry-submit-row"><button class="terminal-link enquiry-submit" type="submit" disabled><span aria-hidden="true">[</span> <span data-submit-label>Send the signal</span> <span class="enquiry-submit-arrow" aria-hidden="true">↗</span> <span aria-hidden="true">]</span></button></div>
+            </fieldset>
+            <div class="enquiry-success" hidden>
+              <span class="enquiry-kicker">Message accepted</span>
+              <h3 id="enquiry-success-title" tabindex="-1">Signal received<span class="purple">.</span></h3>
+              <p>Thanks for sharing your project. We look forward to the conversation.</p>
+              <button class="terminal-link enquiry-compose" type="button"><span aria-hidden="true">[</span> Write another message <span aria-hidden="true">]</span></button>
+            </div>
+            <p id="enquiry-status" class="enquiry-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></p>
+            <noscript><p class="enquiry-status">Please enable JavaScript to use this form, or <a href="mailto:hello@syry.io">email hello@syry.io</a>.</p></noscript>
+          </form>
+        </div>
+      </div>
     </section></main>
   <footer class="site-footer studio-footer">
     <div class="footer-contact"><span>Serving clients worldwide</span><a href="mailto:hello@syry.io">hello@syry.io <span aria-hidden="true">↗</span></a></div>
