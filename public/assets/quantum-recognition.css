@@ -1,6 +1,9 @@
 .project-award-badge{position:absolute;top:12px;left:12px;z-index:1;display:inline-flex;align-items:center;gap:8px;max-width:calc(100% - 24px);padding:8px 10px;border:1px solid #b48bea88;background:#140d20e8;color:#ddc0ff;font-size:10px;line-height:1.25;letter-spacing:.025em;text-transform:uppercase;pointer-events:none;box-shadow:0 4px 18px #03010755;backdrop-filter:blur(5px)}
 .project-award-badge svg{flex:none;filter:drop-shadow(0 0 5px #bb78ff70)}
 .project-award-count{margin-left:3px;color:#b77aff}
+.project-rating-score{display:inline-flex;align-items:center;gap:3px;font-size:12px;line-height:16px;letter-spacing:0;color:#f0e4fc}
+.project-rating-star{font-size:13px;color:#c49aff}
+.project-rating-separator{color:#9d78bb}
 .reveal-recognition{display:grid;width:100%;min-width:0;gap:6px;margin:0 0 4px}
 .reveal-recognition-year{font-size:10px;line-height:1.4;letter-spacing:.025em;text-transform:uppercase;color:#b996df}
 .project-reveal .reveal-recognition .reveal-award{display:block;margin:0;color:#f0e4fc;font:inherit;font-size:13px;line-height:1.55;overflow-wrap:break-word}
