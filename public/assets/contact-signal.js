@@ -64,23 +64,30 @@ export function startContactSignal(canvas) {
   }
   function exchange() {
     const [a, b] = sources;
-    const samples = Math.max(20, Math.round((b.x - a.x) / (step * .72)));
-    for (let lane = -1; lane <= 1; lane++) {
-      for (let i = 0; i <= samples; i++) {
-        const t = i / samples;
-        const arch = Math.sin(t * Math.PI);
-        const x = a.x + (b.x - a.x) * t;
-        const y = a.y + (b.y - a.y) * t + arch * unit * lane * .2 + Math.sin(t * Math.PI * 4 - time * .6) * arch * unit * .023;
-        const direction = lane === 0 ? -1 : 1;
-        const position = ((t * 2 - time * .14 * direction + lane * .29) % 1 + 1) % 1;
-        const packet = Math.pow(Math.max(0, 1 - position / .16), 2);
-        pixel(x, y, step * (.3 + packet * .32), .19 + packet * .7, packet > .5 ? 3 : 1);
-      }
+    const size = Math.max(2, step * .6);
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const distance = Math.hypot(dx, dy);
+    const ux = dx / distance, uy = dy / distance;
+    // One quiet pixel bus, clipped outside both diamond outlines.
+    const inset = 4 * size / (Math.abs(ux) + Math.abs(uy)) + step * 1.4;
+    const length = Math.max(0, distance - inset * 2);
+    const samples = Math.max(1, Math.round(length / (step * .9)));
+    const cycle = time * .19;
+    const direction = Math.floor(cycle) % 2 === 0 ? 1 : -1;
+    const progress = cycle % 1;
+    const head = direction === 1 ? progress : 1 - progress;
+    for (let i = 0; i <= samples && length > 0; i++) {
+      const t = i / samples;
+      const x = a.x + ux * (inset + length * t);
+      const y = a.y + uy * (inset + length * t);
+      const behind = (head - t) * direction;
+      const packet = behind >= 0 && behind < .13 ? Math.pow(1 - behind / .13, 1.5) : 0;
+      const edge = clamp(Math.min(t, 1 - t) / .045);
+      pixel(x, y, step * (.26 + packet * .32), (.1 + packet * .78) * edge, packet > .65 ? 3 : 1);
     }
     for (let n = 0; n < sources.length; n++) {
       const source = sources[n];
       const breath = .7 + Math.sin(time * .75 + n * Math.PI) * .14;
-      const size = Math.max(2, step * .6);
       // A small open diamond marks each origin, drawn on the same pixel lattice.
       for (let row = -4; row <= 4; row++) {
         const col = 4 - Math.abs(row);

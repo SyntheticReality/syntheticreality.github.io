@@ -23,6 +23,15 @@
       "type": "CollectionPage",
       "description": "Explore games, online worlds and interactive storytelling by Osyrys, from cooperative VR experiences to cultural adventures."
     },
+    "/entertainment/multiplayer-development/": {
+      "type": "WebPage",
+      "title": "Osyrys / Multiplayer development",
+      "description": "Multiplayer games and shared simulations, from co-op VR to collaborative learning. Player interaction, session flow and shared systems engineered by Osyrys.",
+      "service": {
+        "name": "Multiplayer development",
+        "serviceType": "Custom multiplayer game and simulation development"
+      }
+    },
     "/about/": {
       "type": "AboutPage",
       "description": "Osyrys brings design and engineering together to build games, simulations and real-time 3D applications for enterprise and entertainment."
