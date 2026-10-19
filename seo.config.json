@@ -27,6 +27,11 @@
       "type": "AboutPage",
       "description": "Osyrys brings design and engineering together to build games, simulations and real-time 3D applications for enterprise and entertainment."
     },
+    "/kloo-privacy-policy/": {
+      "type": "WebPage",
+      "title": "Kloo Privacy Policy | Osyrys",
+      "description": "How OSYRYS handles Kloo game data, mixed-reality permissions, planned Meta online features, and privacy or deletion requests."
+    },
     "/contact/": {
       "type": "ContactPage",
       "description": "Contact Osyrys about your next interactive experience. Share your idea, audience, timing and project scope at hello@syry.io."
