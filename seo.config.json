@@ -32,6 +32,11 @@
       "title": "Kloo Privacy Policy | Osyrys",
       "description": "How OSYRYS handles Kloo player information, leaderboard results, mixed-reality data, and privacy or deletion requests."
     },
+    "/kloo-tou/": {
+      "type": "WebPage",
+      "title": "Kloo Terms of Use | Osyrys",
+      "description": "Terms for playing Kloo, including age requirements, safe play, fair leaderboard use, purchases, and support."
+    },
     "/contact/": {
       "type": "ContactPage",
       "description": "Contact Osyrys about your next interactive experience. Share your idea, audience, timing and project scope at hello@syry.io."
