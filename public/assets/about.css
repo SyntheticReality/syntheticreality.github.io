@@ -45,28 +45,24 @@
 .media-section>.section-label{margin-bottom:28px}
 .media-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none;margin:0;padding:0}
 .media-list>li{min-width:0}
-.media-entry{display:flex;flex-direction:column;gap:28px;min-height:340px;height:100%;padding:30px;border:1px solid var(--line);border-top:2px solid #755398;background:var(--surface);transition:border-color .18s,background .18s}
+.media-entry{display:flex;flex-direction:column;gap:18px;height:100%;padding:24px;border:1px solid var(--line);border-top:2px solid #755398;background:var(--surface)}
 .media-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;font-size:12px;line-height:1.7}
 .media-meta time{color:var(--muted)}
 .media-story{min-width:0;flex:1}
-.media-type{display:inline-block;margin-bottom:18px;padding:3px 8px;border:1px solid #be95ff35;color:var(--purple);font-size:10px;line-height:1.6}
-.media-story h3{font-size:clamp(21px,2vw,28px);line-height:1.4;letter-spacing:-.035em;margin:0 0 18px;transition:color .18s}
+.media-type{display:inline-block;margin-bottom:14px;padding:3px 8px;border:1px solid #be95ff35;color:var(--purple);font-size:10px;line-height:1.6}
+.media-story h3{font-size:clamp(21px,2vw,28px);line-height:1.4;letter-spacing:-.035em;margin:0 0 14px}
 .media-story p{font-size:13px;line-height:1.8;margin:0;max-width:65ch}
-.media-cta{display:block;border-top:1px solid var(--line);padding-top:18px;color:var(--purple);font-size:12px;white-space:nowrap}
-.media-entry:hover,.media-entry:focus-visible{border-color:#9874bc;background:#16121e}
-.media-entry:hover h3,.media-entry:focus-visible h3{color:var(--purple-bright)}
-.media-entry:focus-visible{outline:2px solid var(--purple);outline-offset:6px}
+.media-cta{border-top:1px solid var(--line);padding-top:12px;font-size:12px}
+.media-cta .terminal-link{font-size:12px}
 @media(max-width:1100px){
   .media-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:760px){
   .media-list{grid-template-columns:minmax(0,1fr);gap:20px}
-  .media-entry{min-height:0}
 }
 @media(max-width:560px){
   .media-section{padding-top:36px;padding-bottom:40px}
   .media-section>.section-label{margin-bottom:20px}
-  .media-entry{padding:22px;gap:22px}
-  .media-story h3{font-size:21px;margin-bottom:16px}
+  .media-entry{padding:20px;gap:16px}
+  .media-story h3{font-size:21px}
 }
-@media(prefers-reduced-motion:reduce){.media-entry,.media-story h3{transition:none}}
