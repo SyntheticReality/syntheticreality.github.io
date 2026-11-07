@@ -4,12 +4,10 @@
 .ggc-page .gait-ground{stroke:#b79acb;opacity:.4;animation:ggc-ground-flow 1.6s linear infinite}
 .ggc-page .gait-shadow{fill:#b381e8;stroke:none;opacity:.12;transform-box:fill-box;transform-origin:center;animation:ggc-shadow 3.2s ease-in-out infinite}
 .ggc-page .gait-gorilla{stroke:#d8c1ed;stroke-width:1.5;animation:ggc-gorilla-bound 3.2s ease-in-out infinite}
-.ggc-page .gait-arm,.ggc-page .gait-leg{fill:#1c1428;transform-box:fill-box}
+.ggc-page .gait-arm{fill:#1c1428;transform-box:fill-box}
 .ggc-page .gait-arm-left{transform-origin:82% 14%;animation:ggc-arm-left 3.2s ease-in-out infinite}
 .ggc-page .gait-arm-right{transform-origin:18% 14%;animation:ggc-arm-right 3.2s ease-in-out infinite}
 .ggc-page .gait-arm circle{fill:#be95ff;stroke:none}
-.ggc-page .gait-leg-left{transform-origin:80% 0;animation:ggc-leg-left 3.2s ease-in-out infinite}
-.ggc-page .gait-leg-right{transform-origin:20% 0;animation:ggc-leg-right 3.2s ease-in-out infinite}
 .ggc-page .gait-torso{fill:#21182c;stroke:#e2c8ff}
 .ggc-page .gait-chest{stroke:#9979b5;stroke-width:1}
 .ggc-page .gait-head{fill:#21182c;stroke:#e2c8ff}
@@ -33,8 +31,6 @@
 @keyframes ggc-gorilla-bound{0%,100%{transform:translate(-4px,0)}14%{transform:translate(-2px,3px)}37%{transform:translate(5px,-18px)}54%{transform:translate(7px,-5px)}65%{transform:translate(4px,2px)}82%{transform:translate(-2px,-5px)}}
 @keyframes ggc-arm-left{0%,100%{transform:rotate(5deg)}15%{transform:rotate(-10deg)}38%{transform:rotate(42deg)}59%{transform:rotate(9deg)}75%{transform:rotate(-12deg)}}
 @keyframes ggc-arm-right{0%,100%{transform:rotate(-12deg)}18%{transform:rotate(4deg)}38%{transform:rotate(-42deg)}60%{transform:rotate(-10deg)}78%{transform:rotate(11deg)}}
-@keyframes ggc-leg-left{0%,100%{transform:rotate(3deg)}37%{transform:rotate(-24deg)}65%{transform:rotate(10deg)}}
-@keyframes ggc-leg-right{0%,100%{transform:rotate(-3deg)}37%{transform:rotate(24deg)}65%{transform:rotate(-10deg)}}
 @keyframes ggc-shadow{0%,100%{transform:scaleX(1);opacity:.14}37%{transform:scaleX(.65);opacity:.06}65%{transform:scaleX(1.1);opacity:.16}}
 @keyframes ggc-boost{0%,19%,55%,100%{opacity:0}29%,43%{opacity:.85}}
 @keyframes ggc-contact{0%,8%{opacity:0;transform:scale(.7)}16%{opacity:.85;transform:scale(1)}32%,100%{opacity:0;transform:scale(1.25)}}
