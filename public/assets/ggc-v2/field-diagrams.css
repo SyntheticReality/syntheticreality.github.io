@@ -1,0 +1,48 @@
+/* Field schematics: arm-driven movement and a live loadout inspection. */
+.ggc-page .gait-trajectory{stroke:#a17cbe;stroke-dasharray:2 6;opacity:.4}
+.ggc-page .gait-floor{stroke:#9a83ae;opacity:.5}
+.ggc-page .gait-ground{stroke:#b79acb;opacity:.4;animation:ggc-ground-flow 1.6s linear infinite}
+.ggc-page .gait-shadow{fill:#b381e8;stroke:none;opacity:.12;transform-box:fill-box;transform-origin:center;animation:ggc-shadow 3.2s ease-in-out infinite}
+.ggc-page .gait-gorilla{stroke:#d8c1ed;stroke-width:1.5;animation:ggc-gorilla-bound 3.2s ease-in-out infinite}
+.ggc-page .gait-arm,.ggc-page .gait-leg{fill:#1c1428;transform-box:fill-box}
+.ggc-page .gait-arm-left{transform-origin:82% 14%;animation:ggc-arm-left 3.2s ease-in-out infinite}
+.ggc-page .gait-arm-right{transform-origin:18% 14%;animation:ggc-arm-right 3.2s ease-in-out infinite}
+.ggc-page .gait-arm circle{fill:#be95ff;stroke:none}
+.ggc-page .gait-leg-left{transform-origin:80% 0;animation:ggc-leg-left 3.2s ease-in-out infinite}
+.ggc-page .gait-leg-right{transform-origin:20% 0;animation:ggc-leg-right 3.2s ease-in-out infinite}
+.ggc-page .gait-torso{fill:#21182c;stroke:#e2c8ff}
+.ggc-page .gait-chest{stroke:#9979b5;stroke-width:1}
+.ggc-page .gait-head{fill:#21182c;stroke:#e2c8ff}
+.ggc-page .gait-face{stroke:#c7a8e7;stroke-width:1.25}
+.ggc-page .gait-boost{stroke:#c99bff;stroke-width:2;opacity:0;animation:ggc-boost 3.2s ease-in-out infinite}
+.ggc-page .gait-contact{stroke:#bf91f2;stroke-width:1;transform-box:fill-box;transform-origin:center bottom;animation:ggc-contact 3.2s ease-out infinite}
+.ggc-page .gait-contact-right{animation-delay:-1.6s}
+.ggc-page .gait-direction{stroke:#bf91f2;opacity:.55;animation:ggc-direction 1.6s ease-in-out infinite}
+.ggc-page .loadout-datum{stroke:#ae8cc8;stroke-dasharray:2 4;stroke-width:.65;opacity:.3}
+.ggc-page .equipment-weapon{stroke:#dfc7f4;fill:#20162b;transform-box:fill-box;transform-origin:center;animation:ggc-weapon-float 4.8s ease-in-out infinite}
+.ggc-page .equipment-detail{stroke:#ad8bca;stroke-width:1}
+.ggc-page .equipment-sight{stroke:#c69bea;animation:ggc-sight-fit 4.8s ease-in-out infinite}
+.ggc-page .equipment-magazine{fill:#21162e;animation:ggc-magazine-fit 4.8s ease-in-out infinite}
+.ggc-page .equipment-bolt{fill:#be95ff33;stroke:#d5b0ff;animation:ggc-bolt-check 4.8s ease-in-out infinite}
+.ggc-page .equipment-scan{stroke:#d0a4ff;stroke-width:1.5;opacity:0;animation:ggc-equipment-scan 4.8s linear infinite}
+.ggc-page .equipment-rack{stroke:#7f698f;fill:none;stroke-width:1}
+.ggc-page .equipment-rack>path{stroke:#af90c8;stroke-width:.8}
+.ggc-page .equipment-selector{stroke:#cea4ff;stroke-width:1;fill:#be95ff10;animation:ggc-loadout-select 4.8s ease-in-out infinite}
+.ggc-page .equipment-status{stroke:#b58bd8;stroke-width:2;opacity:.5}
+@keyframes ggc-ground-flow{to{transform:translateX(-42px)}}
+@keyframes ggc-gorilla-bound{0%,100%{transform:translate(-4px,0)}14%{transform:translate(-2px,3px)}37%{transform:translate(5px,-18px)}54%{transform:translate(7px,-5px)}65%{transform:translate(4px,2px)}82%{transform:translate(-2px,-5px)}}
+@keyframes ggc-arm-left{0%,100%{transform:rotate(5deg)}15%{transform:rotate(-10deg)}38%{transform:rotate(42deg)}59%{transform:rotate(9deg)}75%{transform:rotate(-12deg)}}
+@keyframes ggc-arm-right{0%,100%{transform:rotate(-12deg)}18%{transform:rotate(4deg)}38%{transform:rotate(-42deg)}60%{transform:rotate(-10deg)}78%{transform:rotate(11deg)}}
+@keyframes ggc-leg-left{0%,100%{transform:rotate(3deg)}37%{transform:rotate(-24deg)}65%{transform:rotate(10deg)}}
+@keyframes ggc-leg-right{0%,100%{transform:rotate(-3deg)}37%{transform:rotate(24deg)}65%{transform:rotate(-10deg)}}
+@keyframes ggc-shadow{0%,100%{transform:scaleX(1);opacity:.14}37%{transform:scaleX(.65);opacity:.06}65%{transform:scaleX(1.1);opacity:.16}}
+@keyframes ggc-boost{0%,19%,55%,100%{opacity:0}29%,43%{opacity:.85}}
+@keyframes ggc-contact{0%,8%{opacity:0;transform:scale(.7)}16%{opacity:.85;transform:scale(1)}32%,100%{opacity:0;transform:scale(1.25)}}
+@keyframes ggc-direction{0%,100%{transform:translateX(-3px);opacity:.3}50%{transform:translateX(3px);opacity:.8}}
+@keyframes ggc-weapon-float{0%,100%{transform:translateY(1px) rotate(-1deg)}50%{transform:translateY(-3px) rotate(1deg)}}
+@keyframes ggc-sight-fit{0%,7%{transform:translateY(-7px);opacity:.35}17%,100%{transform:translateY(0);opacity:1}}
+@keyframes ggc-magazine-fit{0%,17%{transform:translateY(10px);opacity:.35}28%,100%{transform:translateY(0);opacity:1}}
+@keyframes ggc-bolt-check{0%,30%,52%,100%{transform:translateX(0)}38%,43%{transform:translateX(12px)}}
+@keyframes ggc-equipment-scan{0%,52%{transform:translateX(0);opacity:0}56%{opacity:.8}85%{transform:translateX(195px);opacity:.8}89%,100%{transform:translateX(195px);opacity:0}}
+@keyframes ggc-loadout-select{0%,17%,100%{transform:translateX(0)}25%,42%{transform:translateX(41px)}50%,67%{transform:translateX(82px)}75%,92%{transform:translateX(123px)}}
+@media(prefers-reduced-motion:reduce){.ggc-page .movement-diagram *,.ggc-page .loadout-diagram *{animation:none!important}.ggc-page .gait-boost,.ggc-page .gait-contact,.ggc-page .equipment-scan{opacity:0}.ggc-page .gait-shadow{opacity:.12}}

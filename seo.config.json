@@ -36,6 +36,14 @@
       "type": "AboutPage",
       "description": "Osyrys brings design and engineering together to build games, simulations and real-time 3D applications for enterprise and entertainment."
     },
+    "/ggc/": {
+      "type": "WebPage",
+      "title": "Osyrys / Galactic Gorilla Corps",
+      "description": "Join the Corps. Fight the Arachnids. Galactic Gorilla Corps is a co-op VR action game with physical arm-driven movement, squad missions and procedural lunar tunnels.",
+      "previewImage": "/ggc/og.jpg",
+      "previewImageType": "image/jpeg",
+      "previewAlt": "Galactic Gorilla Corps soldiers surrounded by Arachnids in a lunar hive."
+    },
     "/kloo-privacy-policy/": {
       "type": "WebPage",
       "title": "Kloo Privacy Policy | Osyrys",
@@ -67,7 +75,6 @@
     "/404.html": "This Osyrys page could not be found."
   },
   "retainedRoutes": [
-    "/ggc/",
     "/ggc-privacy-policy/",
     "/ggc-tou/",
     "/cyberbladebattles-privacypolicy/"
