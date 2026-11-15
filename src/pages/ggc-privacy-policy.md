@@ -7,7 +7,7 @@ heading: "Privacy"
 headingAccent: "Policy"
 ---
 
-**Effective Date:** July 22, 2026
+**Effective Date:** November 15, 2026
 
 Galactic Gorilla Corps (**"GGC"**) is provided by **SYNTHETIC REALITY SAC** under the **OSYRYS** brand (**"OSYRYS," "we," "us,"** or **"our"**). This Privacy Policy explains what information is handled when you play GGC, use its online features, contact GGC support, or participate in official GGC community spaces.
 
@@ -21,10 +21,12 @@ Depending on which GGC features are available and which ones you use, we may han
 
 Features that are not enabled do not collect information through GGC.
 
-- **Account and platform information:** Your Meta user ID and, if GGC retrieves it for an in-game feature, your Meta display name. We may also receive platform information made available to GGC, such as account entitlement or age category. Unity Authentication may create a separate player ID linked to your Meta account.
+- **Account and platform information:** Your Meta user ID and, if GGC retrieves it for an in-game feature, your Meta display name. We may also receive platform information made available to GGC, such as account entitlement or age category. Unity Authentication creates a separate player ID linked to your Meta account.
 - **Gameplay and account data:** Progress, settings, loadouts, mission results, inventory, virtual currency, digital items, purchase or entitlement status, and records needed to address cheating, fraud, reports, suspensions, or bans.
+- **Terms and policy acceptance:** When you accept the Terms of Use and this Privacy Policy in GGC, we record your player ID, the versions you accepted and the time. The record is stored on your headset so GGC can check which terms you accepted.
 - **Multiplayer data:** Room, region, session, connection, and matchmaking information; IP address and network performance; and gameplay state such as avatar position, head and hand movement, interactions, and mission activity. Real-time pose and session data is primarily used to make multiplayer work.
 - **Voice data:** When voice chat is available and you turn on your microphone, Photon Voice transports your audio to players in the relevant voice channel. See Section 2 for important details.
+- **In-game camera:** Videos and photos you take with the in-game drone camera are saved only on your headset. The camera software sends technical data to LIV; see Section 4.
 - **Technical data:** Device and operating-system information, app and Unity versions, an installation-specific identifier, IP address, crash and exception reports, application-not-responding events, basic telemetry and configuration metadata, performance data, and security events.
 - **Support and safety information:** If you contact us or submit a report, we receive what you provide, which may include your email address, Meta user ID, the reported player's identifier, messages, screenshots, clips, attachments, and session details.
 - **Community information:** If you interact with an official GGC Discord or social-media account, we may receive your platform username, public posts, messages, and anything else you choose to share there.
@@ -53,6 +55,7 @@ We use information to:
 - provide support and respond to safety reports;
 - detect and address abuse, grooming, harassment, cheating, fraud, security incidents, and ban evasion;
 - diagnose crashes, fix errors, balance the game, and improve performance; and
+- keep a record of which Terms of Use and Privacy Policy versions you accepted;
 - protect players, OSYRYS, and the Services, and comply with valid legal obligations.
 
 We do not sell GGC player information or use it for targeted advertising.
@@ -64,12 +67,13 @@ We do not sell GGC player information or use it for targeted advertising.
 We disclose information only as needed for the purposes above:
 
 - **Meta** provides the Quest platform, Meta accounts, store, payments, and platform safety tools.
-- **Unity** provides the game engine and enabled Diagnostics, which may process installation identifiers, crash and exception reports, application-not-responding events, and related technical data. Unity Gaming Services is planned to provide player authentication and durable storage for progression, settings, loadouts, inventory, virtual currency, purchases, entitlements, and related game records.
-- **Photon** is planned to provide multiplayer networking, room and session services, and live voice transport.
+- **Unity** provides the game engine and enabled Diagnostics, which may process installation identifiers, crash and exception reports, application-not-responding events, and related technical data. Unity Gaming Services provides player authentication, server-side game logic and durable storage for progression, inventory, virtual currency, purchases, entitlements, and related game records.
+- **Photon** provides multiplayer networking, room and session services, and live voice transport (Photon Fusion and Photon Voice).
+- **LIV** (LIV Inc.) provides the software behind the in-game drone camera. Each time GGC starts, that software sends LIV technical data, even if you never use the camera: game name and version, engine and graphics settings, headset model, a pseudonymous device identifier, IP address, camera events such as a recording starting or stopping (with its length and quality), and performance and error reports. LIV uses this to run, fix and improve its software and to give us aggregated statistics. Your videos and photos are not sent to LIV or to us. LIV's privacy policy: <https://www.liv.tv/legal/privacy-policy>
 - **Safety, support, hosting, and community providers** may process reports, evidence, support messages, or technical data on our behalf. We will identify any voice-safety provider before sending voice clips to it.
 - **Authorities or other parties** may receive relevant information when reasonably necessary to comply with law, respond to valid legal process, investigate fraud or security issues, protect someone from harm, or enforce our agreements.
 
-This policy page is hosted on GitHub Pages, which may receive technical request data such as IP addresses and browser information. Meta, Unity, Photon, GitHub, Discord, and social-media platforms also handle information under their own privacy notices when they act independently.
+This policy page is hosted on GitHub Pages, which may receive technical request data such as IP addresses and browser information. Meta, Unity, Photon, LIV, GitHub, Discord, and social-media platforms also handle information under their own privacy notices when they act independently.
 
 ---
 
@@ -78,11 +82,13 @@ This policy page is hosted on GitHub Pages, which may receive technical request 
 We keep information only for as long as reasonably needed for the purpose for which it was handled:
 
 - OSYRYS does not intentionally keep the content of ordinary live voice after transmission. Real-time pose data is not kept by OSYRYS after the session. A future, separately disclosed safety feature may create a short report clip.
-- Account, progression, inventory, purchase, entitlement, and settings data may remain in Unity Gaming Services while the player account is active and until it is deleted under our retention process.
+- Account, progression, inventory, purchase, and entitlement data remain in Unity Gaming Services while the player account is active and until it is deleted under our retention process. Settings and loadout choices are stored on your headset.
+- Your Terms and Privacy Policy acceptance record is stored on your headset. Clearing GGC's app data removes this record.
 - Safety reports, enforcement records, and related identifiers may be kept after an account closes when reasonably needed to protect users, investigate serious misconduct, prevent ban evasion, resolve disputes, or meet legal obligations.
 - Support and community messages are kept as long as needed to answer the request, manage the community, or preserve a relevant safety record.
 - Unity states that personal data in its current [Diagnostics service](https://docs.unity.com/en-us/cloud/developer-data/privacy-overview) is retained for 90 days by default, subject to our Unity configuration and any provider changes.
 - Service providers may keep network, security, transaction, or platform records under their own retention rules.
+- Videos and photos from the in-game camera stay on your headset until you delete them. LIV keeps its technical data under its own retention rules.
 
 ---
 
@@ -101,6 +107,8 @@ Depending on applicable law, you may ask us to access, correct, or delete inform
 Deleting account data may permanently remove progress, inventory, settings, or access to GGC features. A deletion request may not remove platform purchase records, information retained independently by a provider, or limited safety, fraud, transaction, dispute, or legal records that we reasonably need to keep.
 
 You can turn off your microphone, leave a session, and use available mute, block, and report controls. Platform privacy and parental settings are managed through Meta.
+
+You can delete in-game camera videos and photos from your headset's gallery at any time. For technical data held by LIV, see [LIV's privacy policy](https://www.liv.tv/legal/privacy-policy) or contact [privacy@liv.tv](mailto:privacy@liv.tv).
 
 ---
 

@@ -7,7 +7,7 @@ heading: "Terms of"
 headingAccent: "Use"
 ---
 
-**Effective Date:** July 22, 2026
+**Effective Date:** November 15, 2026
 
 These Terms of Use (**"Terms"**) are between you and **SYNTHETIC REALITY SAC**, which provides Galactic Gorilla Corps (**"GGC"**) under the **OSYRYS** brand (**"OSYRYS," "we," "us,"** or **"our"**). They apply to GGC, its online features, official GGC community spaces, updates, and digital items (together, the **"Services"**).
 
@@ -109,13 +109,15 @@ You may stop using GGC at any time. We may suspend or end your access if you vio
 
 Use a clear play area, follow device safety instructions, take breaks, and stop if you feel pain, dizziness, nausea, disorientation, or other discomfort. You are responsible for using your headset and physical space safely.
 
-GGC may rely on services provided by Meta, Unity, Photon, and other providers. Their services and accounts are governed by their own terms and may become unavailable or change independently of us.
+GGC may rely on services provided by Meta, Unity, Photon, LIV, and other providers. Their services and accounts are governed by their own terms and may become unavailable or change independently of us.
 
 ---
 
 ## 10. Disclaimers and Limits on Liability
 
 To the fullest extent permitted by law, the Services are provided **"as is"** and **"as available."** We do not guarantee uninterrupted access, perfect security, error-free software, particular results, or that every player will follow these Terms.
+
+Third-party software and services in GGC, including those from Meta, Unity, Photon, and LIV, are provided as is by their providers, who are not liable to you for them, to the fullest extent permitted by law.
 
 To the fullest extent permitted by law, OSYRYS, SYNTHETIC REALITY SAC, and their personnel and licensors are not liable for indirect, incidental, special, consequential, exemplary, or punitive losses arising from the Services, including losses caused by another player's conduct. For claims that may lawfully be limited, our total liability will not exceed the greater of **US$100** or the amount you paid directly for GGC during the 12 months before the event giving rise to the claim.
 
