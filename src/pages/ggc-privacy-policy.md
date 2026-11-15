@@ -1,10 +1,9 @@
 ---
 layout: ../layouts/LegalPage.astro
-title: "Galactic Gorilla Corps Privacy Policy"
+title: "Galactic Gorilla Corps / Privacy Policy"
 description: "How OSYRYS handles information for Galactic Gorilla Corps."
 productName: "Galactic Gorilla Corps"
-heading: "Privacy"
-headingAccent: "Policy"
+heading: "Privacy Policy"
 ---
 
 **Effective Date:** November 15, 2026

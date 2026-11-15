@@ -1,8 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import "../styles/ggc.css";
 
 interface Props {
   frontmatter: {
@@ -10,7 +8,6 @@ interface Props {
     description?: string;
     productName?: string;
     heading?: string;
-    headingAccent?: string;
   };
 }
 
@@ -19,11 +16,15 @@ const {
   title = "Privacy Policy",
   description = "Privacy and data-use information for OSYRYS services.",
   productName = "Galactic Gorilla Corps",
-  heading = "Privacy",
-  headingAccent = "Policy",
+  heading = "Privacy Policy",
 } = frontmatter;
 
 const isTerms = Astro.url.pathname.includes("ggc-tou");
+const siteLinks = [
+  { href: "/enterprise/", label: "Enterprise" },
+  { href: "/entertainment/", label: "Entertainment" },
+  { href: "/about/", label: "About" },
+];
 ---
 
 <!doctype html>
@@ -33,60 +34,82 @@ const isTerms = Astro.url.pathname.includes("ggc-tou");
       title={title}
       description={description}
       image="/ggc/og.jpg"
+      icon="/assets/osyrys-icon.svg"
       colorScheme="dark"
     />
-    <meta name="theme-color" content="#03090f" />
+    <meta name="theme-color" content="#08080a" />
     <link
       rel="preload"
-      href="/fonts/ggc/Oxanium.ttf"
+      href="/assets/fonts/space-mono-regular.woff2"
       as="font"
-      type="font/ttf"
+      type="font/woff2"
       crossorigin="anonymous"
     />
-    <link rel="icon" type="image/webp" href="/ggc/icon.webp" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="/assets/refinements.css" />
+    <link rel="stylesheet" href="/assets/game-privacy.css" />
+    <script is:inline type="module" src="/assets/app.js"></script>
   </head>
-  <body class="min-h-screen flex flex-col antialiased">
-    <a class="ggc-skip-link" href="#legal-content">Skip to legal content</a>
-    <Header />
+  <body class="osyrys-legal">
+    <a class="skip-link" href="#legal-content">Skip to legal content</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Osyrys home">
+        <img src="/assets/osyrys-logo.svg" width="110" height="27" alt="Osyrys" />
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        {siteLinks.map(({ href, label }) => <a href={href}>{label}</a>)}
+      </nav>
+      <a class="header-contact" href="/contact/">Contact <span aria-hidden="true">↗</span></a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">
+        [ Menu <span aria-hidden="true">+</span> ]
+      </button>
+      <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+        {siteLinks.map(({ href, label }) => <a href={href}>{label}</a>)}
+        <a href="/contact/">Contact <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
 
-    <main class="ggc-theme ggc-legal-page">
-      <header class="ggc-legal-masthead">
-        <div class="ggc-shell">
-          <a class="ggc-back-link" href="/ggc">Back to Galactic Gorilla Corps</a>
-
-          <div class="ggc-legal-masthead__content">
-            <div>
-              <p class="ggc-kicker">{productName}</p>
-              <h1>
-                {heading}
-                <span>{headingAccent}</span>
-              </h1>
-            </div>
-            <p>{description}</p>
-          </div>
-
-          <nav class="ggc-document-nav" aria-label="Galactic Gorilla Corps documents">
-            <a href="/ggc">GGC Home</a>
-            <a href="/ggc-tou" aria-current={isTerms ? "page" : undefined}>
-              Terms of Use
-            </a>
-            <a
-              href="/ggc-privacy-policy"
-              aria-current={!isTerms ? "page" : undefined}
-            >
-              Privacy Policy
-            </a>
-          </nav>
-        </div>
+    <main class="privacy-page">
+      <header class="privacy-heading">
+        <span class="eyebrow">{productName}</span>
+        <h1>{heading}<span class="purple" aria-hidden="true">.</span></h1>
+        <nav class="legal-document-nav" aria-label="Galactic Gorilla Corps documents">
+          <a href="/ggc-privacy-policy/" aria-current={!isTerms ? "page" : undefined}>Privacy Policy</a>
+          <a href="/ggc-tou/" aria-current={isTerms ? "page" : undefined}>Terms of Use</a>
+        </nav>
       </header>
 
-      <section class="ggc-legal-document">
-        <article id="legal-content" class="ggc-legal-copy" tabindex="-1">
-          <slot />
-        </article>
-      </section>
+      <article id="legal-content" class="privacy-copy" aria-label={heading} tabindex="-1">
+        <slot />
+      </article>
     </main>
 
     <Footer />
   </body>
 </html>
+
+<style>
+  /* BaseHead also loads the legacy Astro theme. */
+  @media screen {
+    .osyrys-legal {
+      --muted: #a9a5b0;
+      background: var(--bg);
+      color: var(--text);
+    }
+  }
+
+  .privacy-copy > :global(p:first-child) {
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+
+  .privacy-copy > :global(ul) {
+    list-style: disc outside;
+  }
+
+  .privacy-copy > :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: clamp(28px, 5vw, 42px) 0 24px;
+  }
+</style>

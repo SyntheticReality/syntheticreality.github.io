@@ -1,10 +1,9 @@
 ---
 layout: ../layouts/LegalPage.astro
-title: "Galactic Gorilla Corps Terms of Use"
+title: "Galactic Gorilla Corps / Terms of Use"
 description: "Rules for playing Galactic Gorilla Corps safely and fairly."
 productName: "Galactic Gorilla Corps"
-heading: "Terms of"
-headingAccent: "Use"
+heading: "Terms of Use"
 ---
 
 **Effective Date:** November 15, 2026
