@@ -6,22 +6,27 @@ productName: "Galactic Gorilla Corps"
 heading: "Privacy Policy"
 ---
 
-**Effective Date:** November 15, 2026
+**Effective Date:** November 23, 2026
 
 Galactic Gorilla Corps (**"GGC"**) is provided by **SYNTHETIC REALITY SAC** under the **OSYRYS** brand (**"OSYRYS," "we," "us,"** or **"our"**). This Privacy Policy explains what information is handled when you play GGC, use its online features, contact GGC support, or participate in official GGC community spaces.
 
 This Policy is only for GGC. The general Syry website and Syry newsletter are separate from GGC and are not covered by this Policy.
 
+[How to request deletion of your GGC data](#request-deletion-of-your-ggc-data)
+
 ---
 
 ## 1. Information We Handle
 
-Depending on which GGC features are available and which ones you use, we may handle:
+GGC uses the following Meta Horizon platform data on Quest:
 
-Features that are not enabled do not collect information through GGC.
+- **Meta user ID:** We receive your Meta user ID for GGC and sign-in and access verification information from Meta. We use this data to verify your access to the game, sign you in, keep your progress and inventory linked to your account, and provide multiplayer and voice chat.
+- **Meta user profile:** Your public Meta Horizon username is your default in-game name, visible to other players in multiplayer. You can choose a custom GGC callsign instead.
+- **Meta in-app purchases:** We receive transaction and product IDs and purchase or entitlement status from Meta. We use this information to verify and deliver purchases of virtual currency and digital add-ons and to resolve delivery problems. Meta handles checkout and payment. OSYRYS does not receive your full payment-card details.
 
-- **Account and platform information:** Your Meta user ID and, if GGC retrieves it for an in-game feature, your Meta display name. We may also receive platform information made available to GGC, such as account entitlement or age category. Unity Authentication creates a separate player ID linked to your Meta account.
-- **Gameplay and account data:** Progress, settings, loadouts, mission results, inventory, virtual currency, digital items, purchase or entitlement status, and records needed to address cheating, fraud, reports, suspensions, or bans.
+Depending on the other GGC features you use, we may also handle:
+
+- **Gameplay and account data:** Progress, settings, loadouts, mission results, inventory, virtual currency, digital items, and records needed to address cheating, fraud, reports, suspensions, or bans.
 - **Terms and policy acceptance:** When you accept the Terms of Use and this Privacy Policy in GGC, we record your player ID, the versions you accepted and the time. The record is stored on your headset so GGC can check which terms you accepted, and a copy is kept in Unity Gaming Services so we can show which terms applied to your account.
 - **Multiplayer data:** Room, region, session, connection, and matchmaking information; IP address and network performance; and gameplay state such as avatar position, head and hand movement, interactions, and mission activity. Real-time pose and session data is primarily used to make multiplayer work.
 - **Voice data:** When voice chat is available and you turn on your microphone, Photon Voice transports your audio to players in the relevant voice channel. See Section 2 for important details.
@@ -30,7 +35,7 @@ Features that are not enabled do not collect information through GGC.
 - **Support and safety information:** If you contact us or submit a report, we receive what you provide, which may include your email address, Meta user ID, the reported player's identifier, messages, screenshots, clips, attachments, and session details.
 - **Community information:** If you interact with an official GGC Discord or social-media account, we may receive your platform username, public posts, messages, and anything else you choose to share there.
 
-We do not need your email address to let you play GGC. Purchases are processed by Meta or another applicable platform; OSYRYS does not receive your full payment-card details.
+We do not need your email address to let you play GGC.
 
 ---
 
@@ -81,7 +86,8 @@ This policy page is hosted on GitHub Pages, which may receive technical request 
 We keep information only for as long as reasonably needed for the purpose for which it was handled:
 
 - OSYRYS does not intentionally keep the content of ordinary live voice after transmission. Real-time pose data is not kept by OSYRYS after the session. A future, separately disclosed safety feature may create a short report clip.
-- Account, progression, inventory, purchase, and entitlement data remain in Unity Gaming Services while the player account is active and until it is deleted under our retention process. Settings and loadout choices are stored on your headset.
+- Account, progression, and inventory data are stored in Unity Gaming Services while your game account is active. Settings and loadout choices are stored on your headset.
+- Purchase verification and delivery records are stored in Unity Gaming Services. These records help us confirm or recover delivery and prevent duplicate grants. See Section 7 for how to request deletion and when limited records may be retained.
 - Your Terms and Privacy Policy acceptance record is stored on your headset and in Unity Gaming Services. Clearing GGC's app data removes the headset copy. The Unity Gaming Services copy is kept while your account is active; after the account is deleted we may keep it for as long as reasonably needed to resolve disputes or meet legal obligations.
 - Safety reports, enforcement records, and related identifiers may be kept after an account closes when reasonably needed to protect users, investigate serious misconduct, prevent ban evasion, resolve disputes, or meet legal obligations.
 - Support and community messages are kept as long as needed to answer the request, manage the community, or preserve a relevant safety record.
@@ -101,9 +107,17 @@ If you are under the age of legal majority where you live, a parent or legal gua
 
 ## 7. Your Choices and Requests
 
-Depending on applicable law, you may ask us to access, correct, or delete information we control about you. Email [hello@syry.io](mailto:hello@syry.io) and include enough information for us to identify the relevant GGC account. We may need to verify that the request is yours.
+### Request deletion of your GGC data
 
-Deleting account data may permanently remove progress, inventory, settings, or access to GGC features. A deletion request may not remove platform purchase records, information retained independently by a provider, or limited safety, fraud, transaction, dispute, or legal records that we reasonably need to keep.
+Anyone can request deletion of the data GGC collects or receives about them, including Meta Horizon platform data, regardless of where they live. There is no fee.
+
+1. Email [hello@syry.io](mailto:hello@syry.io?subject=GGC%20Data%20Deletion%20Request) with the subject **GGC Data Deletion Request**.
+2. Include your Meta Horizon username or another identifier for the GGC account, if known, and say what you would like us to delete. Do not include your password or payment-card details.
+3. We may ask for information to verify that the request is yours. We will respond to your request and explain any information we must retain and why.
+
+Deleting account data may permanently remove progress, inventory, or access to GGC features. We may retain limited records where applicable law permits or requires it, for example to comply with legal obligations, resolve a dispute, or address fraud or serious safety incidents. Meta manages your Meta account and the purchase history in its store. Requests to delete those records should go to Meta.
+
+Depending on applicable law, you may also ask us to access or correct information we control about you by emailing [hello@syry.io](mailto:hello@syry.io).
 
 You can turn off your microphone, leave a session, and use available mute, block, and report controls. Platform privacy and parental settings are managed through Meta.
 
