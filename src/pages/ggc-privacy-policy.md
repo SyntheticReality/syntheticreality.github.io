@@ -6,7 +6,7 @@ productName: "Galactic Gorilla Corps"
 heading: "Privacy Policy"
 ---
 
-**Effective Date:** November 23, 2026
+**Effective Date:** November 25, 2026
 
 Galactic Gorilla Corps (**"GGC"**) is provided by **SYNTHETIC REALITY SAC** under the **OSYRYS** brand (**"OSYRYS," "we," "us,"** or **"our"**). This Privacy Policy explains what information is handled when you play GGC, use its online features, contact GGC support, or participate in official GGC community spaces.
 
@@ -22,12 +22,14 @@ GGC uses the following Meta Horizon platform data on Quest:
 
 - **Meta user ID:** We receive your Meta user ID for GGC and sign-in and access verification information from Meta. We use this data to verify your access to the game, sign you in, keep your progress and inventory linked to your account, and provide multiplayer and voice chat.
 - **Meta user profile:** Your public Meta Horizon username is your default in-game name, visible to other players in multiplayer. You can choose a custom GGC callsign instead.
+- **Meta user age group:** We request an age-group signal from Meta to decide whether to offer optional gameplay analytics. We do not receive your date of birth through this check. Only a confirmed adult can enable these analytics; an unavailable result leaves them off.
 - **Meta in-app purchases:** We receive transaction and product IDs and purchase or entitlement status from Meta. We use this information to verify and deliver purchases of virtual currency and digital add-ons and to resolve delivery problems. Meta handles checkout and payment. OSYRYS does not receive your full payment-card details.
 
 Depending on the other GGC features you use, we may also handle:
 
 - **Gameplay and account data:** Progress, settings, loadouts, mission results, inventory, virtual currency, digital items, and records needed to address cheating, fraud, reports, suspensions, or bans.
 - **Terms and policy acceptance:** When you accept the Terms of Use and this Privacy Policy in GGC, we record your player ID, the versions you accepted and the time. The record is stored on your headset so GGC can check which terms you accepted, and a copy is kept in Unity Gaming Services so we can show which terms applied to your account.
+- **Optional gameplay analytics:** If Meta identifies your account as an adult and you choose ALLOW, Unity Analytics receives tutorial starts and completions, mission starts and outcomes, mission duration and related game, device and session information. Unity also processes pseudonymous player and installation identifiers and network information such as IP address. These analytics help us understand and improve the game; they are not anonymous. We store your Allow or No thanks choice, the analytics notice version and decision time with your account's legal record on your headset and in Unity Gaming Services.
 - **Multiplayer data:** Room, region, session, connection, and matchmaking information; IP address and network performance; and gameplay state such as avatar position, head and hand movement, interactions, and mission activity. Real-time pose and session data is primarily used to make multiplayer work.
 - **Voice data:** When voice chat is available and you turn on your microphone, Photon Voice transports your audio to players in the relevant voice channel. See Section 2 for important details.
 - **In-game camera:** Videos and photos you take with the in-game drone camera are saved only on your headset. The camera software sends technical data to LIV; see Section 4.
@@ -60,6 +62,7 @@ We use information to:
 - detect and address abuse, grooming, harassment, cheating, fraud, security incidents, and ban evasion;
 - diagnose crashes, fix errors, balance the game, and improve performance; and
 - keep a record of which Terms of Use and Privacy Policy versions you accepted;
+- understand tutorial and mission activity and improve the game, with your separate consent for optional gameplay analytics;
 - protect players, OSYRYS, and the Services, and comply with valid legal obligations.
 
 We do not sell GGC player information or use it for targeted advertising.
@@ -71,7 +74,7 @@ We do not sell GGC player information or use it for targeted advertising.
 We disclose information only as needed for the purposes above:
 
 - **Meta** provides the Quest platform, Meta accounts, store, payments, and platform safety tools.
-- **Unity** provides the game engine and enabled Diagnostics, which may process installation identifiers, crash and exception reports, application-not-responding events, and related technical data. Unity Gaming Services provides player authentication, server-side game logic and durable storage for progression, inventory, virtual currency, purchases, entitlements, your Terms and Privacy Policy acceptance record, and related game records.
+- **Unity** provides the game engine and enabled Diagnostics, which may process installation identifiers, crash and exception reports, application-not-responding events, and related technical data. With your separate consent, Unity Analytics processes the optional gameplay analytics described above. Unity Gaming Services provides player authentication, server-side game logic and durable storage for progression, inventory, virtual currency, purchases, entitlements, your Terms and Privacy Policy acceptance and analytics-choice record, and related game records.
 - **Photon** provides multiplayer networking, room and session services, and live voice transport (Photon Fusion and Photon Voice).
 - **LIV** (LIV Inc.) provides the software behind the in-game drone camera. Each time GGC starts, that software sends LIV technical data, even if you never use the camera: game name and version, engine and graphics settings, headset model, a pseudonymous device identifier, IP address, camera events such as a recording starting or stopping (with its length and quality), and performance and error reports. LIV uses this to run, fix and improve its software and to give us aggregated statistics. Your videos and photos are not sent to LIV or to us. LIV's privacy policy: <https://www.liv.tv/legal/privacy-policy>
 - **Safety, support, hosting, and community providers** may process reports, evidence, support messages, or technical data on our behalf. We will identify any voice-safety provider before sending voice clips to it.
@@ -89,6 +92,7 @@ We keep information only for as long as reasonably needed for the purpose for wh
 - Account, progression, and inventory data are stored in Unity Gaming Services while your game account is active. Settings and loadout choices are stored on your headset.
 - Purchase verification and delivery records are stored in Unity Gaming Services. These records help us confirm or recover delivery and prevent duplicate grants. See Section 7 for how to request deletion and when limited records may be retained.
 - Your Terms and Privacy Policy acceptance record is stored on your headset and in Unity Gaming Services. Clearing GGC's app data removes the headset copy. The Unity Gaming Services copy is kept while your account is active; after the account is deleted we may keep it for as long as reasonably needed to resolve disputes or meet legal obligations.
+- The same retention approach applies to your analytics-choice record. Unity states that raw Analytics events and personal data are retained for 13 months by default; aggregated reports may be kept longer. Turning analytics off stops new collection and does not automatically delete previously submitted data.
 - Safety reports, enforcement records, and related identifiers may be kept after an account closes when reasonably needed to protect users, investigate serious misconduct, prevent ban evasion, resolve disputes, or meet legal obligations.
 - Support and community messages are kept as long as needed to answer the request, manage the community, or preserve a relevant safety record.
 - Unity states that personal data in its current [Diagnostics service](https://docs.unity.com/en-us/cloud/developer-data/privacy-overview) is retained for 90 days by default, subject to our Unity configuration and any provider changes.
@@ -120,6 +124,8 @@ Deleting account data may permanently remove progress, inventory, or access to G
 Depending on applicable law, you may also ask us to access or correct information we control about you by emailing [hello@syry.io](mailto:hello@syry.io).
 
 You can turn off your microphone, leave a session, and use available mute, block, and report controls. Platform privacy and parental settings are managed through Meta.
+
+Optional gameplay analytics starts off. If eligible, you can choose ALLOW or NO THANKS without affecting your access to the game. You can change the choice in **Field Terminal > Settings > Analytics** at any time. The choice is saved for your account on this headset; another device or cleared app data asks again. Turning it off stops new collection, although events already queued while it was on may finish uploading. To request deletion of previously collected analytics, use the deletion contact above. This option controls Unity gameplay analytics; it does not disable services needed to run the game or the separately disclosed Diagnostics and LIV technical data.
 
 You can delete in-game camera videos and photos from your headset's gallery at any time. For technical data held by LIV, see [LIV's privacy policy](https://www.liv.tv/legal/privacy-policy) or contact [privacy@liv.tv](mailto:privacy@liv.tv).
 
